@@ -1,0 +1,1 @@
+export const ROOT_DOM = document.querySelector('#root');
