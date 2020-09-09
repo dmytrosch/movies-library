@@ -10,7 +10,21 @@ html {
 * {
   /*   outline: 1px solid red; */
 }
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"),
+    url("../fonts/roboto-v20-latin-regular.woff") format("woff");
+}
 
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/roboto-v20-latin-500.woff") format("woff2"),
+    url("../fonts/roboto-v20-latin-500.woff2") format("woff");
+}
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
