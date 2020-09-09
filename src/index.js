@@ -1,3 +1,7 @@
+import './style/normalize.css'
+import './style/style.css'
+import './style/media.css'
+
 import Router from './js/components/router.js';
 
 import mainPage from './js/pages/main';
