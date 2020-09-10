@@ -1,4 +1,4 @@
 export let selectFilm;
-export let pageNumber;
+export let pageNumber = 1;
 
 
