@@ -19,7 +19,7 @@ window['router'] = new Router({
         },
       },
       {
-        path: 'main',
+        path: '',
         callback: () => {
           mainPage();
         }
