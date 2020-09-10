@@ -1,4 +1,3 @@
-{{#each this}}
 <img class="library-details__images" src="https://image.tmdb.org/t/p/original{{backdrop_path}}"
     alt="full-sized-poster-image">
 <div class="library-details__about">
@@ -14,10 +13,12 @@
         original title <span class="library-details__subtitle--mod">{{title}}</span>
     </P>
     <P class="library-details__subtitle library-details__subtitle--last-child">
+        genre
         {{#each genres}}
-        <span class="library-details__subtitle--mod-2">{{this.name}}</span>
+        <span class="library-details__subtitle--mod-2">{{this.name}}{{#if }}
+            
+        {{/if}}</span>
         {{/each}}
     </P>
     <h2 class="library-details__title library-details__title--last-child ">About</h2>
-    <p class="library-details__discription">{{overview}}.</p>
-    {{/each}}
+    <p class="library-details__discription">{{overview}}</p>
