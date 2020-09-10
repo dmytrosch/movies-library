@@ -8,8 +8,8 @@ export default {
     fetchMovieSearch() {
         const pageCount = `&page=${pageNumber}`;
         const movieSearch = '/search/movie';
-        const searchQuery = `&query=${this.query}`;
-        return fetch(baseUrl + movieSearch + API_KEY + searchQuery + pageCount)
+        const searchQueryString = `&query=${this.query}`;
+        return fetch(baseUrl + movieSearch + API_KEY + searchQueryString + pageCount)
             .then(response => response.json())
             .then(parcedData => {
                 this.incrementPage();
