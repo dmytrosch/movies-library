@@ -193,7 +193,7 @@ img {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
 }
 
-.library-queue__list {
+.film-controls {
   width: 100%;
   margin: 0px 0px 14px 0px;
   display: flex;
@@ -202,7 +202,7 @@ img {
   padding: 14px 0px 14px 0px;
 }
 
-.library-queue__item {
+.film-controls__btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,23 +212,25 @@ img {
   line-height: 16px;
   color: #000000;
   padding: 0px;
+  border: none;
+  background-color: #fff;
   border-bottom: 2px solid #9c99a5;
 }
 
-.library-queue__item:hover,
-.library-queue__item:focus {
-  height: 42px;
+.film-controls__btn:hover,
+.film-controls__btn:focus {
   border: none;
   color: #ffffff;
+  background-color: #77c1bb;
 }
 
-.library-queue_gallery {
-  display: flex;
+.films-library__gallery {
+ display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.library-queue_gallery-item {
+.films-library__gallery-item {
   background-color: olive;
   width: 258px;
   height: 156px;
@@ -237,13 +239,13 @@ img {
   position: relative;
 }
 
-.library-queue_gallery-images {
+.films-library__gallery-images {
   width: 258px;
   height: 156px;
   border-radius: 10px;
 }
 
-.library-queue_gallery-rating {
+.films-library__gallery-rating {
   font-size: 12px;
   line-height: 11px;
   font-weight: 500;
@@ -264,7 +266,7 @@ img {
   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
-.library-queue_gallery-name {
+.films-library__gallery-name {
   position: absolute;
   font-size: 13px;
   line-height: 15px;
