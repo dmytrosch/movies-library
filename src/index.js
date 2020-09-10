@@ -8,6 +8,8 @@ import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import './js/pages/search.js';
+import renderMarkUp from './js/components/renderMarkUp';
+
 
 window['router'] = new Router({
     root: '/',
