@@ -1,6 +1,6 @@
-import './style/normalize.css'
-import './style/style.css'
-import './style/media.css'
+import './style/normalize.css';
+import './style/style.css';
+import './style/media.css';
 
 import Router from './js/components/router.js';
 
@@ -12,21 +12,42 @@ import './js/pages/search.js';
 window['router'] = new Router({
     root: '/',
     routes: [
-      {
-        path: /film\/(.*)/,
-        callback: (id) => {
-          filmPage(id)
+        {
+            path: /film\/(.*)/,
+            callback: id => {
+                filmPage(id);
+            },
         },
-      },
-      {
-        path: '',
-        callback: () => {
-          mainPage();
-        }
-      }],
+        {
+            path: '',
+            callback: () => {
+                mainPage();
+            },
+        },
+    ],
     error: {
-      callback: () => {
-        notFoundPage()
-      }
-    }
-  });
+        callback: () => {
+            notFoundPage();
+        },
+    },
+});
+
+const refs = {
+    headerLogo: document.querySelector('.library__nav-icon'),
+    headerLinkHome: document.querySelector('#headerNavHome'),
+    headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
+};
+
+refs.headerLogo.addEventListener('click', onMainPageClickHandler);
+refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
+refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
+
+function onMainPageClickHandler(event) {
+    event.target.preventDefault();
+    mainPage();
+}
+
+function onLibraryBtnHandler(event) {
+    event.target.preventDefault();
+    library();
+}
