@@ -1,0 +1,23 @@
+{{#each this}}
+<img class="library-details__images" src="https://image.tmdb.org/t/p/original{{backdrop_path}}"
+    alt="full-sized-poster-image">
+<div class="library-details__about">
+    <h2 class="library-details__title">{{original_title}}</h2>
+    <P class="library-details__subtitle">
+        vote / votes <span class="library-details__subtitle--mod">{{vote_average}} / {{vote_count}}
+        </span>
+    </P>
+    <P class="library-details__subtitle">
+        popularity <span class="library-details__subtitle--mod-1">{{popularity}}</span>
+    </P>
+    <P class="library-details__subtitle">
+        original title <span class="library-details__subtitle--mod">{{title}}</span>
+    </P>
+    <P class="library-details__subtitle library-details__subtitle--last-child">
+        {{#each genres}}
+        <span class="library-details__subtitle--mod-2">{{this.name}}</span>
+        {{/each}}
+    </P>
+    <h2 class="library-details__title library-details__title--last-child ">About</h2>
+    <p class="library-details__discription">{{overview}}.</p>
+    {{/each}}
