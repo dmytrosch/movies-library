@@ -39,7 +39,7 @@
   }
 
   /* #################### LIBERAY QUEUE */
-  .library-queue_gallery {
+  .films-library__gallery {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -47,7 +47,7 @@
     justify-content: space-evenly;
   }
 
-  .library-queue_gallery-item {
+  .films-library__gallery-item {
     background-color: olive;
     width: 344px;
     height: 180px;
@@ -56,20 +56,20 @@
     position: relative;
   }
 
-  .library-queue_gallery-images {
+  .films-library__gallery-images {
     width: 344px;
     height: 180px;
     border-radius: 10px;
   }
 
-  .library-queue_gallery-rating {
+  .films-library__gallery-rating {
     font-size: 15px;
     line-height: 14px;
     width: 40px;
     height: 20px;
   }
 
-  .library-queue_gallery-name {
+  .films-library__gallery-name {
     font-size: 14px;
     line-height: 15px;
   }
@@ -139,7 +139,7 @@
     margin: 0 auto;
   }
 
-  .library-queue_gallery-item {
+  .films-library__gallery-item {
     background-color: olive;
     width: 468px;
     height: 244px;
@@ -149,24 +149,24 @@
     position: relative;
   }
 
-  .library-queue_gallery-images {
+  .films-library__gallery-images {
     width: 468px;
     height: 244px;
     border-radius: 10px;
   }
 
-  .library-queue__list {
+  .film-controls {
     margin: 0px 0px 30px 0px;
   }
 
-  .library-queue_gallery-rating {
+  .films-library__gallery-rating {
     font-size: 20px;
     line-height: 19px;
     width: 50px;
     height: 30px;
   }
 
-  .library-queue_gallery-name {
+  .films-library__gallery-name {
     font-size: 20px;
     line-height: 24px;
   }
