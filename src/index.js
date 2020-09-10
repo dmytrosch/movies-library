@@ -38,12 +38,16 @@ const refs = {
     headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
 };
 
-refs.headerLogo.addEventListener('click', onClickMain());
-refs.headerLinkHome.addEventListener('click', onClickMain());
-refs.headerLinkMyLibrary.addEventListener('click', () => {
-    library();
-});
+refs.headerLogo.addEventListener('click', onMainPageClickHandler);
+refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
+refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
-const onClickMain = () => {
+function onMainPageClickHandler(event) {
+    event.target.preventDefault();
     mainPage();
-};
+}
+
+function onLibraryBtnHandler(event) {
+    event.target.preventDefault();
+    library();
+}
