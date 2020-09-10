@@ -5,7 +5,7 @@ module.exports = env => ({
   devtool: 'cheap-eval-source-map',
   output: {
     filename: '[name].js',
-    publicpath: '/',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -35,6 +35,5 @@ module.exports = env => ({
     clientLogLevel: 'warning',
     stats: 'errors-only',
     open: true,
-    historyApiFallback: true,
   },
 });
