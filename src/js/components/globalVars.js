@@ -1,4 +1,5 @@
 export let selectFilm;
-export let pageNumber = 1;
+export let pageNumber;
+export let filmListResult;
 
 
