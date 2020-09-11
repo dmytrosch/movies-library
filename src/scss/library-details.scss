@@ -1,58 +1,72 @@
 .library-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 
-    &__about {
-        margin: 0 auto;
-        padding: 0px 0px 0px 25px;
-    }
+  &__about {
+    margin: 0 auto;
+    padding: 0px 0px 0px 25px;
+  }
 
-    &__images {
-        padding: 22px 0px 24px;
-        width: 274px;
-        height: 400px;
-    }
+  &__images {
+    padding: 22px 0px 24px;
+    width: 274px;
+    height: 400px;
+    background-image: url('../images/img/video.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 
-    &__title {
-        margin: 0px 0px 16px 0px;
-        font-size: 16px;
-        line-height: 19px;
-    }
+  &__title {
+    margin: 0px 0px 16px 0px;
+    font-size: 16px;
+    line-height: 19px;
+    transition: all 200ms ease-in;
+  }
 
-    &__subtitle {
-        margin: 0px 0px 8px 0px;
-        padding: 3px 0px 0px 5px;
-        font-size: 14px;
-        line-height: 25px;
-        color: #7c7c7c;
-    }
+  &__subtitle {
+    margin: 0px 0px 8px 0px;
+    padding: 3px 0px 0px 8px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #7c7c7c;
+    transition: all 200ms ease-in;
+  }
 
-    &__discription {
-        margin-bottom: 26px;
-        font-size: 14px;
-        line-height: 18px;
-        color: #7c7c7c;
-    }
+  &__discription {
+    margin-bottom: 26px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #7c7c7c;
+  }
 
-    &__addTOwached,
-    &__addTOqueue {
-        display: none;
-    }
+  &__addTOwached,
+  &__addTOqueue {
+    display: none;
+
+  }
 }
 
+.library-details__title:hover, 
+.library-details__title:focus, 
+.library-details__subtitle:focus, 
+.library-details__subtitle:hover {
+    text-shadow: 1px 1px 0 #ffe3bd, 2px 2px 0 #ffe3bd, 3px 3px 0 #ffe3bd,
+    4px 4px 0 #ffe3bd, 5px 5px 0 #ffe3bd;
+}
 .library-details__title--last-child {
-    margin-bottom: 22px;
+  margin-bottom: 22px;
 }
 
 .library-details__subtitle:nth-last-child(2n) {
-    width: 263px;
-    padding: 4px 0px 4px 11px;
-    background-color: #addad6;
-    display: inline-block;
+  width: 263px;
+  padding: 4px 0px 4px 11px;
+  background-color: #addad6;
+  display: inline-block;
 }
 
 .library-details__subtitle--last-child {
-    margin: 0px 0px 38px;
+  margin: 0px 0px 38px;
 }

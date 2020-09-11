@@ -9,8 +9,8 @@ export default {
         const movieSearch = '/search/movie';
         const searchQueryString = `&query=${query}`;
         return fetch(
-            baseUrl + movieSearch + API_KEY + searchQueryString + pageCount,
-        )
+            baseUrl + movieSearch + API_KEY + searchQueryString + pageCount)
+        
             .then(response => response.json())
             .then(parcedData => {
                 return parcedData.results;

@@ -30,11 +30,19 @@ html {
     height: 1px;
     margin: -1px;
 }
-
+.background-main{
+    // background-image: url('../images/img/body.jpg');
+    // background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 body {
     font-family: 'Roboto', sans-serif;
     letter-spacing: -0.02em;
     color: #555252;
+    background-color: #f3f3f5;
+  
 }
 
 a {

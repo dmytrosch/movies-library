@@ -1,7 +1,6 @@
 import fetchMethods from '../Api/fetchMethods';
 import filmCardListTemplate from '../../templates/filmCardsListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
-import { film } from './film';
 
 const refs = {
     filmPageContainer: document.querySelector(
@@ -33,3 +32,4 @@ export default {
     page404() {},
     pageError() {},
 };
+
