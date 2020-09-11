@@ -11,7 +11,7 @@ export default {
         return fetch(baseUrl + movieSearch + API_KEY + searchQueryString + pageCount)
             .then(response => response.json())
             .then(parcedData => {
-                // this.incrementPage();
+              
                 return parcedData.results;
             });
     },
@@ -21,8 +21,9 @@ export default {
         return fetch(baseUrl + idSearch + API_KEY)
             .then(response => response.json())
             .then(parcedMovieById => {
-                // this.incrementPage();
+               
                 return parcedMovieById;
             });
     },
+    
 };

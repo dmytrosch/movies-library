@@ -1,6 +1,8 @@
 import fetch from '../Api/fetchMethods';
 import { pageNumber } from '../components/globalVars.js';
-import pagination from '../components/pagePagination.js';
+import globalVars from '../components/globalVars.js'
+
+
 
 const refs = {
     inputForm: document.querySelector('#search-form'),
@@ -15,12 +17,11 @@ refs.nextBtn.addEventListener('click', paginationNextBtnHandler)
 
 async function searchFormHandler(event) {
     event.preventDefault();
-    const searchValue = event.target.elements.query.value;
-    
+    globalVars.searchQuery = event.target.elements.query.value;
     let fetchResult;
-    if (searchValue) {
-        pagination.resetPage()
-        fetchResult = await fetch.movieSearch(searchValue);
+    if (globalVars.searchQuery) {
+        globalVars.resetPage()
+        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     }
     if(fetchResult.length === 0){
         // pnotify / alert
@@ -31,16 +32,22 @@ async function searchFormHandler(event) {
     console.log(pageNumber);
     
 }
-refs.prevBtn.setAttribute('disabled', 'disabled') ;
+refs.prevBtn.disabled = true;
 
 function paginationPrevBtnHandler(){
-     pagination.decrementPage()         
+    globalVars.decrementPage() 
+    refs.span.textContent = pageNumber; 
+    if (pageNumber === 1){
+        refs.prevBtn.disabled = true;
+    }      
 }
 
 function paginationNextBtnHandler(){
-    pagination.incrementPage()
-    fetch.movieSearch()
+
+    globalVars.incrementPage()
+    refs.prevBtn.disabled = false;
+    fetch.movieSearch(globalVars.searchQuery)
     console.log(pageNumber);
     refs.span.textContent = pageNumber;
-    console.log(fetch.movieSearch());
+    console.log(fetch.movieSearch(globalVars.searchQuery));
 }
