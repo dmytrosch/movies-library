@@ -1,6 +1,6 @@
 import renderMarkUp from '../components/renderMarkUp';
 
-export default function filmPage(id) {
+export default function filmPage(id = 550) {
     const selectedFilm = renderMarkUp.filmPage(id);
 
     const QUEUE_KEY_IN_LS = 'filmsQueue';
@@ -14,14 +14,17 @@ export default function filmPage(id) {
         list.find(item => item.id === selectedFilm.id);
 
     // Записываем данные в LocalStorage.
-    const setToLS = (key, data) =>
+    function setToLS(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
+    }
 
     // Получаем данные из LocalStorage.
-    const getFromLS = key => JSON.parse(localStorage.getItem(key)) || [];
+    function getFromLS(key) {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    }
 
     //Следит за состоянием LocalStorage и меняет текст кнопок
-    const monitorButtonStatusText = () => {
+    function monitorButtonStatusText() {
         const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
         const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
         queueBtn.innerHTML = checkIsInList(queueFilms)
@@ -30,21 +33,21 @@ export default function filmPage(id) {
         watchedBtn.innerHTML = checkIsInList(watchedFilms)
             ? 'Delete from watched'
             : 'Add to watched';
-    };
+    }
 
     // Добавляем или удаляем фильм из списка "Очереди"
-    const toggleToQueue = () => {
+    function toggleToQueue() {
         const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
         setToLS(QUEUE_KEY_IN_LS, getNewFilmList(queueFilms, selectedFilm));
         monitorButtonStatusText();
-    };
+    }
 
     // Добавляем или удаляем фильм из списка "просмотренных" фильмов.
-    const toggleToWached = () => {
+    function toggleToWached() {
         const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
         setToLS(WATCHED_KEY_IN_LS, getNewFilmList(watchedFilms, selectedFilm));
         monitorButtonStatusText();
-    };
+    }
 
     // Получаем новый список фильмов в зависимости от того есть этот фильм в списке или нет.
     function getNewFilmList(list) {
