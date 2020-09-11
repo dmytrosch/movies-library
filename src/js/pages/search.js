@@ -46,8 +46,7 @@ function paginationNextBtnHandler(){
 
     globalVars.incrementPage()
     refs.prevBtn.disabled = false;
-    fetch.movieSearch(globalVars.searchQuery)
-    console.log(pageNumber);
+    fetch.movieSearch(globalVars.searchQuery).then(data => data)
     refs.span.textContent = pageNumber;
-    console.log(fetch.movieSearch(globalVars.searchQuery));
+    
 }
