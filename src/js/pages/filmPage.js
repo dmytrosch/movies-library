@@ -1,13 +1,12 @@
 import renderMarkUp from '../components/renderMarkUp';
 
-export default function filmPage(id = 550) {
-    const selectedFilm = renderMarkUp.filmPage(id);
-
+export default async function filmPage(id) {
+    const selectedFilm = await renderMarkUp.filmPage(id);
     const QUEUE_KEY_IN_LS = 'filmsQueue';
     const WATCHED_KEY_IN_LS = 'filmsWatched';
     const watchedBtn = document.getElementById('addTOwachedJS');
     const queueBtn = document.getElementById('addTOqueueJS');
-    watchedBtn.addEventListener('click', toggleToWached);
+    watchedBtn.addEventListener('click', toggleToWatched);
     queueBtn.addEventListener('click', toggleToQueue);
 
     const checkIsInList = list =>
@@ -43,7 +42,7 @@ export default function filmPage(id = 550) {
     }
 
     // Добавляем или удаляем фильм из списка "просмотренных" фильмов.
-    function toggleToWached() {
+    function toggleToWatched() {
         const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
         setToLS(WATCHED_KEY_IN_LS, getNewFilmList(watchedFilms, selectedFilm));
         monitorButtonStatusText();
