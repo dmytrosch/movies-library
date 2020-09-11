@@ -56,3 +56,30 @@
 .library-details__subtitle--last-child {
     margin: 0px 0px 38px;
 }
+
+.image-container {
+    position: relative;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 22px;
+    left: 0;
+    min-width: 274px;
+    min-height: 354px;
+    background-color: rgba(255, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.search-icon {
+    font-size: 275px;
+    color: rgba(255, 255, 255, 0.3);
+}

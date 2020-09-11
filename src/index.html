@@ -1,81 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movies Library</title>
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movies Library</title>
-</head>
-
-<body>
-    <header>
-        <nav class="library__nav">
-            <div class="library__nav-icon">
-                <a href="./index.html" class="library__nav-link">
-                    <p class="library__nav-title">Filmoteka</p>
-                </a>
-            </div>
-            <!-- <svg class="library__nav-svg">
+    <body>
+        <header>
+            <nav class="library__nav">
+                <div class="library__nav-icon">
+                    <a href="./index.html" class="library__nav-link">
+                        <p class="library__nav-title">Filmoteka</p>
+                    </a>
+                </div>
+                <!-- <svg class="library__nav-svg">
           <use href="./images/svg/symbol-defs.svg#film-solid"></use>
       </svg> -->
 
+                <div class="library-details">
+                    <ul class="library__nav-list">
+                        <li class="library__nav-item">
+                            <a
+                                href=""
+                                class="library__nav-link"
+                                id="headerNavHome"
+                                >HOME</a
+                            >
+                        </li>
+                        <li class="library__nav-item" id="headerNavMyLibrary">
+                            <a href="" class="library__nav-link">MY LIBRARY</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main id="root">
+            <section class="library-details">
+                <div class="container library-details">
+                        <button
+                            class="library-details__addTOwached library-details__btn"
+                            id="addTOwachedJS"
+                        >
+                            Add to watched
+                        </button>
+                        <button
+                            class="library-details__addTOqueue library-details__btn"
+                            id="addTOqueueJS"
+                        >
+                            Add to queue
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-            <div class="library-details">
-                <ul class="library__nav-list">
-                    <li class="library__nav-item">
-                        <a href="" class="library__nav-link" id="headerNavHome">HOME</a>
-                    </li>
-                    <li class="library__nav-item" id="headerNavMyLibrary">
-                        <a href="" class="library__nav-link">MY LIBRARY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main id="root">
-    <section class="library-details">
-      <div class="container library-details">
-          <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
-          <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
-        </div>
-      </div>
-    </section>
+            <section class="films-library">
+                <div
+                    class="film-controls libray-main__shadow"
+                    id="film-controls"
+                >
+                    <button class="film-controls__btn" id="js-btn-watched">
+                        Watch
+                    </button>
+                    <button
+                        class="film-controls__btn"
+                        id="js-btn-added-to-queue"
+                    >
+                        Queue
+                    </button>
+                </div>
+                <div class="container">
+                    <!-- films-library -->
+                    <ul class="list films-library__gallery">
+                        <!-- Шаблон -->
+                    </ul>
+                </div>
+                <div class="controls">
+                    <button
+                        class="controls-btn btn-prev"
+                        data-action="decrement"
+                    >
+                        Prev
+                    </button>
+                    <span class="page-number">1</span>
+                    <button
+                        class="controls-btn btn-next"
+                        data-action="increment"
+                    >
+                        Next
+                    </button>
+                </div>
+            </section>
+        </main>
 
-    <section class="films-library">
-            <div class="film-controls libray-main__shadow" id="film-controls">
-                <button class="film-controls__btn" id="js-btn-watched">
-                    Watch
-                </button>
-                <button class="film-controls__btn" id="js-btn-added-to-queue">
-                    Queue
-                </button>
-            </div>
-            <div class="container">
-                <!-- films-library -->
-                <ul class="list films-library__gallery">
-                    <!-- Шаблон -->
-                </ul>
-            </div>
-            <div class="controls">
-                <button class="controls-btn btn-prev" data-action="decrement">
-                    Prev
-                </button>
-                <span class="page-number">1</span>
-                <button class="controls-btn btn-next" data-action="increment">
-                    Next
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <section class="library__footer">
-            <p class="library__footer-title">Made by GroupName</p>
-            <a href="">
-                <div class="library__footer-toUP"></div>
-            </a>
-        </section>
-    </footer>
-</body>
-
+        <footer class="footer">
+            <section class="library__footer">
+                <p class="library__footer-title">Made by GroupName</p>
+                <a href="">
+                    <div class="library__footer-toUP"></div>
+                </a>
+            </section>
+        </footer>
+    </body>
 </html>

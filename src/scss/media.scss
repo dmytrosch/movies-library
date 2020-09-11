@@ -136,6 +136,15 @@
         background-repeat: no-repeat;
         background-size: 20px;
     }
+
+    .overlay {
+        min-width: 345px;
+        min-height: 480px;
+    }
+
+    .search-icon {
+        font-size: 340px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -194,6 +203,11 @@
     }
     .library-details__subtitle--mod-2 {
         margin: 0px 0px 0px 68px;
+    }
+
+    .overlay {
+        min-width: 426px;
+        min-height: 587px;
     }
 }
 /* ##################################### */

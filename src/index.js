@@ -1,15 +1,4 @@
-import './scss/normalize.scss';
-import './scss/base.scss';
-import './scss/header.scss';
-import './scss/footer.scss';
-import './scss/library-details.scss';
-import './scss/films-library.scss';
-import './scss/pagination-controlers.scss';
-import './scss/search-bar.scss';
-import './scss/media.scss';
-// import './style/normalize.css';
-// import './style/style.css';
-// import './style/media.css';
+import './scss/main.scss';
 
 import Router from './js/components/router.js';
 

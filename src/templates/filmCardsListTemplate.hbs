@@ -1,12 +1,12 @@
 {{#each this}}
 <li class="films-library__gallery-item">
-    <a href="" data-path="film/{{id}}">
-        <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-            alt="poster-image" />
-        <p class="films-library__gallery-rating">{{vote_average}}</p>
-        <p class="films-library__gallery-name">
-            {{original_title}}
-        </p>
-    </a>
+  <a href="" data-path="film/{{id}}">
+    <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+      alt="poster-image" />
+    <p class="films-library__gallery-rating">{{vote_average}}</p>
+    <p class="films-library__gallery-name">
+      {{original_title}}
+    </p>
+  </a>
 </li>
 {{/each}}
