@@ -5,7 +5,8 @@
     align-items: center;
     justify-content: center;
     padding: 14px 0px 14px 0px;
-
+    transition: all 300ms ease-in-out;
+    // background-color: #77c1bb;
     &__btn {
         display: flex;
         justify-content: center;
@@ -18,11 +19,11 @@
         padding: 0px;
         border: none;
         background-color: #fff;
-        border-bottom: 2px solid #9c99a5;
+        border-bottom: 4px solid #9c99a5;
         cursor: pointer;
+        transition: all 300ms ease-in-out;
     }
 }
-
 .film-controls__btn:hover,
 .film-controls__btn:focus {
     border: none;

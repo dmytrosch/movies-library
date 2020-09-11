@@ -4,7 +4,7 @@ const refs = {
     inputForm: document.querySelector('#search-form'),
 };
 
-refs.inputForm.addEventListener('submit', searchFormHandler);
+// refs.inputForm.addEventListener('submit', searchFormHandler);
 
 async function searchFormHandler(event) {
     event.preventDefault();

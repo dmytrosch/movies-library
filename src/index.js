@@ -1,4 +1,5 @@
 import './scss/normalize.scss';
+import 'animate.css';
 import './scss/base.scss';
 import './scss/header.scss';
 import './scss/footer.scss';
@@ -20,32 +21,31 @@ import './js/pages/search.js';
 import renderMarkUp from './js/components/renderMarkUp';
 
 window['router'] = new Router({
-    root: '/',
-    routes: [
-        {
-            path: /film\/(.*)/,
-            callback: id => {
-                filmPage(id);
-            },
-        },
-        {
-            path: '',
-            callback: () => {
-                mainPage();
-            },
-        },
-    ],
-    error: {
-        callback: () => {
-            notFoundPage();
-        },
+  root: '/',
+  routes: [{
+      path: /film\/(.*)/,
+      callback: id => {
+        filmPage(id);
+      },
     },
+    {
+      path: '',
+      callback: () => {
+        mainPage();
+      },
+    },
+  ],
+  error: {
+    callback: () => {
+      notFoundPage();
+    },
+  },
 });
 
 const refs = {
-    headerLogo: document.querySelector('.library__nav-icon'),
-    headerLinkHome: document.querySelector('#headerNavHome'),
-    headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
+  headerLogo: document.querySelector('.library__nav-icon'),
+  headerLinkHome: document.querySelector('#headerNavHome'),
+  headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
 };
 
 refs.headerLogo.addEventListener('click', onMainPageClickHandler);
@@ -53,11 +53,12 @@ refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
 function onMainPageClickHandler(event) {
-    event.target.preventDefault();
-    mainPage();
+  event.target.preventDefault();
+  mainPage();
 }
 
 function onLibraryBtnHandler(event) {
-    event.target.preventDefault();
-    library();
+  event.target.preventDefault();
+  library();
 }
+renderMarkUp.temp()

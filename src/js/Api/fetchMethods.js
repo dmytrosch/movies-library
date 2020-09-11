@@ -8,6 +8,7 @@ export default {
         const pageCount = `&page=${pageNumber}`;
         const movieSearch = '/search/movie';
         const searchQueryString = `&query=${query}`;
+        const per_page = '&per_page=6';
         return fetch(baseUrl + movieSearch + API_KEY + searchQueryString + pageCount)
             .then(response => response.json())
             .then(parcedData => {
