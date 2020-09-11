@@ -1,291 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-            rel="stylesheet"
-        />
-        <title>Movies Library</title>
-    </head>
 
-    <body>
-        <header>
-            <nav class="library__nav">
-                <div class="library__nav-icon">
-                    <a href="" class="library__nav-link">
-                        <p class="library__nav-title">Filmoteka</p>
-                    </a>
-                </div>
-                <!-- <svg class="library__nav-svg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies Library</title>
+</head>
+
+<body>
+    <header>
+        <nav class="library__nav">
+            <div class="library__nav-icon">
+                <a href="./index.html" class="library__nav-link">
+                    <p class="library__nav-title">Filmoteka</p>
+                </a>
+            </div>
+            <!-- <svg class="library__nav-svg">
           <use href="./images/svg/symbol-defs.svg#film-solid"></use>
       </svg> -->
 
+
+            <div class="library-details">
                 <ul class="library__nav-list">
                     <li class="library__nav-item">
-                        <a href="" class="library__nav-link">HOME</a>
+                        <a href="" class="library__nav-link" id="headerNavHome">HOME</a>
                     </li>
-                    <li class="library__nav-item">
+                    <li class="library__nav-item" id="headerNavMyLibrary">
                         <a href="" class="library__nav-link">MY LIBRARY</a>
                     </li>
                 </ul>
-            </nav>
-        </header>
-        <main id="root">
-            <!-- <section class="library-details">
+            </div>
+        </nav>
+    </header>
+    <main id="root">
+    <section class="library-details">
       <div class="container library-details">
-        <img class="library-details__images" src="https://klike.net/uploads/posts/2018-07/1531820523_7.jpg" alt="">
-        <div class="library-details__about">
-          <h2 class="library-details__title">Dumbo (2032)</h2>
-          <P class="library-details__subtitle">
-            vote / votes <span class="library-details__subtitle--mod">6.5 / 1422
-            </span>
-          </P>
-          <P class="library-details__subtitle">
-            popularity <span class="library-details__subtitle--mod-1">100.2</span>
-          </P>
-          <P class="library-details__subtitle">
-            original title <span class="library-details__subtitle--mod">Dumbo</span>
-          </P>
-          <P class="library-details__subtitle library-details__subtitle--last-child">
-            genre
-            <span class="library-details__subtitle--mod-2">drama, geography,history</span>
-
-          </P>
-          <h2 class="library-details__title library-details__title--last-child ">About</h2>
-          <p class="library-details__discription">A young elephant, whose oversized ears enable him to fly, helps save a
-            struggling circus, but when the circus plans a new venture, Dumbo and his friends discover dark secrets
-            beneath its shiny veneer.</p>
-          <span class="library-details__addTOwached" id="addTOwachedJS">Add to watched</span>
-          <span class="library-details__addTOqueue" id="addTOqueueJS">Add to queue</span>
+          <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
+          <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
         </div>
       </div>
-    </section> -->
+    </section>
 
-            <section class="films-library">
-                <div
-                    class="film-controls libray-main__shadow"
-                    id="film-controls"
-                >
-                    <button class="film-controls__btn" id="js-btn-watched">
-                        Watch
-                    </button>
-                    <button
-                        class="film-controls__btn"
-                        id="js-btn-added-to-queue"
-                    >
-                        Queue
-                    </button>
-                </div>
-                <div class="container">
-                    <!-- films-library -->
-                    <ul class="list films-library__gallery">
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+    <section class="films-library">
+            <div class="film-controls libray-main__shadow" id="film-controls">
+                <button class="film-controls__btn" id="js-btn-watched">
+                    Watch
+                </button>
+                <button class="film-controls__btn" id="js-btn-added-to-queue">
+                    Queue
+                </button>
+            </div>
+            <div class="container">
+                <!-- films-library -->
+                <ul class="list films-library__gallery">
+                    <!-- Шаблон -->
+                </ul>
+            </div>
+            <div class="controls">
+                <button class="controls-btn btn-prev" data-action="decrement">
+                    Prev
+                </button>
+                <span class="page-number">1</span>
+                <button class="controls-btn btn-next" data-action="increment">
+                    Next
+                </button>
+            </div>
+        </section>
+    </main>
 
-            <section class="main">
-                <section class="search-bar">
-                    <div class="container-main">
-                        <form id="search-form">
-                            <button action="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            <input
-                                class="input"
-                                name="query"
-                                autocomplete="off"
-                                placeholder="Write movie name and click Enter"
-                            />
-                        </form>
-                    </div>
-                </section>
-                <div class="container">
-                    <ul class="list films-library__gallery">
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                        <li class="films-library__gallery-item">
-                            <a href="" data-path="">
-                                <img
-                                    class="films-library__gallery-images"
-                                    src="https://picsum.photos/200/300"
-                                    alt="{{}}"
-                                />
-                                <p class="films-library__gallery-rating">6.9</p>
-                                <p class="films-library__gallery-name">
-                                    Best movie
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="controls">
-                    <button
-                        class="controls-btn btn-prev"
-                        data-action="decrement"
-                    >
-                        Prev
-                    </button>
-                    <span class="page-number">1</span>
-                    <button
-                        class="controls-btn btn-next"
-                        data-action="increment"
-                    >
-                        Next
-                    </button>
-                </div>
-            </section>
-        </main>
+    <footer class="footer">
+        <section class="library__footer">
+            <p class="library__footer-title">Made by GroupName</p>
+            <a href="">
+                <div class="library__footer-toUP"></div>
+            </a>
+        </section>
+    </footer>
+</body>
 
-        <footer class="footer">
-            <section class="library__footer">
-                <p class="library__footer-title">Made by GroupName</p>
-                <a href="">
-                    <div class="library__footer-toUP"></div>
-                </a>
-            </section>
-        </footer>
-    </body>
 </html>
