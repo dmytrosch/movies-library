@@ -1,27 +1,26 @@
 import fetch from '../Api/fetchMethods';
-import { pageNumber } from '../components/globalVars.js';
-import globalVars from '../components/globalVars.js'
+import globalVars from '../components/globalVars.js';
+import pagination from '../components/pagination';
 
 const refs = {
     inputForm: document.querySelector('#search-form'),
     prevBtn: document.querySelector('button[data-action="decrement"]'),
     nextBtn: document.querySelector('button[data-action="increment"]'),
-    span : document.querySelector('.page-number'),
+    span: document.querySelector('.page-number'),
 };
+let fetchResult;
 
 refs.inputForm.addEventListener('submit', searchFormHandler);
-refs.prevBtn.addEventListener('click', paginationPrevBtnHandler)
-refs.nextBtn.addEventListener('click', paginationNextBtnHandler)
+refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
+refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
 
-refs.prevBtn.disabled = true;
+disableBtn(refs.prevBtn);
 
 async function searchFormHandler(event) {
     event.preventDefault();
     globalVars.searchQuery = event.target.elements.query.value;
-    let fetchResult;
-
     if (globalVars.searchQuery) {
-        globalVars.resetPage()
+        pagination.resetPage();
         fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     }
 
@@ -31,31 +30,48 @@ async function searchFormHandler(event) {
         //render списка
     }
     console.log(fetchResult);
-    console.log(pageNumber);
+    console.log(globalVars.pageNumber, 'before func');
+    await checkNextPageResult();
+    console.log(globalVars.pageNumber, 'after func');
 
-    refs.span.textContent = pageNumber;
+    refs.span.textContent = globalVars.pageNumber;
 }
 
-async function paginationPrevBtnHandler(){
-    globalVars.decrementPage()
-    refs.span.textContent = pageNumber;
+async function paginationPrevBtnHandler() {
+    pagination.decrementPage();
+    refs.span.textContent = globalVars.pageNumber;
 
-    const data = await fetch.movieSearch(globalVars.searchQuery);
+    fetchResult = await fetch.movieSearch(globalVars.searchQuery);
 
-    console.log(data)
+    console.log(fetchResult);
 
-    if (pageNumber === 1){
-        refs.prevBtn.disabled = true;
+    if (globalVars.pageNumber === 1) {
+        disableBtn(refs.prevBtn);
     }
 }
 
-async function paginationNextBtnHandler(){
-    globalVars.incrementPage()
+async function paginationNextBtnHandler() {
+    pagination.incrementPage();
     refs.prevBtn.disabled = false;
 
-    const data = await fetch.movieSearch(globalVars.searchQuery);
+    fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+    await checkNextPageResult();
+    console.log(fetchResult);
 
-    console.log(data)
+    refs.span.textContent = globalVars.pageNumber;
+}
 
-    refs.span.textContent = pageNumber;
+async function checkNextPageResult() {
+    globalVars.pageNumber++;
+    const nextFetchResult = await fetch.movieSearch(globalVars.searchQuery);
+    globalVars.pageNumber--;
+    console.log('func', globalVars.pageNumber, nextFetchResult);
+    if (nextFetchResult.length === 0) {
+        disableBtn(refs.nextBtn);
+    }
+}
+
+function disableBtn(elementBtn) {
+    console.log('dis');
+    elementBtn.disabled = true;
 }
