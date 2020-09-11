@@ -7,7 +7,7 @@ export default {
   async temp() {
     const query = 'грусть';
     const data = await movieSearch.movieSearch(query);
-    const mupkup = filmCardListTemplate(data);
+    const mupkup = filmPageTemplate(data);
     galleryRef.insertAdjacentHTML('beforeend', mupkup)
   }
 }
