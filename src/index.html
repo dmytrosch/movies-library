@@ -34,22 +34,28 @@
    
     <section class="background-main">
 
-      <section class="library-details">
-        <div class="container library-details">
-          <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS"><i
-              class="fas fa-video"></i>Add to watched</button>
-          <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS"><i class="far fa-calendar-plus"></i>Add to queue</button>
-        </div>
-        </div>
-      </section>
 
-      <section class="films-library">
-        <div class="film-controls libray-main__shadow" id="film-controls">
-          <button class="film-controls__btn" id="js-btn-watched">Watch</button>
-          <button class="film-controls__btn" id="js-btn-added-to-queue"> Queue</button>
+            <div class="library-details">
+                <ul class="library__nav-list">
+                    <li class="library__nav-item">
+                        <a href="" class="library__nav-link" id="headerNavHome">HOME</a>
+                    </li>
+                    <li class="library__nav-item" id="headerNavMyLibrary">
+                        <a href="" class="library__nav-link">MY LIBRARY</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main id="root">
+    <section class="library-details">
+      <div class="container library-details" id="js-film-page-content-container">
+          <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
+          <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
         </div>
-
-        <div class="container">
+      </div>
+    </section>
+    <section class="search-bar"> <div class="container-main"> <form id="search-form"> <button action="submit"> <i class="fa fa-search"></i> </button> <input class="input" name="query" autocomplete="off" placeholder="Write movie name and click Enter" /> </form> </div> </section>
 
 
 
