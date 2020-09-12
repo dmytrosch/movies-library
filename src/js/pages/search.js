@@ -75,3 +75,10 @@ function disableBtn(elementBtn) {
     console.log('dis');
     elementBtn.disabled = true;
 }
+
+async function showPopularMovies (){
+    const popularMoviesResult = await fetch.popularSearch()
+    console.log(popularMoviesResult.results);
+}
+
+showPopularMovies ()
