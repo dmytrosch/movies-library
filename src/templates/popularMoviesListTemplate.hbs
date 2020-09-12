@@ -1,0 +1,16 @@
+<li class="films-library__gallery-item films-library__gallery">
+  <ul class="list part-of-results-list films-library__gallery">
+    {{#each this}}
+    <li class="part-of-results-item">
+      <a href="" data-path="film/{{id}}">
+        <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+          alt="poster-image" />
+        <p class="films-library__gallery-rating">{{vote_average}}</p>
+        <p class="films-library__gallery-name">
+          {{original_title}}
+        </p>
+      </a>
+    </li>
+    {{/each}}
+  </ul>
+</li>

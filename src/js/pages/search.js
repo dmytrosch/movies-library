@@ -3,18 +3,22 @@ import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 
 const refs = {
-    inputForm: document.querySelector('#search-form'),
     prevBtn: document.querySelector('button[data-action="decrement"]'),
     nextBtn: document.querySelector('button[data-action="increment"]'),
     span: document.querySelector('.page-number'),
-};
+};  
+
+export default function addSearchListener(){
+    const inputFormRef = document.querySelector('#search-form');
+    inputFormRef.addEventListener('submit', searchFormHandler);
+}
+function addPaginationBtnsListeners(){
+    refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
+    refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
+}
+
+
 let fetchResult;
-
-refs.inputForm.addEventListener('submit', searchFormHandler);
-refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
-refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
-
-disableBtn(refs.prevBtn);
 
 async function searchFormHandler(event) {
     event.preventDefault();
@@ -28,6 +32,8 @@ async function searchFormHandler(event) {
         // pnotify / alert
     } else {
         //render списка
+        addPaginationBtnsListeners()
+        disableBtn(refs.prevBtn);
     }
     console.log(fetchResult);
     console.log(globalVars.pageNumber, 'before func');

@@ -1,24 +1,14 @@
-import './scss/normalize.scss';
-import 'animate.css';
-import './scss/base.scss';
-import './scss/header.scss';
-import './scss/footer.scss';
-import './scss/library-details.scss';
-import './scss/films-library.scss';
-import './scss/pagination-controlers.scss';
-import './scss/search-bar.scss';
-import './scss/media.scss';
-// import './style/normalize.css';
-// import './style/style.css';
-// import './style/media.css';
+import './scss/main.scss';
 
 import Router from './js/components/router.js';
 
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
-import './js/pages/search.js';
 import renderMarkUp from './js/components/renderMarkUp';
+
+mainPage();
+
 
 window['router'] = new Router({
   root: '/',
@@ -31,7 +21,7 @@ window['router'] = new Router({
     {
       path: '',
       callback: () => {
-        mainPage();
+        // mainPage();
       },
     },
   ],

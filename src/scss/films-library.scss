@@ -37,6 +37,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
 
   &-item {
     background-image: url('../images/img/video.jpg');
