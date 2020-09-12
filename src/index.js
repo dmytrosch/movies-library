@@ -1,5 +1,5 @@
 import './scss/normalize.scss';
-// import 'animate.css';
+import 'animate.css';
 import './scss/base.scss';
 import './scss/header.scss';
 import './scss/footer.scss';
