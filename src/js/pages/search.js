@@ -1,40 +1,48 @@
 import fetch from '../Api/fetchMethods';
 import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
+import renderMarkUp from '../components/renderMarkUp';
 
 const refs = {
-    inputForm: document.querySelector('#search-form'),
     prevBtn: document.querySelector('button[data-action="decrement"]'),
     nextBtn: document.querySelector('button[data-action="increment"]'),
     span: document.querySelector('.page-number'),
 };
+
+export default function addSearchListener() {
+    const inputFormRef = document.querySelector('#search-form');
+    inputFormRef.addEventListener('submit', searchFormHandler);
+}
+function addPaginationBtnsListeners() {
+    refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
+    refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
+}
+
 let fetchResult;
 
-refs.inputForm.addEventListener('submit', searchFormHandler);
-refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
-refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
-
-disableBtn(refs.prevBtn);
-
 async function searchFormHandler(event) {
+    console.log('handler');
     event.preventDefault();
     globalVars.searchQuery = event.target.elements.query.value;
     if (globalVars.searchQuery) {
         pagination.resetPage();
-        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+        try {
+            fetchResult = await fetch.movieSearch();
+        } catch {
+            throw error;
+        }
     }
 
     if (fetchResult.length === 0) {
         // pnotify / alert
+        renderMarkUp.pageEmptySearchResponseQuery();
     } else {
         //render списка
+        addPaginationBtnsListeners();
+        disableBtn(refs.prevBtn);
+        await checkNextPageResult();
+        refs.span.textContent = globalVars.pageNumber;
     }
-    console.log(fetchResult);
-    console.log(globalVars.pageNumber, 'before func');
-    await checkNextPageResult();
-    console.log(globalVars.pageNumber, 'after func');
-
-    refs.span.textContent = globalVars.pageNumber;
 }
 
 async function paginationPrevBtnHandler() {
@@ -67,6 +75,8 @@ async function checkNextPageResult() {
     globalVars.pageNumber--;
     console.log('func', globalVars.pageNumber, nextFetchResult);
     if (nextFetchResult.length === 0) {
+        console.log('qwe');
+
         disableBtn(refs.nextBtn);
     }
 }
