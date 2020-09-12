@@ -53,7 +53,8 @@ export default {
         }
     },
     libraryPage(data){
-        const markup = libraryFilmCardsTemplate(data);
+        const markup = libraryFilmListTemplate(data);
+        this.clearMainMarkUp()
         refs.rootMain.insertAdjacentHTML("beforeend", markup);
     },
     pageEmptySearchResponseQuery() {

@@ -12,11 +12,11 @@ function getFromLS(key) {
 }
 
 function getWachedFilmsFromLS() {
-    const data = getFromLS("watchedFilms");
+    const data = getFromLS("filmsWatched");
     return data;
 }
 
 function getQueueFilmsFromLS() {
-    const data = getFromLS("addedToQueue");
+    const data = getFromLS("filmsQueue");
     return data;
 }
