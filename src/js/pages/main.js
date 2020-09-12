@@ -3,7 +3,6 @@ import fetchMethods from '../Api/fetchMethods';
 import searchListener from './search';
 
 export default async function mainPage() {
-    console.log('mainPage');
     renderMarkUp.mainPageCascade();
     searchListener();
     let popularMoviesResult;

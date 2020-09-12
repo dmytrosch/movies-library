@@ -30,7 +30,7 @@ html {
     height: 1px;
     margin: -1px;
 }
-.background-main{
+.background-main {
     // background-image: url('../images/img/body.jpg');
     // background-attachment: fixed;
     background-position: center;
@@ -42,7 +42,6 @@ body {
     letter-spacing: -0.02em;
     color: #555252;
     background-color: #f3f3f5;
-  
 }
 
 a {
@@ -64,5 +63,14 @@ img {
 .list {
     list-style: none;
     padding: 0;
+    margin: 0 auto;
+}
+.empty-query {
+    font-size: 30px;
+    text-align: center;
+}
+
+.empty-query_img {
+    display: block;
     margin: 0 auto;
 }
