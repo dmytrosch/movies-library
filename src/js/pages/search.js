@@ -72,6 +72,5 @@ async function checkNextPageResult() {
 }
 
 function disableBtn(elementBtn) {
-    console.log('dis');
     elementBtn.disabled = true;
 }

@@ -19,6 +19,7 @@ import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import './js/pages/search.js';
 import renderMarkUp from './js/components/renderMarkUp';
+import library from './js/pages/library';
 
 window['router'] = new Router({
   root: '/',
@@ -53,12 +54,11 @@ refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
 function onMainPageClickHandler(event) {
-  event.target.preventDefault();
+  event.preventDefault();
   mainPage();
 }
 
 function onLibraryBtnHandler(event) {
-  event.target.preventDefault();
+  event.preventDefault();
   library();
 }
-renderMarkUp.temp()

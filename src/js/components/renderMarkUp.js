@@ -1,11 +1,13 @@
 import fetchMethods from '../Api/fetchMethods';
 import filmCardListTemplate from '../../templates/filmCardsListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
+import libraryFilmCardsTemplate from '../../templates/libraryFilmCardsTemplate.hbs';
 
 const refs = {
     filmPageContainer: document.querySelector(
         '#js-film-page-content-container',
     ),
+    rootMain: document.querySelector('#root'),
 };
 
 export default {
@@ -28,6 +30,10 @@ export default {
             refs.filmPageContainer.insertAdjacentHTML('afterbegin', markup);
             return fetchRez;
         }
+    },
+    libraryPage(data){
+        const markup = libraryFilmCardsTemplate(data);
+        refs.rootMain.insertAdjacentHTML("beforeend", markup);
     },
     page404() {},
     pageError() {},
