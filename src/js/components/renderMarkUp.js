@@ -7,9 +7,7 @@ const refs = {
     filmPageContainer: document.querySelector(
         '#js-film-page-content-container',
     ),
-    rootMain: document.querySelector(
-        '#root'
-    )
+    rootMain: document.querySelector('#root'),
 };
 
 export default {
@@ -33,7 +31,6 @@ export default {
             return fetchRez;
         }
     },
-    page404() { },
-    pageError() { },
+    page404() {},
+    pageError() {},
 };
-

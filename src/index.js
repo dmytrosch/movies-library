@@ -61,4 +61,3 @@ function onLibraryBtnHandler(event) {
   event.target.preventDefault();
   library();
 }
-renderMarkUp.temp()
