@@ -10,14 +10,9 @@ const refs = {
 
 export default {
     async filmPage(id) {
-        // const filmInList = filmListResults.find(item => item.id === id);
-        // const selectedFilm = filmInList
-        //     ? filmInList
-        //     : await fetchMethods.idSearch(id);
         const fetchRez = await fetchMethods
             .idSearch(id)
             .catch(error => error.status_code);
-        console.log(fetchRez, '1st');
         if (fetchRez === 34) {
             this.page404();
         }
@@ -32,4 +27,3 @@ export default {
     page404() {},
     pageError() {},
 };
-

@@ -1,6 +1,8 @@
 import renderMarkUp from '../components/renderMarkUp';
+import localStorageFuc from '../components/localStorageFuc';
 
 export default async function filmPage(id) {
+    const { setToLS, getFromLS } = localStorageFuc;
     const selectedFilm = await renderMarkUp.filmPage(id);
     const QUEUE_KEY_IN_LS = 'filmsQueue';
     const WATCHED_KEY_IN_LS = 'filmsWatched';
@@ -14,16 +16,6 @@ export default async function filmPage(id) {
 
     // Обрабатываем состояние кнопок после рендера
     monitorButtonStatusText();
-
-    // Записываем данные в LocalStorage.
-    function setToLS(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    // Получаем данные из LocalStorage.
-    function getFromLS(key) {
-        return JSON.parse(localStorage.getItem(key)) || [];
-    }
 
     //Следит за состоянием LocalStorage и меняет текст кнопок
     function monitorButtonStatusText() {
