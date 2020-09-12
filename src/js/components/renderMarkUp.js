@@ -4,6 +4,8 @@ import libraryFilmListTemplate from '../../templates/libraryFilmListTemplate.hbs
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
 import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs';
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
+import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
+import globalVars from '../components/globalVars';
 
 const refs = {
     // filmPageContainer: document.querySelector(
@@ -16,25 +18,22 @@ export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
         // refs.rootMain.innerHTML = markup;
-        console.log(markup, 'cascade');
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
 
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     popularMovies(data) {
         const firstPartOfList = data.slice(0, 6);
         const secondPartOfList = data.slice(6, 12);
         const thirdPartOfList = data.slice(12);
 
-        const markup =
-            popularMoviesListTemplate(firstPartOfList)
-            popularMoviesListTemplate(secondPartOfList),
+        const markup = popularMoviesListTemplate(firstPartOfList);
+        popularMoviesListTemplate(secondPartOfList),
             popularMoviesListTemplate(thirdPartOfList);
-        console.log(markup);
         const filmPageContainer = document.querySelector(
             '#js-film-page-content-container',
         );
-        filmPageContainer.insertAdjacentHTML('beforeend', markup)
-
+        filmPageContainer.insertAdjacentHTML('beforeend', markup);
     },
 
     async filmPage(id) {
@@ -48,10 +47,19 @@ export default {
             this.pageError();
         } else {
             const markup = filmPageTemplate(fetchRez);
+            this.clearMainMarkUp();
             refs.rootMain.insertAdjacentHTML('afterbegin', markup);
             return fetchRez;
         }
     },
+    pageEmptySearchResponseQuery() {
+        const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
+        this.clearMainMarkUp()
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+    },
     page404() {},
     pageError() {},
+    clearMainMarkUp() {
+        refs.rootMain.innerHTML = '';
+    },
 };
