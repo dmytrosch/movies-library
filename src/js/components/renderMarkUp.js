@@ -52,6 +52,10 @@ export default {
             return fetchRez;
         }
     },
+    libraryPage(data){
+        const markup = libraryFilmCardsTemplate(data);
+        refs.rootMain.insertAdjacentHTML("beforeend", markup);
+    },
     pageEmptySearchResponseQuery() {
         const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
         this.clearMainMarkUp()

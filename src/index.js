@@ -6,6 +6,7 @@ import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import renderMarkUp from './js/components/renderMarkUp';
+import library from './js/pages/library';
 
 mainPage();
 
@@ -43,11 +44,11 @@ refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
 function onMainPageClickHandler(event) {
-  event.target.preventDefault();
+  event.preventDefault();
   mainPage();
 }
 
 function onLibraryBtnHandler(event) {
-  event.target.preventDefault();
+  event.preventDefault();
   library();
 }
