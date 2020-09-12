@@ -1,11 +1,13 @@
 import fetchMethods from '../Api/fetchMethods';
-import filmCardListTemplate from '../../templates/filmCardsListTemplate.hbs';
+import mainPageTemplate from '../../templates/mainPageTemplate.hbs';
+import libraryFilmListTemplate from '../../templates/libraryFilmListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
 
 const refs = {
     filmPageContainer: document.querySelector(
         '#js-film-page-content-container',
     ),
+    rootMain: document.querySelector('#root'),
 };
 
 export default {
@@ -25,11 +27,10 @@ export default {
             this.pageError();
         } else {
             const markup = filmPageTemplate(fetchRez);
-            refs.filmPageContainer.insertAdjacentHTML('afterbegin', markup);
+            refs.rootMain.insertAdjacentHTML('afterbegin', markup);
             return fetchRez;
         }
     },
     page404() {},
     pageError() {},
 };
-

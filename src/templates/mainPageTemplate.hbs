@@ -1,0 +1,23 @@
+<section class="search-bar">
+    <div class="container-main">
+        <form id="search-form">
+            <button action="submit"><i class="fa fa-search"></i></button>
+            <input class="input" name="query" autocomplete="off" placeholder="Write movie name and click Enter" />
+        </form>
+    </div>
+</section>
+<div class="container">
+    <ul class="list films-library__gallery">
+        {{#each this}}
+        <li class="films-library__gallery-item">
+            <a href="" data-path="film/{{id}}">
+                <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+                    alt="poster-image" />
+                <p class="films-library__gallery-name">
+                    {{original_title}}
+                </p>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
