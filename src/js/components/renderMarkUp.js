@@ -66,6 +66,9 @@ export default {
         console.log('404');
     },
     pageError() {},
+    noQueueListPage(){
+
+    },
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
     },
