@@ -5,13 +5,16 @@ import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
+import pageNotFound from '../../templates/pageNotFound404.hbs';
+import pageError from '../../templates/pageErrorTemplate.hbs';
+import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import globalVars from '../components/globalVars';
 
 const refs = {
     // filmPageContainer: document.querySelector(
     //     '#js-film-page-content-container',
     // ),
-    rootMain: document.querySelector('#root'),
+    rootMain: document.querySelector('#root')
 };
 
 export default {
@@ -29,10 +32,8 @@ export default {
 
         const markup = popularMoviesListTemplate(firstPartOfList);
         popularMoviesListTemplate(secondPartOfList),
-            popularMoviesListTemplate(thirdPartOfList);
-        const filmPageContainer = document.querySelector(
-            '#js-film-page-content-container',
-        );
+        popularMoviesListTemplate(thirdPartOfList);
+        const filmPageContainer = document.querySelector('#js-film-page-content-container',);
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
     },
 
@@ -68,11 +69,22 @@ export default {
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     page404() {
+        const markup = pageNotFound();
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
         console.log('404');
     },
-    pageError() {},
-    noQueueListPage() {},
+    pageError() {
+        const markup = pageError()
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+    },
+    noQueueListPage() {
+        const markup = noQueryListPage()
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+    },
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
-    },
+    }
 };
