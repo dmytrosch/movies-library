@@ -4,18 +4,26 @@ import localStorage from '../components/localStorage';
 const { setToLS, getFromLS } = localStorage;
 const QUEUE_KEY_IN_LS = 'filmsQueue';
 const WATCHED_KEY_IN_LS = 'filmsWatched';
+let selectedFilm;
+const refs = {
+    watchedBtn: null,
+    queueBtn: null,
+};
 
 export default async function filmPage(id) {
-    const selectedFilm = await renderMarkUp.filmPage(id);
-    const watchedBtn = document.getElementById('addTOwachedJS');
-    const queueBtn = document.getElementById('addTOqueueJS');
-    watchedBtn.addEventListener('click', toggleToWatched);
-    queueBtn.addEventListener('click', toggleToQueue);
+    selectedFilm = await renderMarkUp.filmPage(id);
+    console.log(selectedFilm);
+    if (selectedFilm) {
+        refs.watchedBtn = document.getElementById('addTOwachedJS');
+        refs.queueBtn = document.getElementById('addTOqueueJS');
+        refs.watchedBtn.addEventListener('click', toggleToWatched);
+        refs.queueBtn.addEventListener('click', toggleToQueue);
+        monitorButtonStatusText();
+    }
 }
 const checkIsInList = list => list.find(item => item.id === selectedFilm.id);
 
 // Обрабатываем состояние кнопок после рендера
-monitorButtonStatusText();
 
 //Следит за состоянием LocalStorage и меняет текст кнопок
 function monitorButtonStatusText() {
@@ -24,22 +32,22 @@ function monitorButtonStatusText() {
     const isWatched = checkIsInList(watchedFilms);
     const isInQueue = checkIsInList(queueFilms);
     if (isWatched) {
-        watchedBtn.innerHTML = 'Delete from watched';
-        watchedBtn.dataset.action = 'delete';
-        queueBtn.innerHTML = 'Watch again';
-        queueBtn.dataset.action = 'add';
+        refs.watchedBtn.innerHTML = 'Delete from watched';
+        refs.watchedBtn.dataset.action = 'delete';
+        refs.queueBtn.innerHTML = 'Watch again';
+        refs.queueBtn.dataset.action = 'add';
     }
     if (isInQueue) {
-        watchedBtn.innerHTML = 'Add to watched';
-        watchedBtn.dataset.action = 'add';
-        queueBtn.innerHTML = 'Delete from queue';
-        queueBtn.dataset.action = 'delete';
+        refs.watchedBtn.innerHTML = 'Add to watched';
+        refs.watchedBtn.dataset.action = 'add';
+        refs.queueBtn.innerHTML = 'Delete from queue';
+        refs.queueBtn.dataset.action = 'delete';
     }
     if (!isWatched && !isInQueue) {
-        queueBtn.innerHTML = 'Add to queue';
-        queueBtn.dataset.action = 'add';
-        watchedBtn.innerHTML = 'Add to watched';
-        watchedBtn.dataset.action = 'add';
+        refs.queueBtn.innerHTML = 'Add to queue';
+        refs.queueBtn.dataset.action = 'add';
+        refs.watchedBtn.innerHTML = 'Add to watched';
+        refs.watchedBtn.dataset.action = 'add';
     }
 }
 

@@ -37,14 +37,14 @@ export default {
     },
 
     async filmPage(id) {
-        const fetchRez = await fetchMethods
-            .idSearch(id)
-            .catch(error => error.status_code);
-        if (fetchRez === 34) {
+        const fetchRez = await fetchMethods.idSearch(id).catch(error => error);
+        if (fetchRez.status_code === 34) {
             this.page404();
+            return;
         }
-        if (fetchRez === 7) {
+        if (fetchRez.status_code === 7) {
             this.pageError();
+            return
         } else {
             const markup = filmPageTemplate(fetchRez);
             this.clearMainMarkUp();
@@ -52,17 +52,19 @@ export default {
             return fetchRez;
         }
     },
-    libraryPage(data){
+    libraryPage(data) {
         const markup = libraryFilmListTemplate(data);
-        this.clearMainMarkUp()
-        refs.rootMain.insertAdjacentHTML("beforeend", markup);
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     pageEmptySearchResponseQuery() {
         const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
-        this.clearMainMarkUp()
+        this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
-    page404() {},
+    page404() {
+        console.log('404');
+    },
     pageError() {},
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
