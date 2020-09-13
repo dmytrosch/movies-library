@@ -2,6 +2,7 @@ import fetch from '../Api/fetchMethods';
 import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
+import addFilmCardClickListeners from '../components/addFilmCardClickListener';
 
 const refs = {
     prevBtn: null,
@@ -42,6 +43,7 @@ async function searchFormHandler(event) {
         renderMarkUp.pageEmptySearchResponseQuery();
     } else {
         renderMarkUp.searchSuccessResultPage(fetchResult);
+        addFilmCardClickListeners()
         addPaginationBtns();
         disableBtn(refs.prevBtn);
         addPaginationBtnsListeners();
@@ -55,6 +57,7 @@ async function paginationPrevBtnHandler() {
     refs.span.textContent = globalVars.pageNumber;
     fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     renderMarkUp.searchSuccessResultPage(fetchResult);
+    addFilmCardClickListeners()
     if (globalVars.pageNumber === 1) {
         disableBtn(refs.prevBtn);
     }
@@ -67,6 +70,7 @@ async function paginationNextBtnHandler() {
     fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     await checkNextPageResult();
     renderMarkUp.searchSuccessResultPage(fetchResult);
+    addFilmCardClickListeners()
     refs.span.textContent = globalVars.pageNumber;
 }
 
