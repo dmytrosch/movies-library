@@ -1,6 +1,7 @@
 .fa-film{
   color: rgb(0, 0, 0);
   font-size: 28px;
+  margin: 0px 10px 0px 0px;
 }
 .library__nav {
   display: flex;
@@ -15,16 +16,11 @@
     display: inline-block;
     background-position: center;
     background-repeat: no-repeat;
-    width: 25px;
-    height: 25px;
     margin: 0px 0px 0px 10px;
   }
 
   &-title {
     display: none;
-    position: absolute;
-    margin: 0;
-    top: 26px;
     left: 63px;;
     font-size: 26px;
     line-height: 16px;

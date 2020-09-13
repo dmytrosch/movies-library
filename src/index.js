@@ -9,7 +9,7 @@ import renderMarkUp from './js/components/renderMarkUp';
 import library from './js/pages/library';
 import './js/components/siema'
 
-mainPage();
+// mainPage();
 
 
 window['router'] = new Router({
@@ -23,7 +23,7 @@ window['router'] = new Router({
     {
       path: '',
       callback: () => {
-        // mainPage();
+        mainPage();
       },
     },
   ],

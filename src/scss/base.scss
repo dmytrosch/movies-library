@@ -41,9 +41,11 @@ body {
     font-family: 'Roboto', sans-serif;
     letter-spacing: -0.02em;
     color: #555252;
-    background-color: #f3f3f5;
 }
-
+.root{
+    min-height: calc(100vh - 86px);
+    padding: 0px 0px 20px;
+}
 a {
     display: block;
 }
@@ -64,9 +66,6 @@ img {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-}
-.root{
-    padding-bottom: 15px;
 }
 .empty-query {
     font-size: 25px;
