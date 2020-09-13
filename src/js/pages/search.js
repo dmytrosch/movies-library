@@ -72,7 +72,6 @@ async function paginationPrevBtnHandler() {
 async function paginationNextBtnHandler() {
     pagination.incrementPage();
     refs.prevBtn.disabled = false;
-
     fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     await checkNextPageResult();
     renderMarkUp.searchSuccessResultPage(fetchResult);

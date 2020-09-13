@@ -5,13 +5,14 @@ import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
+import pageNotFound from '../../templates/pageNotFound404.hbs';
+import pageError from '../../templates/pageErrorTemplate.hbs';
+import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import globalVars from '../components/globalVars';
 
 const refs = {
-  filmPageContainer: document.querySelector(
-    '#js-film-page-content-container',
-  ),
-  rootMain: document.querySelector('#root'),
+    rootMain: document.querySelector('#root'),
+
 };
 
 export default {
@@ -28,7 +29,6 @@ export default {
     const thirdPartOfList = data.slice(8, 12);
     const fourPartOfList = data.slice(12, 16);
     const fivePartOfList = data.slice(16, 20);
-
     const markup = popularMoviesListTemplate(firstPartOfList) +
       popularMoviesListTemplate(secondPartOfList) +
       popularMoviesListTemplate(thirdPartOfList) +
@@ -72,10 +72,21 @@ export default {
     refs.rootMain.insertAdjacentHTML('beforeend', markup);
   },
   page404() {
-    console.log('404');
-  },
-  pageError() {},
-  noQueueListPage() {},
+        const markup = pageNotFound();
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        console.log('404');
+    },
+    pageError() {
+        const markup = pageError()
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+    },
+    noQueueListPage() {
+        const markup = noQueryListPage()
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+    },
   clearMainMarkUp() {
     refs.rootMain.innerHTML = '';
   },
