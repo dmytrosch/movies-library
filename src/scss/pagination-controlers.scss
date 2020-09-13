@@ -3,7 +3,7 @@
   width: 270px;
   display: flex;
   justify-content: space-between;
-  padding: 0px 0px 20px 0px;
+      padding: 20px 0px 20px 0px;
 }
 
 .controls-btn,
@@ -16,7 +16,7 @@
   line-height: 25px;
   outline: 0;
   border: 1px solid #dddddd;
-  border-radius: 5px;
+  border-radius: 22px;
   background: linear-gradient(rgba(240, 240, 240, 1), rgba(240, 240, 240, 0));
   color: #556270;
   text-shadow: 1px 0px 1px #556270;
@@ -24,18 +24,15 @@
 }
 
 .controls-btn:hover,
-.controls-btn:focus,
-.page-number:hover, 
-.page-number:focus {
-    background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
-    background-position: 100% 0;
-    background-size: 200% 200%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: white;
-    box-shadow: 0 16px 32px 0 rgba(0,40,120,.35);
-    transition: .5s;
-    border: none;
-    cursor: pointer;
+.controls-btn:focus{
+  background-color: #b9b9b9;
+  border: none;
+  cursor: pointer;
+}
+
+.disable {
+  background: rgba(67, 67, 67, 0.25);
+  color: rgba(120, 151, 151,0.25);
+  border: 3px solid;
+  border-radius: 22px;
 }

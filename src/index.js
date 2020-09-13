@@ -7,9 +7,7 @@ import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import renderMarkUp from './js/components/renderMarkUp';
 import library from './js/pages/library';
-
-mainPage();
-
+import './js/components/siema'
 
 window['router'] = new Router({
   root: '/',
@@ -22,7 +20,7 @@ window['router'] = new Router({
     {
       path: '',
       callback: () => {
-        // mainPage();
+        mainPage();
       },
     },
   ],

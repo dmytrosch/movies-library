@@ -41,11 +41,15 @@ body {
     font-family: 'Roboto', sans-serif;
     letter-spacing: -0.02em;
     color: #555252;
-    background-color: #f3f3f5;
 }
-
+.root{
+    min-height: calc(100vh - 86px);
+    padding: 0px 0px 20px;
+}
 a {
     display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 img {
