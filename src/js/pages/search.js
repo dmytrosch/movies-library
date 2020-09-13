@@ -3,6 +3,7 @@ import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import addFilmCardClickListeners from '../components/addFilmCardClickListener';
+import navigateToFilmPage from '../components/navigateToFilmPage';
 
 const refs = {
     prevBtn: null,
@@ -45,7 +46,7 @@ async function searchFormHandler(event) {
     }
 
     if (fetchResult.length === 1) {
-        window.location.href = `film/${fetchResult[0].id}`;
+        navigateToFilmPage(`film/${fetchResult[0].id}`)
         return;
     } 
     renderMarkUp.searchSuccessResultPage(fetchResult);
