@@ -40,14 +40,20 @@ async function searchFormHandler(event) {
     if (fetchResult.length === 0) {
         // pnotify / alert
         renderMarkUp.pageEmptySearchResponseQuery();
-    } else {
-        renderMarkUp.searchSuccessResultPage(fetchResult);
-        addPaginationBtns();
-        disableBtn(refs.prevBtn);
-        addPaginationBtnsListeners();
-        await checkNextPageResult();
-        refs.span.textContent = globalVars.pageNumber;
+        return;
     }
+
+    if (fetchResult.length === 1) {
+        window.location.href = `film/${fetchResult[0].id}`;
+        return;
+    }
+
+    renderMarkUp.searchSuccessResultPage(fetchResult);
+    addPaginationBtns();
+    disableBtn(refs.prevBtn);
+    addPaginationBtnsListeners();
+    await checkNextPageResult();
+    refs.span.textContent = globalVars.pageNumber;
 }
 
 async function paginationPrevBtnHandler() {

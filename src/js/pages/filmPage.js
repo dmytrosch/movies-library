@@ -12,7 +12,6 @@ const refs = {
 
 export default async function filmPage(id) {
     selectedFilm = await renderMarkUp.filmPage(id);
-    console.log(selectedFilm);
     if (selectedFilm) {
         refs.watchedBtn = document.getElementById('addTOwachedJS');
         refs.queueBtn = document.getElementById('addTOqueueJS');
