@@ -1,10 +1,10 @@
 import fetchMethods from '../Api/fetchMethods';
-import mainPageTemplate from '../../templates/mainPageTemplate.hbs';
 import libraryFilmListTemplate from '../../templates/libraryFilmListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
 import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs';
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
+import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
 import globalVars from '../components/globalVars';
 
 const refs = {
@@ -44,13 +44,18 @@ export default {
         }
         if (fetchRez.status_code === 7) {
             this.pageError();
-            return
+            return;
         } else {
             const markup = filmPageTemplate(fetchRez);
             this.clearMainMarkUp();
             refs.rootMain.insertAdjacentHTML('afterbegin', markup);
             return fetchRez;
         }
+    },
+    searchSuccessResultPage(data) {
+        const markup = searchResultListTemplate(data);
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     libraryPage(data) {
         const markup = libraryFilmListTemplate(data);
@@ -66,9 +71,7 @@ export default {
         console.log('404');
     },
     pageError() {},
-    noQueueListPage(){
-
-    },
+    noQueueListPage() {},
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
     },

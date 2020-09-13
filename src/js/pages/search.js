@@ -4,10 +4,11 @@ import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 
 const refs = {
-    prevBtn: document.querySelector('button[data-action="decrement"]'),
-    nextBtn: document.querySelector('button[data-action="increment"]'),
-    span: document.querySelector('.page-number'),
+    prevBtn: null,
+    nextBtn: null,
+    span: null,
 };
+let fetchResult;
 
 export default function addSearchListener() {
     const inputFormRef = document.querySelector('#search-form');
@@ -18,10 +19,13 @@ function addPaginationBtnsListeners() {
     refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
 }
 
-let fetchResult;
+function addPaginationBtns() {
+    refs.prevBtn = document.querySelector('button[data-action="decrement"]');
+    refs.nextBtn = document.querySelector('button[data-action="increment"]');
+    refs.span = document.querySelector('.page-number');
+}
 
 async function searchFormHandler(event) {
-    console.log('handler');
     event.preventDefault();
     globalVars.searchQuery = event.target.elements.query.value;
     if (globalVars.searchQuery) {
@@ -37,9 +41,10 @@ async function searchFormHandler(event) {
         // pnotify / alert
         renderMarkUp.pageEmptySearchResponseQuery();
     } else {
-        //render списка
-        addPaginationBtnsListeners();
+        renderMarkUp.searchSuccessResultPage(fetchResult);
+        addPaginationBtns();
         disableBtn(refs.prevBtn);
+        addPaginationBtnsListeners();
         await checkNextPageResult();
         refs.span.textContent = globalVars.pageNumber;
     }
@@ -48,11 +53,8 @@ async function searchFormHandler(event) {
 async function paginationPrevBtnHandler() {
     pagination.decrementPage();
     refs.span.textContent = globalVars.pageNumber;
-
     fetchResult = await fetch.movieSearch(globalVars.searchQuery);
-
-    console.log(fetchResult);
-
+    renderMarkUp.searchSuccessResultPage(fetchResult);
     if (globalVars.pageNumber === 1) {
         disableBtn(refs.prevBtn);
     }
@@ -64,8 +66,7 @@ async function paginationNextBtnHandler() {
 
     fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     await checkNextPageResult();
-    console.log(fetchResult);
-
+    renderMarkUp.searchSuccessResultPage(fetchResult);
     refs.span.textContent = globalVars.pageNumber;
 }
 
@@ -73,10 +74,7 @@ async function checkNextPageResult() {
     globalVars.pageNumber++;
     const nextFetchResult = await fetch.movieSearch(globalVars.searchQuery);
     globalVars.pageNumber--;
-    console.log('func', globalVars.pageNumber, nextFetchResult);
     if (nextFetchResult.length === 0) {
-        console.log('qwe');
-
         disableBtn(refs.nextBtn);
     }
 }
