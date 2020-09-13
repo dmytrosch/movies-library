@@ -99,6 +99,12 @@
       border-radius: 30px;
       line-height: 25px;
       background-color: rgba(255, 255, 255, .8);
+      transition: all 200ms;
+      &:hover{
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+      }
     }
 
     .library-details__btn:first-child {
@@ -138,6 +144,8 @@
     line-height: 17px;
     padding: 0px 10px 0px 10px;
     position: relative;
+    color: rgb(65, 65, 65);
+    border-radius: 18px;
   }
 
   .library-details__addTOqueue {
@@ -146,13 +154,15 @@
     padding: 0px 10px 0px 10px;
     font-size: 14px;
     line-height: 17px;
+    color: rgb(65, 65, 65);
+    border-radius: 18px;
   }
 
   .library-details__addTOwached:hover,
   .library-details__addTOwached:focus,
   .library-details__addTOqueue:hover,
   .library-details__addTOqueue:focus {
-    //  конпки 
+    
   }
 
   .library-details__btn {
@@ -194,8 +204,6 @@
     background-color: olive;
     margin: 0px 0px 12px 0px;
     border-radius: 10px;
-    // width: 465px;
-    // height: 245px;
     width: 375px;
     height: 310px;
     position: relative;
