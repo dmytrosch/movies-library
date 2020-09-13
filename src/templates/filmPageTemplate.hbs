@@ -7,25 +7,25 @@
 
 
             <P class="library-details__subtitle">
-                <span class="library-details__span--mod-1">vote / votes</span> 
+                <span class="library-details__span--mod-1">vote / votes:</span> 
                 <span class="library-details__span-mod-2">{{vote_average}} {{vote_count}}</span>
             </P>
 
 
             <P class="library-details__subtitle">
-                <span class="library-details__span--mod-1">popularity </span> 
+                <span class="library-details__span--mod-1">popularity: </span> 
                 <span class="library-details__span-mod-2">{{popularity}}</span>
             </P>
 
 
             <P class="library-details__subtitle">
-                <span class="library-details__span--mod-1">original title</span> 
+                <span class="library-details__span--mod-1">original title:</span> 
                 <span class="library-details__span-mod-2">{{title}}</span>
             </P>
 
 
             <P class="library-details__subtitle library-details__subtitle--last-child">
-                <span class="library-details__span--mod-1">genre</span>
+                <span class="library-details__span--mod-1">genre:</span>
                 {{#each genres}}
                 <span  class="library-details__span-mod-2">{{this.name}}</span>
                 {{/each}}
@@ -33,7 +33,7 @@
 
 
 
-            <h2 class="library-details__title library-details__title--last-child ">About</h2>
+            <h2 class="library-details__title library-details__title--last-child ">About:</h2>
             <p class="library-details__discription">{{overview}}</p>
             <button class="library-details__addTOwached" id="addTOwachedJS">Add to watched</button>
             <button class="library-details__addTOqueue" id="addTOqueueJS">Add to queue</button>
