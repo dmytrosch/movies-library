@@ -1,12 +1,12 @@
 <div class="container films-library__gallery-list films-library__gallery-list--serchResult ">
      {{#each this}}
  <div class="part-of-results-item films-library__gallery-item ">
-    <div class="films-library__gallery-item-wrap">
+    <a class="films-library__gallery-item-wrap"  href="" data-path="film/{{id}}">
           <div class="container library-details" id="js-film-page-content-container">
             <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
             <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
           </div>
-    </div>
+    </a>
     <a class="films-library__link-box" href=""  data-path="film/{{id}}">
       <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}">
       <p class="films-library__gallery-rating">{{vote_average}}</p>

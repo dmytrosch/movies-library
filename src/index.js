@@ -9,9 +9,6 @@ import renderMarkUp from './js/components/renderMarkUp';
 import library from './js/pages/library';
 import './js/components/siema'
 
-// mainPage();
-
-
 window['router'] = new Router({
   root: '/',
   routes: [{

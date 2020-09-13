@@ -1,5 +1,6 @@
 import renderMarkUp from '../components/renderMarkUp.js';
 import localStorage from '../components/localStorage';
+import addFilmCardClickListeners from '../components/addFilmCardClickListener';
 
 const QUEUE_KEY_IN_LS = 'filmsQueue';
 const WATCHED_KEY_IN_LS = 'filmsWatched';
@@ -9,6 +10,7 @@ export default function library() {
     renderMarkUp.libraryPage(data);
     // нужно добавить проверку на длину масива в renderMarkUp.libraryPage, если длина меньше 0, то выводить для пользователя уведомление
     libraryChaptersBtnsListeners();
+    addFilmCardClickListeners();
 }
 
 function getWatchedFilmsFromLS() {
