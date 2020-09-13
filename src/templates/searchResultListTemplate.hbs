@@ -1,0 +1,33 @@
+<div class="container">
+    <ul class="list films-library__gallery">
+        {{#each this}}
+        <li class="films-library__gallery-item">
+            <a href="" data-path="film/{{id}}">
+                <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+                    alt="poster-image" />
+                <p class="films-library__gallery-rating">{{vote_average}}</p>
+                <p class="films-library__gallery-name">
+                    {{original_title}}
+                </p>
+
+                <div class="films-library__gallery-item-wrap">
+                    <div class="container library-details" id="js-film-page-content-container">
+                        <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to
+                            watched</button>
+                        <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to
+                            queue</button>
+                    </div>
+                </div>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="controls">
+    <button class="controls-btn btn-prev" data-action="decrement">
+        Prev
+    </button>
+    <span class="page-number">1</span>
+    <button class="controls-btn btn-next" data-action="increment">
+        Next
+    </button>
