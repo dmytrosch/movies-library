@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: 30px 0px 0px;
 
   &__about {
     margin: 0 auto;
@@ -11,12 +12,10 @@
 
   &__images {
     padding: 22px 0px 24px;
-    width: 274px;
-    height: 400px;
-    background-image: url('../images/img/video.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background: center / cover no-repeat url("../images/img/video.jpg");
+    background-size: 95%;
+    width: 298px;
+    height: 325px;
   }
 
   &__title {
@@ -33,6 +32,8 @@
     line-height: 25px;
     color: #7c7c7c;
     transition: all 200ms ease-in;
+    min-width: 100%;
+    text-transform: lowercase;
   }
 
   &__discription {
@@ -47,15 +48,25 @@
     display: none;
 
   }
+
+  
 }
 
-.library-details__title:hover, 
-.library-details__title:focus, 
-.library-details__subtitle:focus, 
-.library-details__subtitle:hover {
-    text-shadow: 1px 1px 0 #ffe3bd, 2px 2px 0 #ffe3bd, 3px 3px 0 #ffe3bd,
-    4px 4px 0 #ffe3bd, 5px 5px 0 #ffe3bd;
+.library-details__span-mod-2::after{
+  content: ",";
 }
+.library-details__span-mod-2:last-child::after{
+  content: '';
+}
+
+
+// .library-details__title:hover, 
+// .library-details__title:focus, 
+// .library-details__subtitle:focus, 
+// .library-details__subtitle:hover {
+//     text-shadow: 1px 1px 0 #ffe3bd, 2px 2px 0 #ffe3bd, 3px 3px 0 #ffe3bd,
+//     4px 4px 0 #ffe3bd, 5px 5px 0 #ffe3bd;
+// }
 .library-details__title--last-child {
   margin-bottom: 22px;
 }
