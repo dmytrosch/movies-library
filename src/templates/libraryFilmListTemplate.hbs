@@ -1,7 +1,7 @@
 <section class="films-library">
     <div class="film-controls libray-main__shadow" id="film-controls">
         <button class="film-controls__btn" id="js-btn-watched">Watch</button>
-        <button class="film-controls__btn" id="js-btn-added-to-queue">Queue</button>
+        <button class="film-controls__btn" id="js-btn-queue">Queue</button>
     </div>
     <div class="container">
         <ul class="list films-library__gallery">
@@ -14,7 +14,7 @@
                     <p class="films-library__gallery-name">
                         {{original_title}}
                     </p>
-                </a>
+                
                 <div class="films-library__gallery-item-wrap">
                     <div class="container library-details" id="js-film-page-content-container">
                         <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to
@@ -23,6 +23,7 @@
                             queue</button>
                     </div>
                 </div>
+                </a>
             </li>
             {{/each}}
         </ul>
