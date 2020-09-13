@@ -47,5 +47,5 @@ function onWatchedBtnClickHandler(event) {
 
 function sendToRenderAndAddListeners(data) {
     renderMarkUp.libraryPage(data);
-    onBntLibraryClick();
+    libraryChaptersBtnsListeners();
 }
