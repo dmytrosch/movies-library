@@ -1,4 +1,4 @@
-<li class="films-library__gallery-item films-library__gallery">
+{{!-- <li class="films-library__gallery-item films-library__gallery">
   <ul class="list part-of-results-list films-library__gallery">
     {{#each this}}
     <li class="part-of-results-item">
@@ -19,4 +19,24 @@
     </li>
     {{/each}}
   </ul>
-</li>
+</li> --}}
+
+
+<section class="films-library__gallery-list">
+    {{#each this}}
+  <div class="part-of-results-item films-library__gallery-item ">
+    <div class="films-library__gallery-item-wrap">
+          <div class="container library-details" id="js-film-page-content-container">
+            <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
+            <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
+          </div>
+    </div>
+    <a class="films-library__link-box" href="" data-path="">
+      <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}">
+      <p class="films-library__gallery-rating">{{vote_average}}</p>
+      <p class="films-library__gallery-name">{{original_title}}</p>
+    </a>
+  </div>
+    {{/each}}
+  </section>
+</div>

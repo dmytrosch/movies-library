@@ -64,9 +64,7 @@
 }
 .library__nav-title:hover,
 .library__nav-title:focus{
-    color: #ffeebe;
-    transform: scale(1.2);
-    transition: 0.2s linear;
+  // Filmoteka logo
 }
 .library__nav-link:hover,
 .library__nav-link:focus,{
@@ -86,65 +84,3 @@ color: #655083;
   }
  
   
-  @keyframes move {
-      0% {
-        text-shadow:
-          4px -4px 0 hsla(0, 100%, 50%, 1), 
-          3px -3px 0 hsla(0, 100%, 50%, 1), 
-          2px -2px 0 hsla(0, 100%, 50%, 1), 
-          1px -1px 0 hsla(0, 100%, 50%, 1),
-          -4px 4px 0 hsla(180, 100%, 50%, 1), 
-          -3px 3px 0 hsla(180, 100%, 50%, 1), 
-          -2px 2px 0 hsla(180, 100%, 50%, 1), 
-          -1px 1px 0 hsla(180, 100%, 50%, 1)
-        ;
-      }
-      25% {    
-        text-shadow:      
-          -4px -4px 0 hsla(180, 100%, 50%, 1), 
-          -3px -3px 0 hsla(180, 100%, 50%, 1), 
-          -2px -2px 0 hsla(180, 100%, 50%, 1), 
-          -1px -1px 0 hsla(180, 100%, 50%, 1),
-          4px 4px 0 hsla(0, 100%, 50%, 1), 
-          3px 3px 0 hsla(0, 100%, 50%, 1), 
-          2px 2px 0 hsla(0, 100%, 50%, 1), 
-          1px 1px 0 hsla(0, 100%, 50%, 1)      
-        ;
-      }
-      50% {
-        text-shadow:
-          -4px 4px 0 hsla(0, 100%, 50%, 1), 
-          -3px 3px 0 hsla(0, 100%, 50%, 1), 
-          -2px 2px 0 hsla(0, 100%, 50%, 1), 
-          -1px 1px 0 hsla(0, 100%, 50%, 1),
-          4px -4px 0 hsla(180, 100%, 50%, 1), 
-          3px -3px 0 hsla(180, 100%, 50%, 1), 
-          2px -2px 0 hsla(180, 100%, 50%, 1), 
-          1px -1px 0 hsla(180, 100%, 50%, 1)
-        ;
-      }
-      75% {
-        text-shadow:
-          4px 4px 0 hsla(180, 100%, 50%, 1), 
-          3px 3px 0 hsla(180, 100%, 50%, 1), 
-          2px 2px 0 hsla(180, 100%, 50%, 1), 
-          1px 1px 0 hsla(180, 100%, 50%, 1),
-          -4px -4px 0 hsla(0, 100%, 50%, 1), 
-          -3px -3px 0 hsla(0, 100%, 50%, 1), 
-          -2px -2px 0 hsla(0, 100%, 50%, 1), 
-          -1px -1px 0 hsla(0, 100%, 50%, 1)      
-        ;
-      }
-      100% {
-        text-shadow:
-          4px -4px 0 hsla(0, 100%, 50%, 1), 
-          3px -3px 0 hsla(0, 100%, 50%, 1), 
-          2px -2px 0 hsla(0, 100%, 50%, 1), 
-          1px -1px 0 hsla(0, 100%, 50%, 1),
-          -4px 4px 0 hsla(180, 100%, 50%, 1), 
-          -3px 3px 0 hsla(180, 100%, 50%, 1), 
-          -2px 2px 0 hsla(180, 100%, 50%, 1), 
-          -1px 1px 0 hsla(180, 100%, 50%, 1)
-        ;
-      }  
-    }

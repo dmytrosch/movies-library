@@ -27,8 +27,8 @@ export default {
         const secondPartOfList = data.slice(6, 12);
         const thirdPartOfList = data.slice(12);
 
-        const markup = popularMoviesListTemplate(firstPartOfList);
-        popularMoviesListTemplate(secondPartOfList),
+        const markup = popularMoviesListTemplate(firstPartOfList) +
+        popularMoviesListTemplate(secondPartOfList) +
             popularMoviesListTemplate(thirdPartOfList);
         const filmPageContainer = document.querySelector(
             '#js-film-page-content-container',
