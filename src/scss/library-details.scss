@@ -32,6 +32,8 @@
     line-height: 25px;
     color: #7c7c7c;
     transition: all 200ms ease-in;
+    min-width: 100%;
+    text-transform: lowercase;
   }
 
   &__discription {
@@ -46,7 +48,17 @@
     display: none;
 
   }
+
+  
 }
+
+.library-details__span-mod-2::after{
+  content: ",";
+}
+.library-details__span-mod-2:last-child::after{
+  content: '';
+}
+
 
 .library-details__title:hover, 
 .library-details__title:focus, 
