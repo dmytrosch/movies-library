@@ -3,6 +3,7 @@ import localStorage from '../components/localStorage';
 import * as basicLightBox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import spinner from '../components/spinner';
+import fetchMethods from '../Api/fetchMethods';
 
 const { setToLS, getFromLS } = localStorage;
 const QUEUE_KEY_IN_LS = 'filmsQueue';
@@ -15,30 +16,11 @@ const refs = {
 
 export default async function filmPage(id) {
     selectedFilm = await renderMarkUp.filmPage(id);
-
     //вставить хендлер трейлера
     const link = document.querySelector('.library-details__link');
     link.addEventListener('click', handleFilmPosterClick);
 
-    function handleFilmPosterClick() {
-        // const videoKey = await fetchMethods.treilerVideo();
-        const videoKey = 'SUXWAEX2jlg';
-
-        basicLightBox
-            .create(
-                `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-                {
-                    closable: true,
-                    onShow() {
-                        spinner.show();
-                    },
-                    onClose() {
-                        spinner.hide();
-                    },
-                },
-            )
-            .show();
-    }
+    
 
     if (selectedFilm) {
         refs.watchedBtn = document.getElementById('addTOwachedJS');
@@ -125,4 +107,24 @@ function deleteFromList(list, key) {
 // Добавляем фильм в список
 function addToList(list, key) {
     setToLS(key, list.concat([selectedFilm]));
+}
+
+async function handleFilmPosterClick() {
+    const videoKey = await fetchMethods.youtubeTrailerKey(selectedFilm.id).then(d => d[0].key);
+    console.log(videoKey);
+
+    basicLightBox
+        .create(
+            `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+            {
+                closable: true,
+                onShow() {
+                    spinner.show();
+                },
+                onClose() {
+                    spinner.hide();
+                },
+            },
+        )
+        .show();
 }

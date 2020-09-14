@@ -43,6 +43,7 @@ export default {
     },
     youtubeTrailerKey(id) {
         const trailerSearchById = `/movie/${id}/videos`;
+        console.log("url:", baseUrl + trailerSearchById + API_KEY + queryLanguage);
         return fetch(baseUrl + trailerSearchById + API_KEY + queryLanguage)
             .then(resp => resp.json())
             .then(parcedData => parcedData.results);
