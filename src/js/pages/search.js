@@ -3,6 +3,7 @@ import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters'
 
 const refs = {
     prevBtn: null,
@@ -49,6 +50,7 @@ async function searchFormHandler(event) {
         return;
     } 
     renderMarkUp.searchSuccessResultPage(fetchResult);
+    addRemoveLibraryChapters(fetchResult)
     navigateToFilmPage.addFilmCardClickListeners()
     addPaginationBtns();
     disableBtn(refs.prevBtn);
