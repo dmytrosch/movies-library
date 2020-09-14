@@ -1,27 +1,18 @@
-<div class="container films-library__gallery-list films-library__gallery-list--serchResult ">
-     {{#each this}}
- <div class="part-of-results-item films-library__gallery-item ">
-    <a class="films-library__gallery-item-wrap"  href="" data-path="film/{{id}}">
-          <div class="container library-details" id="js-film-page-content-container">
-            <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
-            <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
-          </div>
+<div class="container films-library__gallery-list films-library__gallery-list--serchResult " id="search-results">
+  {{#each this}}
+  <div class="part-of-results-item films-library__gallery-item ">
+    <a class="films-library__gallery-item-wrap" href="" data-path="film/{{id}}">
+      <div class="container library-details" id="js-film-page-content-container">
+        <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS">Add to watched</button>
+        <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS">Add to queue</button>
+      </div>
     </a>
-    <a class="films-library__link-box" href=""  data-path="film/{{id}}">
-      <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}">
+    <a class="films-library__link-box" href="" data-path="film/{{id}}">
+      <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+        alt="{{original_title}}">
       <p class="films-library__gallery-rating">{{vote_average}}</p>
       <p class="films-library__gallery-name">{{original_title}}</p>
     </a>
   </div>
-   {{/each}}
+  {{/each}}
 </div>
-<div class="controls">
-    <button class="controls-btn btn-prev " data-action="decrement">
-        Prev
-    </button>
-    <span class="page-number">1</span>
-    <button class="controls-btn btn-next " data-action="increment">
-        Next
-    </button>
-
-
