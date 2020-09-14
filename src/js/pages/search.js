@@ -90,3 +90,11 @@ async function checkNextPageResult() {
 function disableBtn(elementBtn) {
     elementBtn.disabled = true;
 }
+
+async function test (){
+    const data = await fetch.youtubeTrailerKey(17006).then(d => d[0].key)
+   
+    console.log(data);
+    
+}
+test()
