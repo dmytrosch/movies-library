@@ -51,16 +51,19 @@
     padding: 20px 0px 10px;
   }
   &-item {
-    width: 320px;
-    height: 200px;
+    width: 467px;
+    height: 244px;
+    overflow: hidden;
   }
   &-images {
     background-image: url('../images/img/video.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 320px;
-    height: 200px;
+    width: 100%;
+    height: 244px;
+    object-position: center;
+    object-fit: cover;
     border-radius: 10px;
     top: 0;
     margin: 0 auto;

@@ -43,11 +43,9 @@ export default {
     },
     youtubeTrailerKey(id) {
         const trailerSearchById = `/movie/${id}/videos`;
-        console.log("url:", baseUrl + trailerSearchById + API_KEY + queryLanguage);
         return fetch(baseUrl + trailerSearchById + API_KEY + queryLanguage)
             .then(resp => resp.json())
             .then(parcedData => parcedData.results);
     },
 };
 
-// https://api.themoviedb.org/3/movie/17006/videos?api_key=0c84539b7b6fe9bdba856aa5f27d88e0&language=en-US

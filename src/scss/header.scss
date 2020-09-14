@@ -1,82 +1,81 @@
-.fa-film{
-  color: rgb(0, 0, 0);
-  font-size: 28px;
-  margin: 0px 10px 0px 0px;
+$text-hover-color: #372c48;
+$text-main-color: #4d6671;
+
+.header {
+    min-width: 100%;
+    min-height: 65px;
+    background-color: #77c1bb;
+    display: flex;
+    align-content: center;
+    color: $text-main-color;
+}
+
+.fa-film {
+    color: $text-main-color;
+    font-size: 28px;
+    margin: 0px 10px 0px 0px;
+    transition: 0.3s color ease-in-out;
 }
 .library__nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  background-color: #77c1bb;
-  transition: all 200ms ease-in-out;
-
-
-  &-icon {
-    display: inline-block;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0px 0px 0px 10px;
-  }
-
-  &-title {
-    display: none;
-    left: 63px;;
-    font-size: 26px;
-    line-height: 16px;
-    font-weight: 500;
-    animation: move linear 4000ms infinite;
-  }
-
-  &-title--link {
-    color: #372c48;
-  }
-
-  &-list {
     display: flex;
-    justify-content: space-around;
-    margin: 0;
-    font-size: 14px;
-    line-height: 12px;
-    width: 250px;
-    font-weight: 500;
-    color: #372c48;
-    padding: 0px 20px 0px 0px;
-  }
+    align-items: center;
+    justify-content: space-between;
 
-  &-item {
-    display: inline-block;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    width: 88px;
-    text-align: center;
-    transition: all 100ms ease-in;
-  }
+    &-icon {
+        display: inline-block;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: 0.3s all ease-in-out;
+        &:hover {
+            color: $text-hover-color;
+            .fa-film {
+                color: $text-hover-color;
+            }
+        }
+    }
 
-  &-link {
-    text-decoration: none;
-    font-size: 16px;
-  }
-}
-.library__nav-title:hover,
-.library__nav-title:focus{
-  // Filmoteka logo
-}
-.library__nav-link:hover,
-.library__nav-link:focus,{
-  transform: scale(1.1);
-color: #655083;
+    &-title {
+        display: none;
+        left: 63px;
+        font-size: 26px;
+        line-height: 16px;
+        font-weight: 500;
+        animation: move linear 4000ms infinite;
+    }
 
+    &-list {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        font-size: 14px;
+        line-height: 12px;
+        width: 250px;
+        font-weight: 500;
+    }
+
+    &-item {
+        display: inline-block;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding: 12px;
+        text-align: center;
+        transition: 0.3s all ease-in-out;
+        border-bottom: 2px solid transparent;
+
+        &-link {
+            text-decoration: none;
+            font-size: 16px;
+        }
+    }
 }
+
 .library__nav-item:hover,
 .library__nav-item:focus {
-  transform: scale(1.1);
-  border-bottom: 2px solid #9e7d9b;
-  padding-bottom: 10px;
+    transform: scale(1.1);
+    border-bottom: 2px solid #9e7d9b;
+    padding-bottom: 10px;
 }
+
 .library__nav-link {
     text-decoration: none;
-    color: #372c48;
-  }
- 
-  
+}
