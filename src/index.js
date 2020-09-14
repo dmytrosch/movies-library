@@ -43,15 +43,17 @@ const refs = {
     headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
 };
 
-refs.headerLogo.addEventListener('click', onMainPageClickHandler);
-refs.headerLinkHome.addEventListener('click', onMainPageClickHandler);
+// refs.headerLogo.addEventListener('click', onLogoClickHandler);
+refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
-function onMainPageClickHandler(event) {
+function onHomePageClickHandler(event) {
     event.preventDefault();
     window['router'].navigate('');
     
 }
+
+
 
 function onLibraryBtnHandler(event) {
     event.preventDefault();
