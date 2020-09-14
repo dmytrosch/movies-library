@@ -36,8 +36,11 @@
 
 .films-library__link-box {
   position: relative;
+  // display: none;
 }
-
+.films-library__gallery-item-wrap{
+  display: none;
+}
 .films-library__gallery {
   &-list {
     display: flex;
@@ -45,6 +48,7 @@
     flex-wrap: wrap;
     flex-direction: inherit;
     justify-content: space-evenly;
+    padding: 20px 0px 10px;
   }
   &-item {
     width: 320px;

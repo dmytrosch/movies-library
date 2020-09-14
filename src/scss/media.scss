@@ -158,7 +158,7 @@
     display: inline-block;
     font-size: 14px;
     line-height: 17px;
-    width: 160px;
+    width: 128px;
     height: 42px;
     position: relative;
     color: rgb(65, 65, 65);
@@ -169,7 +169,7 @@
   .library-details__addTOqueue {
     position: relative;
     display: inline-block;
-    width: 144px;
+    width: 134px;
     height: 42px;
     font-size: 14px;
     line-height: 17px;
@@ -269,6 +269,10 @@
   }
 
   /* №№№№№№№№№№№№№№ LEBRARY DETAILS */
+  .library-details__addTOqueue{
+    width: 134px;
+    height: 42px;
+  }
   .library-details__images {
     width: 100%;
     height: 100%;
@@ -321,9 +325,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .films-library__gallery-list {
-    height: 633px;
-  }
+
 
   .films-list__item:not(:nth-last-child(-n + 2)) {
     margin-bottom: 15px;
