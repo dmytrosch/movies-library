@@ -4,6 +4,9 @@ import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import {error} from '@pnotify/core/dist/PNotify.js';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 const refs = {
     prevBtn: null,
@@ -37,6 +40,8 @@ async function searchFormHandler(event) {
         } catch {
             throw error;
         }
+    } else {
+        error({text:'Write movie name', delay:'4000'});
     }
 
     const { results, page, total_pages, total_results } = fetchResult;

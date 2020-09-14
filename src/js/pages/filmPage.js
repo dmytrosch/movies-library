@@ -4,6 +4,10 @@ import * as basicLightBox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import spinner from '../components/spinner';
 import fetchMethods from '../Api/fetchMethods';
+import {success} from '@pnotify/core/dist/PNotify.js';
+import {error} from '@pnotify/core/dist/PNotify.js';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 const { setToLS, getFromLS } = localStorage;
 const QUEUE_KEY_IN_LS = 'filmsQueue';
@@ -64,10 +68,12 @@ function toggleToQueue() {
 
     if (isInQueue) {
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        success({text:'Movie deleted from queue', delay:'2000'});
     } else {
         // Если фильма не было в очереди просмотра, то добавляем в очереди просмотра и удаляем из просмотренных
         addToList(queueFilms, QUEUE_KEY_IN_LS);
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        success({text:'Movie added to queue', delay:'2000'});
     }
 
     monitorButtonStatusText();
@@ -81,10 +87,12 @@ function toggleToWatched() {
     if (isWatched) {
         // Если фильм был в списке просмотренных удаляем его оттуда
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        success({text:'Movie deleted from watched', delay:'2000'});
     } else {
         // Если фильма не было в просмотренных, то добавляем в просмотренные и удаляем из очереди просмотра
         addToList(watchedFilms, WATCHED_KEY_IN_LS);
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        success({text:'Movie added to watched', delay:'2000'});
     }
 
     monitorButtonStatusText();
