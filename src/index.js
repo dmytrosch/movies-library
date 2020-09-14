@@ -6,7 +6,7 @@ import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import library from './js/pages/library';
-import './js/components/siema';
+
 
 window['router'] = new Router({
     root: '/',
