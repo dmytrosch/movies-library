@@ -43,7 +43,7 @@ const refs = {
     headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
 };
 
-// refs.headerLogo.addEventListener('click', onLogoClickHandler);
+refs.headerLogo.addEventListener('click', onLogoClickHandler);
 refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
@@ -53,7 +53,9 @@ function onHomePageClickHandler(event) {
     
 }
 
-
+function onLogoClickHandler(){
+  window['router'].navigate('');
+}
 
 function onLibraryBtnHandler(event) {
     event.preventDefault();
