@@ -1,15 +1,14 @@
 import renderMarkUp from '../components/renderMarkUp.js';
 import localStorage from '../components/localStorage';
 import navigateToFilmPage from '../components/navigateToFilmPage';
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
 const QUEUE_KEY_IN_LS = 'filmsQueue';
 const WATCHED_KEY_IN_LS = 'filmsWatched';
 
 export default function library() {
     const data = getQueueFilmsFromLS();
-    renderMarkUp.libraryPage(data);
-    // нужно добавить проверку на длину масива в renderMarkUp.libraryPage, если длина меньше 0, то выводить для пользователя уведомление
-    libraryChaptersBtnsListeners();
+    sendToRenderAndAddListeners(data);
     navigateToFilmPage.addFilmCardClickListeners();
 }
 

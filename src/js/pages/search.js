@@ -3,7 +3,7 @@ import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
-import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters'
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
 const refs = {
     prevBtn: null,

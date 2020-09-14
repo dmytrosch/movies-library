@@ -4,6 +4,7 @@ import searchListener from './search';
 import Siema from 'siema';
 import spinner from '../components/spinner';
 import navigateToFilmPage from '../components/navigateToFilmPage';
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters'; 
 
 export default async function mainPage() {
     spinner.show();
@@ -14,6 +15,7 @@ export default async function mainPage() {
         popularMoviesResult = await fetchMethods.popularSearch();
         spinner.hide();
         renderMarkUp.popularMovies(popularMoviesResult);
+        addRemoveLibraryChapters(popularMoviesResult)
         navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
         throw console.log(error);
