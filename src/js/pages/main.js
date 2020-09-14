@@ -3,7 +3,7 @@ import fetchMethods from '../Api/fetchMethods';
 import searchListener from './search';
 import Siema from 'siema';
 import spinner from '../components/spinner';
-import addFilmCardClickListeners from '../components/addFilmCardClickListener';
+import navigateToFilmPage from '../components/navigateToFilmPage';
 
 export default async function mainPage() {
     spinner.show();
@@ -13,11 +13,11 @@ export default async function mainPage() {
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
         spinner.hide();
+        renderMarkUp.popularMovies(popularMoviesResult);
+        navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
         throw console.log(error);
     }
-    renderMarkUp.popularMovies(popularMoviesResult);
-    addFilmCardClickListeners();
 
     const siema = new Siema({
         selector: '.siema',

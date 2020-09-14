@@ -5,7 +5,6 @@ import Router from './js/components/router.js';
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
-import renderMarkUp from './js/components/renderMarkUp';
 import library from './js/pages/library';
 import './js/components/siema'
 
