@@ -1,10 +1,10 @@
 <section class="search-bar">
-        <div class="container-main">
-            <form id="search-form" class="">
-                <button action="submit"><i class="fa fa-search"></i></button>
-                <input class="input" name="query" autocomplete="off" placeholder="Write movie name and click Enter" />
-            </form>
-        </div>
+  <div class="container-main">
+    <form id="search-form" class="">
+      <button action="submit"><i class="fa fa-search"></i></button>
+      <input class="input" name="query" autocomplete="off" placeholder="Write movie name and click Enter" />
+    </form>
+  </div>
 </section>
 <div class="container films-library__gallery-list films-library__gallery-list--serchResult " id="search-results">
 
@@ -18,7 +18,7 @@
     </a>
     <a class="films-library__link-box" href="" data-path="film/{{id}}">
       <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-        alt="{{original_title}}">
+        alt="">
       <p class="films-library__gallery-rating">{{vote_average}}</p>
       <p class="films-library__gallery-name">{{original_title}}</p>
     </a>
@@ -26,4 +26,12 @@
   {{/each}}
 </div>
 
-
+<div class="controls">
+  <button class="controls-btn btn-prev " data-action="decrement">
+    Prev
+  </button>
+  <span class="page-number">1</span>
+  <button class="controls-btn btn-next " data-action="increment">
+    Next
+  </button>
+</div>

@@ -1,244 +1,342 @@
-@media (min-width: 767px) {
+@media (max-width: 767px) {
+    .films-library__gallery-item:not(:last-child) {
+      margin: 0px 0px 10px;
+    }
+  }
+  
+  @media (min-width: 767px) {
+    .search-bar {
+      margin: 0px 0px 30px;
+    }
+  
     /* ########## HEDER */
     .library__nav-list {
-        display: flex;
-        justify-content: space-around;
-        font-size: 14px;
-        line-height: 12px;
-        width: 250px;
-        font-weight: 500;
-        color: #372c48;
-        padding: 0px 20px 0px 0px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 14px;
+      line-height: 12px;
+      width: 250px;
+      font-weight: 500;
     }
-
+  
     .library__nav-list {
-        display: flex;
-        justify-content: space-around;
-        font-size: 14px;
-        line-height: 12px;
-        width: 250px;
-        font-weight: 500;
-        color: #372c48;
-        padding: 0px 20px 0px 0px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 14px;
+      line-height: 12px;
+      width: 250px;
+      font-weight: 500;
     }
-
+  
     .library__nav-title {
-        display: inline-block;
+      display: inline-block;
     }
-
+  
     .library__footer-toUP {
-        display: none;
+      display: none;
     }
-
+  
     /* ### */
-
+  
     .container {
-        width: 767px;
-        margin: 0 auto;
+      width: 767px;
+      margin: 0 auto;
     }
-
+  
     /* #################### LIBERAY QUEUE */
-    .films-library__gallery {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-direction: inherit;
-        justify-content: space-evenly;
+  
+    .films-library__gallery-list {
+      position: relative;
+      max-width: 768px;
+      margin: 0 auto;
     }
-
+  
     .films-library__gallery-item {
-        background-color: olive;
-        width: 344px;
-        height: 180px;
-        margin: 0px 0px 12px 0px;
-        border-radius: 10px;
-        position: relative;
+      margin: 0px 0px 12px 0px;
+      border-radius: 10px;
+      position: relative;
+      // width: 300px;
+      // height: 280px;
     }
-
+  
     .films-library__gallery-images {
-        width: 344px;
-        height: 180px;
-        border-radius: 10px;
+      // width: 300px;
+      // height: 280px;
+      border-radius: 10px;
     }
-
+  
     .films-library__gallery-rating {
-        font-size: 15px;
-        line-height: 14px;
-        width: 40px;
-        height: 20px;
+      font-size: 15px;
+      line-height: 14px;
+      width: 40px;
+      height: 20px;
+      right: 24px;
     }
-
+  
     .films-library__gallery-name {
-        font-size: 14px;
-        line-height: 15px;
+      font-size: 14px;
+      line-height: 15px;
     }
-
+  
+    .films-library__gallery-item-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      opacity: 0;
+      transition: 0.35s;
+      background-color: rgba(33, 33, 33, 0.94);
+      z-index: 1;
+    }
+  
+    .films-library__gallery-item:hover {
+      .films-library__gallery-item-wrap {
+        opacity: 1;
+      }
+  
+      .library-details__btn {
+        border-radius: 30px;
+        line-height: 25px;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: all 200ms;
+  
+        &:hover {
+          background-color: transparent;
+          color: #fff;
+          border: 2px solid #fff;
+        }
+      }
+  
+      .library-details__btn:first-child {
+        margin-right: 5px;
+      }
+  
+      .films-library__gallery-name {
+        transition: 0.35s;
+        color: #77c1bb;
+        font-size: 30px;
+      }
+    }
+  
     /* #################### LIBERAY DETAILS  */
     .library-details__about {
-        max-width: 340px;
+      max-width: 340px;
     }
-
+  
     .library-details__about {
-        margin: 0;
-        padding: 0px 0px 0px 25px;
+      margin: 0;
+      padding: 0px 0px 0px 25px;
     }
-
+  
     .library-details__images {
-        width: 356px;
-        height: 526px;
+      width: 100%;
+      height: 100%;
     }
-
-    .library-details__about {
-        padding: 0px 0px 140px 25px;
+  
+    //=============overlay===========
+    .library-details__overlay {
+      width: 345px;
+      height: 425px;
     }
-
+  
+    // .library-details__about {}
+  
     .library-details__addTOwached {
-        display: inline-block;
-        font-size: 14px;
-        line-height: 17px;
-        padding: 0px 40px 0px 20px;
-        position: relative;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 17px;
+      width: 128px;
+      height: 42px;
+      position: relative;
+      color: rgb(65, 65, 65);
+      border-radius: 18px;
+      transition: all 200ms;
     }
+  
     .library-details__addTOqueue {
-        position: relative;
-        display: inline-block;
-        font-size: 14px;
-        line-height: 17px;
+      position: relative;
+      display: inline-block;
+      width: 134px;
+      height: 42px;
+      font-size: 14px;
+      line-height: 17px;
+      color: rgb(65, 65, 65);
+      border-radius: 18px;
+      transition: all 200ms;
     }
-
-    .library-details__btn {
-        border: none;
+  
+    .library-details__span--mod-1 {
+      width: 100px;
+      display: inline-block;
+    }
+  
+    .library-details__span--mod-2 {
+      width: 100px;
+      display: inline-block;
+    }
+  
+    .library-details__addTOwached:hover,
+    .library-details__addTOwached:focus,
+    .library-details__addTOqueue:hover,
+    .library-details__addTOqueue:focus {
+      &:hover {
         background-color: transparent;
-        cursor: pointer;
-        outline: none;
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(0, 0, 0);
+        background-color: rgb(158, 158, 158);
+      }
     }
-
-    .library-details__addTOwached::before {
-        content: '';
-        position: absolute;
-        left: -4px;
-        top: 2px;
-        width: 30px;
-        height: 30px;
-        background-image: url('../images/svg/video_icon.png');
-        background-repeat: no-repeat;
-        background-size: 20px;
+  
+    .library-details__btn {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      outline: none;
     }
-
-    .library-details__addTOqueue::before {
-        content: '';
-        position: absolute;
-        left: -25px;
-        top: -3px;
-        width: 30px;
-        height: 30px;
-        background-image: url('../images/svg/calendar_plus.png');
-        background-repeat: no-repeat;
-        background-size: 20px;
+  
+    .fa-video {
+      font-weight: 900;
+      color: #addad6;
+      font-size: 20px;
+      padding: 0px 15px 0px 0px;
     }
-}
-
-@media (min-width: 1024px) {
+  
+    .fa-calendar-plus {
+      font-weight: 900;
+      color: #addad6;
+      font-size: 20px;
+      padding: 0px 15px 0px 0px;
+    }
+  
+    .library__footer-title {
+      padding: 0;
+    }
+  }
+  
+  @media (min-width: 1024px) {
     .container {
-        width: 1023px;
-        margin: 0 auto;
+      width: 964px;
+      margin: 0 auto;
     }
-
+  
     .films-library__gallery-item {
-        background-color: olive;
-        width: 468px;
-        height: 244px;
-        margin: 0px 0px 12px 0px;
-        border-radius: 10px;
-        position: relative;
+      background-color: olive;
+      margin: 0px 0px 12px 0px;
+      border-radius: 10px;
+      // width: 375px;
+      // height: 310px;
+      width: 467px;
+      height: 244px;
+      position: relative;
     }
-
+  
+    .films-library__gallery-list {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+  
     .films-library__gallery-images {
-        width: 468px;
-        height: 244px;
-        border-radius: 10px;
+      border-radius: 10px;
+      min-width: 100%;
+      min-height: 100%;
     }
-
+  
     .film-controls {
-        margin: 0px 0px 30px 0px;
+      margin: 0px 0px 30px 0px;
     }
-
+  
     .films-library__gallery-rating {
-        font-size: 20px;
-        line-height: 19px;
-        width: 50px;
-        height: 30px;
+      font-size: 20px;
+      line-height: 19px;
+      width: 50px;
+      height: 30px;
     }
-
+  
     .films-library__gallery-name {
-        font-size: 20px;
-        line-height: 24px;
+      font-size: 20px;
+      line-height: 24px;
     }
+  
     /* №№№№№№№№№№№№№№ LEBRARY DETAILS */
+    .library-details__addTOqueue{
+      width: 134px;
+      height: 42px;
+    }
     .library-details__images {
-        width: 426px;
-        height: 633px;
+      width: 100%;
+      height: 100%;
     }
+  
     .library-details__about {
-        padding: 0px 0px 222px 25px;
-        max-width: 450px;
+      max-width: 450px;
     }
-    .library-details__subtitle:nth-last-child(2n) {
-        padding: 4px 176px 4px 9px;
+  
+    .library-details__span {
+      width: 40%;
     }
-    .library-details__subtitle--mod {
-        margin: 0px 0px 0px 30px;
+  
+    //=============overlay===========
+    .library-details__overlay {
+      width: 430px;
+      height: 584px;
     }
-    .library-details__subtitle--mod-1 {
-        margin: 0px 0px 0px 44px;
-    }
-    .library-details__subtitle--mod-2 {
-        margin: 0px 0px 0px 68px;
-    }
-}
-/* ##################################### */
-
-@media screen and (min-width: 768px) {
+  }
+  
+  /* ##################################### */
+  
+  @media screen and (min-width: 768px) {
     .container {
-        padding: 30px 20px;
-        width: 748px;
+      width: 748px;
     }
-
+  
     .films-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
-
+  
     .image-container {
-        width: 345px;
+      width: 345px;
+      height: 471px;
     }
-
+  
     .controls-btn,
     .page-number {
-        font-size: 17px;
-        line-height: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+      font-size: 17px;
+      line-height: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+  
+    .controls {
+      padding: 0px 0px 20px 0px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  
+  
     .films-list__item:not(:nth-last-child(-n + 2)) {
-        margin-bottom: 15px;
+      margin-bottom: 15px;
     }
-}
-
-@media screen and (min-width: 1024px) {
+  }
+  
+  @media screen and (min-width: 1024px) {
     .container {
-        width: 1004px;
+      width: 1024px;
     }
-
+  
     .films-list__item:not(:nth-last-child(-n + 2)) {
-        margin-bottom: 20px;
+      margin-bottom: 20px;
     }
-
+  
     .image-container {
-        width: 467px;
+      width: 430px;
+      height: 630px;
     }
-}
+  }
