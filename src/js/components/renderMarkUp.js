@@ -9,6 +9,7 @@ import pageNotFound from '../../templates/pageNotFound404.hbs';
 import pageError from '../../templates/pageErrorTemplate.hbs';
 import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
+import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
 import globalVars from '../components/globalVars';
 
 const refs = {
@@ -60,12 +61,25 @@ export default {
     searchSuccessResultPage(data) {
         const markup = searchResultListTemplate(data);
         const rootSearchResults = document.querySelector('#search-results');
+        const searchBar = document.querySelector('#search-bar');
+        const pagination = document.querySelector('#pagination');
         if (rootSearchResults) {
             this.clearSearchResults(rootSearchResults);
         } else {
             this.clearMainMarkUp();
         }
-        refs.rootMain.insertAdjacentHTML('afterbegin', markup);
+        if (searchBar) {
+            searchBar.insertAdjacentHTML('afterend', markup);
+        } else {
+            const searchMarkup = searchInputTemplate();
+            refs.rootMain.insertAdjacentHTML(
+                'afterbegin',
+                searchMarkup + markup,
+            );
+        }
+        if (!pagination) {
+            this.paginationMarkup(globalVars.pageNumber);
+        }
     },
     libraryPage(data) {
         const markup = libraryFilmListTemplate(data);
