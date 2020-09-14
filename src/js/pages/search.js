@@ -3,6 +3,7 @@ import globalVars from '../components/globalVars.js';
 import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
 const refs = {
     prevBtn: null,
@@ -79,7 +80,9 @@ async function paginationPrevBtnHandler() {
         if (page < total_pages) {
             refs.nextBtn.disabled = false;
         }
+
     }
+    refs.span.textContent = globalVars.pageNumber;
 }
 
 async function paginationNextBtnHandler() {

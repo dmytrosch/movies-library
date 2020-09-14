@@ -16,12 +16,8 @@ const refs = {
 
 export default async function filmPage(id) {
     selectedFilm = await renderMarkUp.filmPage(id);
-    //вставить хендлер трейлера
     const link = document.querySelector('.library-details__link');
     link.addEventListener('click', handleFilmPosterClick);
-
-    
-
     if (selectedFilm) {
         refs.watchedBtn = document.getElementById('addTOwachedJS');
         refs.queueBtn = document.getElementById('addTOqueueJS');
