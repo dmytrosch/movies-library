@@ -18,7 +18,6 @@ export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
         // refs.rootMain.innerHTML = markup;
-
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
