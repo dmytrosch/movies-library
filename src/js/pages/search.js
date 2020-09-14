@@ -80,7 +80,6 @@ async function paginationPrevBtnHandler() {
         if (page < total_pages) {
             refs.nextBtn.disabled = false;
         }
-
     }
     refs.span.textContent = globalVars.pageNumber;
 }
