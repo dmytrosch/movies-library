@@ -19,7 +19,7 @@ export default {
         )
             .then(response => response.json())
             .then(parcedData => {
-                return parcedData.results;
+                return parcedData;
             });
     },
 

@@ -62,29 +62,20 @@ $text-main-color: #4d6671;
         transition: 0.3s all ease-in-out;
         border-bottom: 2px solid transparent;
 
-        &:hover {
-            color: $text-hover-color;
-            border-bottom: 2px solid $text-hover-color;
+        &-link {
+            text-decoration: none;
+            font-size: 16px;
         }
     }
-  
-    &-link {
-        font-size: 16px;
-        min-height: 100%;
-    }
 }
-// .library__nav-link:hover,
-// .library__nav-link:focus{
-//   transform: scale(1.1);
-// color: #655083;
 
-// }
-// .library__nav-item:hover,
-// .library__nav-item:focus {
-//   transform: scale(1.1);
-//   border-bottom: 2px solid #9e7d9b;
-//   padding-bottom: 10px;
-// }
+.library__nav-item:hover,
+.library__nav-item:focus {
+    transform: scale(1.1);
+    border-bottom: 2px solid #9e7d9b;
+    padding-bottom: 10px;
+}
+
 .library__nav-link {
     text-decoration: none;
 }

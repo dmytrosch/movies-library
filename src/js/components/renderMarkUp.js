@@ -8,6 +8,7 @@ import searchResultListTemplate from '../../templates/searchResultListTemplate.h
 import pageNotFound from '../../templates/pageNotFound404.hbs';
 import pageError from '../../templates/pageErrorTemplate.hbs';
 import noQueryListPage from '../../templates/noQueryListPage.hbs';
+import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import globalVars from '../components/globalVars';
 
 const refs = {
@@ -17,7 +18,6 @@ const refs = {
 export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
-        // refs.rootMain.innerHTML = markup;
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
@@ -57,8 +57,13 @@ export default {
     },
     searchSuccessResultPage(data) {
         const markup = searchResultListTemplate(data);
-        this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        const rootSearchResults = document.querySelector('#search-results');
+        if (rootSearchResults) {
+            this.clearSearchResults(rootSearchResults);
+        } else {
+            this.clearMainMarkUp();
+        }
+        refs.rootMain.insertAdjacentHTML('afterbegin', markup);
     },
     libraryPage(data) {
         const markup = libraryFilmListTemplate(data);
@@ -88,5 +93,12 @@ export default {
     },
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
+    },
+    clearSearchResults(elem) {
+        elem.remove();
+    },
+    paginationMarkup(data) {
+        const markup = paginationButtonsTemplate(data);
+        refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
 };
