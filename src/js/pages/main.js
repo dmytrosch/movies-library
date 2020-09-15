@@ -15,7 +15,8 @@ export default async function mainPage() {
         popularMoviesResult = await fetchMethods.popularSearch();
         spinner.hide();
         renderMarkUp.popularMovies(popularMoviesResult);
-        addRemoveLibraryChapters(popularMoviesResult)
+        // addRemoveLibraryChapters(popularMoviesResult)
+        // сема не работает из-за метода выше 
         navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
         throw console.log(error);
@@ -30,9 +31,10 @@ export default async function mainPage() {
         draggable: true,
         multipleDrag: true,
         threshold: 20,
-        loop: false,
+        loop: true,
         rtl: false,
         onInit: () => {},
         onChange: () => {},
     });
+    setInterval(() => siema.next(), 4000)
 }

@@ -3,7 +3,7 @@
   width: 270px;
   display: flex;
   justify-content: space-between;
-      padding: 20px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
 }
 
 .controls-btn,
@@ -15,24 +15,26 @@
   font-size: 22px;
   line-height: 25px;
   outline: 0;
-  border: 1px solid #dddddd;
+  border: 2px solid #909090;
   border-radius: 22px;
-  background: linear-gradient(rgba(240, 240, 240, 1), rgba(240, 240, 240, 0));
-  color: #556270;
-  text-shadow: 1px 0px 1px #556270;
+  color: #77c1bb;
+  background: #f7f9fb;
+  text-shadow: 0px 1px 1px #282a2c;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
 
 .controls-btn:hover,
-.controls-btn:focus{
-  background-color: #b9b9b9;
-  border: none;
+.controls-btn:focus {
+  background-color: #b2dad6;
+  color: #909090;
+  border: 2px solid #909090;
   cursor: pointer;
 }
 
 .disable {
   background: rgba(67, 67, 67, 0.25);
-  color: rgba(120, 151, 151,0.25);
+  color: rgba(120, 151, 151, 0.25);
   border: 3px solid;
   border-radius: 22px;
 }
