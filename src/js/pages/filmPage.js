@@ -15,7 +15,12 @@ const refs = {
 };
 
 export default async function filmPage(id) {
-    selectedFilm = await renderMarkUp.filmPage(id);
+    try{
+        selectedFilm = await renderMarkUp.filmPage(id);
+    }catch{
+        throw error;
+    }
+    
     const link = document.querySelector('.library-details__link');
     link.addEventListener('click', handleFilmPosterClick);
     if (selectedFilm) {
@@ -106,8 +111,14 @@ function addToList(list, key) {
 }
 
 async function handleFilmPosterClick() {
-    const videoKey = await fetchMethods.youtubeTrailerKey(selectedFilm.id).then(d => d[0].key);
-    console.log(videoKey);
+    try {
+        const videoKey = await fetchMethods
+            .youtubeTrailerKey(selectedFilm.id)
+            .then(d => d[0].key);
+        console.log(videoKey);
+    } catch {
+        throw error;
+    }
 
     basicLightBox
         .create(

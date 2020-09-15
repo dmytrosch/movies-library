@@ -68,7 +68,11 @@ async function searchFormHandler(event) {
 async function paginationPrevBtnHandler() {
     pagination.decrementPage();
     if (globalVars.pageNumber > 0) {
-        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+        try{
+           fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
+        }catch{
+            throw error;
+        }
         const { results, page, total_pages } = fetchResult;
         renderMarkUp.searchSuccessResultPage(results);
         navigateToFilmPage.addFilmCardClickListeners();
@@ -89,7 +93,11 @@ async function paginationNextBtnHandler() {
     if (globalVars.pageNumber > 1) {
         refs.prevBtn.disabled = false;
     }
-    fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+    try{
+        fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
+     }catch{
+         throw error;
+     }
     const { results, page, total_pages } = fetchResult;
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();
