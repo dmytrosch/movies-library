@@ -119,8 +119,9 @@ function addToList(list, key) {
 }
 
 async function handleFilmPosterClick() {
+    let videoKey
     try {
-        const videoKey = await fetchMethods
+        videoKey = await fetchMethods
             .youtubeTrailerKey(selectedFilm.id)
             .then(d => d[0].key);
         console.log(videoKey);
