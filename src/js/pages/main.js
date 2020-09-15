@@ -4,27 +4,26 @@ import searchListener from './search';
 import Siema from 'siema';
 import spinner from '../components/spinner';
 import navigateToFilmPage from '../components/navigateToFilmPage';
-import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters'; 
+import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
 export default async function mainPage() {
-    spinner.show();
     renderMarkUp.mainPageCascade();
     searchListener();
     let popularMoviesResult;
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
-        spinner.hide();
         renderMarkUp.popularMovies(popularMoviesResult);
-        // addRemoveLibraryChapters(popularMoviesResult)
-        // сема не работает из-за метода выше 
+        spinner.hide();
+        // addRemoveLibraryChapters(popularMoviesResult);
         navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
-        throw console.log(error);
+
+        throw error;
     }
 
     const siema = new Siema({
         selector: '.siema',
-        duration: 200,
+        duration: 1000,
         easing: 'ease-out',
         perPage: 1,
         startIndex: 0,

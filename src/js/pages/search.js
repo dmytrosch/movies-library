@@ -4,6 +4,9 @@ import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import {error} from '@pnotify/core/dist/PNotify.js';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 const refs = {
     prevBtn: null,
@@ -34,9 +37,12 @@ async function searchFormHandler(event) {
         pagination.resetPage();
         try {
             fetchResult = await fetch.movieSearch();
+            
         } catch {
             throw error;
         }
+    } else {
+        error({text:'Write movie name', delay:'4000'});
     }
 
     const { results, page, total_pages, total_results } = fetchResult;
@@ -68,7 +74,11 @@ async function searchFormHandler(event) {
 async function paginationPrevBtnHandler() {
     pagination.decrementPage();
     if (globalVars.pageNumber > 0) {
-        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+        try{
+           fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
+        }catch{
+            throw error;
+        }
         const { results, page, total_pages } = fetchResult;
         renderMarkUp.searchSuccessResultPage(results);
         navigateToFilmPage.addFilmCardClickListeners();
@@ -89,7 +99,11 @@ async function paginationNextBtnHandler() {
     if (globalVars.pageNumber > 1) {
         refs.prevBtn.disabled = false;
     }
-    fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+    try{
+        fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
+     }catch{
+         throw error;
+     }
     const { results, page, total_pages } = fetchResult;
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();
