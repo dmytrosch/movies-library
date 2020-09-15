@@ -18,7 +18,7 @@ const refs = {
 export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
-        this.clearMainMarkUp();
+        // this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     popularMovies(data) {
