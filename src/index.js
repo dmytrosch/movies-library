@@ -49,7 +49,7 @@ refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
 function onHomePageClickHandler(event) {
-    event.preventDefault();
+    // event.preventDefault(); //временно сделали перезагрузку до решения проблем со спинером
     window['router'].navigate('');
     
 }

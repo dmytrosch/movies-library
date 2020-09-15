@@ -4,7 +4,7 @@ import pagination from '../components/pagination';
 import renderMarkUp from '../components/renderMarkUp';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
-import {error} from '@pnotify/core/dist/PNotify.js';
+import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -37,12 +37,12 @@ async function searchFormHandler(event) {
         pagination.resetPage();
         try {
             fetchResult = await fetch.movieSearch();
-            
         } catch {
             throw error;
         }
     } else {
-        error({text:'Write movie name', delay:'4000'});
+        error({ text: 'Empty search query. Please, enter your require!', delay: '4000' });
+        return;
     }
 
     const { results, page, total_pages, total_results } = fetchResult;
@@ -59,6 +59,7 @@ async function searchFormHandler(event) {
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();
     addPaginationBtns();
+    addRemoveLibraryChapters(results);
     if (page === 1) {
         disableBtn(refs.prevBtn);
     }
@@ -74,9 +75,9 @@ async function searchFormHandler(event) {
 async function paginationPrevBtnHandler() {
     pagination.decrementPage();
     if (globalVars.pageNumber > 0) {
-        try{
-           fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
-        }catch{
+        try {
+            fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+        } catch {
             throw error;
         }
         const { results, page, total_pages } = fetchResult;
@@ -99,11 +100,11 @@ async function paginationNextBtnHandler() {
     if (globalVars.pageNumber > 1) {
         refs.prevBtn.disabled = false;
     }
-    try{
-        fetchResult = await fetch.movieSearch(globalVars.searchQuery); 
-     }catch{
-         throw error;
-     }
+    try {
+        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
+    } catch {
+        throw error;
+    }
     const { results, page, total_pages } = fetchResult;
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();

@@ -1,6 +1,6 @@
 import localStorage from './localStorage';
-import {success} from '@pnotify/core/dist/PNotify.js';
-import {error} from '@pnotify/core/dist/PNotify.js';
+import { success } from '@pnotify/core/dist/PNotify.js';
+import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -12,13 +12,18 @@ let allCardsLinks;
 let filmId;
 let filmArr;
 
-export default function addBtnsListeners(filmsOnPage) {
+export default function addBtnsListeners(filmsOnPage, isMainPage = false) {
     filmArr = filmsOnPage;
     allCardsLinks = document.querySelectorAll(
         '.films-library__gallery-item-wrap',
     );
     allCardsLinks = Array.from(allCardsLinks);
-    const containerRef = document.querySelector('.films-library__gallery-list');
+    let containerRef;
+    if (isMainPage) {
+        containerRef = document.querySelector('.films-library__gallery');
+    } else {
+        containerRef = document.querySelector('.films-library__gallery-list');
+    }
     containerRef.addEventListener('click', onButtonClickHandler);
     monitorButtonStatusText();
 }
@@ -36,7 +41,7 @@ function onButtonClickHandler(event) {
     }
 }
 
-const checkIsInList = list => list.find(item => item.id === filmId);
+const checkIsInList = list => list.find(item => item.id == filmId);
 
 // Обрабатываем состояние кнопок после рендера
 
@@ -49,9 +54,11 @@ function monitorButtonStatusText() {
     filmArr.forEach(film => {
         filmId = film.id;
         if (watchedFilms.length > 0) {
+            // console.log('check watched', watchedFilms);
             isWatched = checkIsInList(watchedFilms);
         }
         if (queueFilms.length > 0) {
+            // console.log('check queue', queueFilms);
             isInQueue = checkIsInList(queueFilms);
         }
         const cardContainerRef = getCurrentParentElement(filmId);
@@ -98,12 +105,12 @@ function toggleToQueue() {
 
     if (isInQueue) {
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
-        success({text:'Movie deleted from queue', delay:'2000'});
+        success({ text: 'Movie deleted from queue', delay: '2000' });
     } else {
         // Если фильма не было в очереди просмотра, то добавляем в очереди просмотра и удаляем из просмотренных
         addToList(queueFilms, QUEUE_KEY_IN_LS);
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
-        success({text:'Movie added to queue', delay:'2000'});
+        success({ text: 'Movie added to queue', delay: '2000' });
     }
 
     monitorButtonStatusText();
@@ -120,12 +127,12 @@ function toggleToWatched() {
     if (isWatched) {
         // Если фильм был в списке просмотренных удаляем его оттуда
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
-        success({text:'Movie deleted from watched', delay:'2000'});
+        success({ text: 'Movie deleted from watched', delay: '2000' });
     } else {
         // Если фильма не было в просмотренных, то добавляем в просмотренные и удаляем из очереди просмотра
         addToList(watchedFilms, WATCHED_KEY_IN_LS);
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
-        success({text:'Movie added to watched', delay:'2000'});
+        success({ text: 'Movie added to watched', delay: '2000' });
     }
 
     monitorButtonStatusText();

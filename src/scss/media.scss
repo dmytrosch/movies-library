@@ -2,9 +2,7 @@
   .films-library__gallery-item:not(:last-child) {
     margin: 0px 0px 10px;
   }
-  .films-library__gallery-item-wrap{
-    
-  }
+  
 }
 
 @media (min-width: 767px) {
@@ -114,10 +112,6 @@
       opacity: 1;
     }
 
-    .library-details__addTOwached[data-action="add"],
-    .library-details__addTOqueue[data-action="add"] {
-      // background-color: rgba(219, 255, 190, 0.8);
-    }
 
     .library-details__addTOwached[data-action="del"],
     .library-details__addTOqueue[data-action="del"] {

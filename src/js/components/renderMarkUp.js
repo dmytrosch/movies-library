@@ -19,7 +19,7 @@ const refs = {
 export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
-        // this.clearMainMarkUp();
+        this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     popularMovies(data) {
@@ -38,7 +38,6 @@ export default {
             '#js-film-page-content-container',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
-        console.log(data);
     },
 
     async filmPage(id) {
