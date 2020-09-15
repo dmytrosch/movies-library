@@ -128,20 +128,12 @@
             &[data-action='delete'] {
                 background-color: #77c1bb;
                 border: 2px solid #77c1bb;
-                // &:hover {
-                //     border: 2px solid #ffffff;
-                //     background-color: transparent;
-                // }
+                
             }
             &[data-action='add']:hover {
                 background-color: #77c1bb;
                 border: 2px solid #77c1bb;
             }
-
-            // &:hover {
-            //   background-color: transparent;
-            //   border: 2px solid #fff;
-            // }
         }
 
         .library-details__btn:first-child {
