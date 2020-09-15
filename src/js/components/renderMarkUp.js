@@ -10,6 +10,7 @@ import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
 import globalVars from '../components/globalVars';
+import spinner from './spinner';
 
 const refs = {
     rootMain: document.querySelector('#root'),
@@ -18,7 +19,7 @@ const refs = {
 export default {
     mainPageCascade() {
         const markup = mainPageCascadeTemplate();
-        this.clearMainMarkUp();
+        // this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     popularMovies(data) {
