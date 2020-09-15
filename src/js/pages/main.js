@@ -35,6 +35,5 @@ export default async function mainPage() {
         onInit: () => {},
         onChange: () => {},
     });
-
-    setInterval(() => siema.next(), 3000);
+    setInterval(() => siema.next(), 4000)
 }
