@@ -32,7 +32,8 @@ window['router'] = new Router({
     ],
     error: {
         callback: () => {
-            notFoundPage();
+            // console.log('404');
+            // notFoundPage();
         },
     },
 });
