@@ -6,7 +6,6 @@ import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
 import pageNotFound from '../../templates/pageNotFound404.hbs';
-import pageError from '../../templates/pageErrorTemplate.hbs';
 import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
@@ -38,6 +37,7 @@ export default {
             '#js-film-page-content-container',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
+        console.log(data);
     },
 
     async filmPage(id) {
@@ -94,15 +94,12 @@ export default {
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     page404() {
-        const markup = pageNotFound();
+        const markup404 = pageNotFound();
+        const markupSearchBar = searchInputTemplate()
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
-        console.log('404');
-    },
-    pageError() {
-        const markup = pageError();
-        this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);
+        refs.rootMain.insertAdjacentHTML('beforeend', markup404);
+        
     },
     noQueueListPage() {
         const markup = noQueryListPage();

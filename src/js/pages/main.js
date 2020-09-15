@@ -18,6 +18,7 @@ export default async function mainPage() {
         addRemoveLibraryChapters(popularMoviesResult)
         navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
+
         throw error;
     }
 

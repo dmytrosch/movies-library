@@ -34,6 +34,7 @@ async function searchFormHandler(event) {
         pagination.resetPage();
         try {
             fetchResult = await fetch.movieSearch();
+            
         } catch {
             throw error;
         }
