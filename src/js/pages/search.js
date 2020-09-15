@@ -52,7 +52,6 @@ async function searchFormHandler(event) {
     }
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();
-    renderMarkUp.paginationMarkup({ page: page });
     addPaginationBtns();
     if (page === 1) {
         disableBtn(refs.prevBtn);
@@ -63,6 +62,7 @@ async function searchFormHandler(event) {
     addPaginationBtnsListeners();
     refs.span.textContent = page;
     globalVars.pageNumber = page;
+    addSearchListener();
 }
 
 async function paginationPrevBtnHandler() {
@@ -80,7 +80,6 @@ async function paginationPrevBtnHandler() {
         if (page < total_pages) {
             refs.nextBtn.disabled = false;
         }
-
     }
     refs.span.textContent = globalVars.pageNumber;
 }
