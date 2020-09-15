@@ -6,7 +6,6 @@ import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
 import pageNotFound from '../../templates/pageNotFound404.hbs';
-import pageError from '../../templates/pageErrorTemplate.hbs';
 import noQueryListPage from '../../templates/noQueryListPage.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
@@ -38,22 +37,27 @@ export default {
             '#js-film-page-content-container',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
+        console.log(data);
     },
 
     async filmPage(id) {
-        const fetchRez = await fetchMethods.idSearch(id).catch(error => error);
-        if (fetchRez.status_code === 34) {
-            this.page404();
-            return;
-        }
-        if (fetchRez.status_code === 7) {
-            this.pageError();
-            return;
-        } else {
-            const markup = filmPageTemplate(fetchRez);
-            this.clearMainMarkUp();
-            refs.rootMain.insertAdjacentHTML('afterbegin', markup);
-            return fetchRez;
+        try {
+            const fetchRez = await fetchMethods.idSearch(id);
+            if (fetchRez.status_code === 34) {
+                this.page404();
+                return;
+            }
+            if (fetchRez.status_code === 7) {
+                this.pageError();
+                return;
+            } else {
+                const markup = filmPageTemplate(fetchRez);
+                this.clearMainMarkUp();
+                refs.rootMain.insertAdjacentHTML('afterbegin', markup);
+                return fetchRez;
+            }
+        }catch{
+            throw error;
         }
     },
     searchSuccessResultPage(data) {
@@ -90,15 +94,12 @@ export default {
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
     page404() {
-        const markup = pageNotFound();
+        const markup404 = pageNotFound();
+        const markupSearchBar = searchInputTemplate()
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
-        console.log('404');
-    },
-    pageError() {
-        const markup = pageError();
-        this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);
+        refs.rootMain.insertAdjacentHTML('beforeend', markup404);
+        
     },
     noQueueListPage() {
         const markup = noQueryListPage();

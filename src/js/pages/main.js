@@ -18,7 +18,8 @@ export default async function mainPage() {
         addRemoveLibraryChapters(popularMoviesResult)
         navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
-        throw console.log(error);
+
+        throw error;
     }
 
     const siema = new Siema({

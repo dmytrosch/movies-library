@@ -20,7 +20,7 @@ export default {
             .then(response => response.json())
             .then(parcedData => {
                 return parcedData;
-            });
+            }).catch(error => console.log('error', error));
     },
 
     idSearch(id) {
@@ -29,7 +29,7 @@ export default {
             .then(response => response.json())
             .then(parcedMovieById => {
                 return parcedMovieById;
-            });
+            }).catch(error => console.log(error));
     },
     popularSearch() {
         const popularUrl = '/movie/popular';
@@ -45,7 +45,7 @@ export default {
         const trailerSearchById = `/movie/${id}/videos`;
         return fetch(baseUrl + trailerSearchById + API_KEY + queryLanguage)
             .then(resp => resp.json())
-            .then(parcedData => parcedData.results);
+            .then(parcedData => parcedData.results).catch(error => console.log(error));
     },
 };
 
