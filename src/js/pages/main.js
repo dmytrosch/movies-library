@@ -2,7 +2,6 @@ import renderMarkUp from '../components/renderMarkUp';
 import fetchMethods from '../Api/fetchMethods';
 import searchListener from './search';
 import Siema from 'siema';
-import spinner from '../components/spinner';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
@@ -13,11 +12,9 @@ export default async function mainPage() {
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
         renderMarkUp.popularMovies(popularMoviesResult);
-        spinner.hide();
         addRemoveLibraryChapters(popularMoviesResult, true);
         navigateToFilmPage.addFilmCardClickListeners(true);
     } catch (error) {
-
         throw error;
     }
 

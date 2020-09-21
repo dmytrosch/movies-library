@@ -38,9 +38,11 @@ export default {
             '#js-film-page-content-container',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
+        hideSpinnerOnLoad();
     },
 
     async filmPage(id) {
+        spinner.show();
         try {
             const fetchRez = await fetchMethods.idSearch(id);
             if (fetchRez.status_code === 34) {
@@ -54,13 +56,15 @@ export default {
                 const markup = filmPageTemplate(fetchRez);
                 this.clearMainMarkUp();
                 refs.rootMain.insertAdjacentHTML('afterbegin', markup);
+                hideSpinnerOnLoad();
                 return fetchRez;
             }
-        }catch{
+        } catch {
             throw error;
         }
     },
     searchSuccessResultPage(data) {
+        spinner.show();
         const markup = searchResultListTemplate(data);
         const rootSearchResults = document.querySelector('#search-results');
         const searchBar = document.querySelector('#search-bar');
@@ -82,29 +86,37 @@ export default {
         if (!pagination) {
             this.paginationMarkup(globalVars.pageNumber);
         }
+        hideSpinnerOnLoad();
     },
     libraryPage(data) {
+        spinner.show();
         const markup = libraryFilmListTemplate(data);
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        hideSpinnerOnLoad();
     },
     pageEmptySearchResponseQuery() {
+        spinner.show();
         const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        hideSpinnerOnLoad();
     },
     page404() {
+        spinner.show();
         const markup404 = pageNotFound();
-        const markupSearchBar = searchInputTemplate()
+        const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);
         refs.rootMain.insertAdjacentHTML('beforeend', markup404);
-        
+        hideSpinnerOnLoad();
     },
     noQueueListPage() {
+        spinner.show();
         const markup = noQueryListPage();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        hideSpinnerOnLoad();
     },
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
@@ -117,3 +129,9 @@ export default {
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
 };
+
+function hideSpinnerOnLoad() {
+    setTimeout(() => {
+        spinner.hide();
+    }, 1000);
+}
