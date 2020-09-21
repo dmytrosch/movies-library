@@ -1,0 +1,56 @@
+<section class="library-details">
+  <div class="container library-details">
+    <a href="#" class="library-details__link">
+      <div class="image-container">
+        <img class="library-details__images" src="https://image.tmdb.org/t/p/original{{poster_path}}"
+          alt="">
+        <div class="library-details__overlay">
+          <div class="overlay-inner-conteiner">
+
+            <span class="material-icons play-icon">
+              play_circle_outline
+            </span>
+
+            <span>Watch the trailer</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <div class="library-details__about">
+      <h2 class="library-details__title">{{original_title}}</h2>
+
+
+      <P class="library-details__subtitle">
+        <span class="library-details__span--mod-1">vote / votes:</span>
+        <span class="library-details__span-mod-2">{{vote_average}} {{vote_count}}</span>
+      </P>
+
+
+      <P class="library-details__subtitle">
+        <span class="library-details__span--mod-1">popularity: </span>
+        <span class="library-details__span-mod-2">{{popularity}}</span>
+      </P>
+
+
+      <P class="library-details__subtitle">
+        <span class="library-details__span--mod-1">original title:</span>
+        <span class="library-details__span-mod-2">{{title}}</span>
+      </P>
+
+
+      <P class="library-details__subtitle library-details__subtitle--last-child">
+        <span class="library-details__span--mod-1">genre:</span>
+        {{#each genres}}
+        <span class="library-details__span-mod-2">{{this.name}}</span>
+        {{/each}}
+      </P>
+
+
+
+      <h2 class="library-details__title library-details__title--last-child ">About:</h2>
+      <p class="library-details__discription">{{overview}}</p>
+      <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS" data-action="">Add to watched</button>
+      <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS" data-action="">Add to queue</button>
+    </div>
+  </div>
+</section>

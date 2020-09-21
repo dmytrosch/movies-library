@@ -1,0 +1,40 @@
+.controls {
+  margin: 0 auto;
+  width: 270px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px 20px 0px;
+}
+
+.controls-btn,
+.page-number {
+  display: inline-block;
+  padding: 15px 22px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 25px;
+  outline: 0;
+  border: 2px solid #909090;
+  border-radius: 22px;
+  color: #77c1bb;
+  background: #f7f9fb;
+  text-shadow: 0px 1px 1px #282a2c;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.controls-btn:hover,
+.controls-btn:focus {
+  background-color: #b2dad6;
+  color: #909090;
+  border: 2px solid #909090;
+  cursor: pointer;
+}
+
+.disable {
+  background: rgba(67, 67, 67, 0.25);
+  color: rgba(120, 151, 151, 0.25);
+  border: 3px solid;
+  border-radius: 22px;
+}

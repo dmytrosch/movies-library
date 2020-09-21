@@ -1,0 +1,363 @@
+@media (max-width: 767px) {
+    .films-library__gallery-item:not(:last-child) {
+        margin: 0px 0px 10px;
+    }
+}
+
+@media (min-width: 767px) {
+    .empty-query_img {
+        height: 675px;
+    }
+
+    .search-bar {
+        margin: 0px 0px 60px;
+    }
+
+    /* ########## HEDER */
+    .library__nav-list {
+        display: flex;
+        justify-content: space-around;
+        font-size: 14px;
+        line-height: 12px;
+        width: 250px;
+        font-weight: 500;
+    }
+
+    .library__nav-list {
+        display: flex;
+        justify-content: space-around;
+        font-size: 14px;
+        line-height: 12px;
+        width: 250px;
+        font-weight: 500;
+    }
+
+    .library__nav-title {
+        display: inline-block;
+    }
+
+    .library__footer-toUP {
+        display: none;
+    }
+
+    /* ### */
+
+    .container {
+        width: 767px;
+        margin: 0 auto;
+    }
+
+    /* #################### LIBERAY QUEUE */
+
+    .films-library__gallery-list {
+        position: relative;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    .films-library__gallery-item {
+        margin: 0px 0px 12px 0px;
+        width: 346px;
+        height: 182px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .films-library__gallery-images {
+        border-radius: 10px;
+    }
+
+    .films-library__gallery-rating {
+        font-size: 15px;
+        line-height: 14px;
+        width: 40px;
+        height: 20px;
+        right: 24px;
+    }
+
+    .films-library__gallery-name {
+        font-size: 14px;
+        line-height: 15px;
+        font-size: 20px;
+        line-height: 24px;
+        text-shadow: 0px 2px 10px #000000;
+        background-color: #000000;
+        padding: 0px 5px;
+        border-radius: 2px;
+    }
+
+    .films-library__gallery-item-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.35s;
+        background-color: rgba(33, 33, 33, 0.94);
+        z-index: 1;
+        padding: 75px 33px 77px;
+    }
+
+    .films-library__gallery-item:hover {
+        .films-library__gallery-item-wrap {
+            opacity: 1;
+        }
+
+        .library-details__addTOwached[data-action='add'],
+        .library-details__addTOqueue[data-action='add'] {
+            background-color: transparent;
+        }
+
+        .library-details__addTOwached[data-action='del'],
+        .library-details__addTOqueue[data-action='del'] {
+            background-color: #77c1bb;
+        }
+
+        .library-details__btn {
+            color: #fff;
+            border-radius: 30px;
+            line-height: 25px;
+            background-color: transparent;
+            transition: all 200ms;
+            border: 2px solid #ffffff;
+            &[data-action='delete'] {
+                background-color: #77c1bb;
+                border: 2px solid #77c1bb;
+                
+            }
+            &[data-action='add']:hover {
+                background-color: #77c1bb;
+                border: 2px solid #77c1bb;
+            }
+        }
+
+        .library-details__btn:first-child {
+            margin-right: 5px;
+        }
+    }
+
+    /* #################### LIBERAY DETAILS  */
+
+    .library-details {
+        padding: 0px;
+    }
+
+    .library-details__about {
+        max-width: 340px;
+    }
+
+    .library-details__about {
+        margin: 0;
+        padding: 20px 0px 0px 25px;
+    }
+
+    .library-details__images {
+        width: 100%;
+        height: 100%;
+    }
+
+    //=============overlay===========
+    .library-details__overlay {
+        width: 345px;
+        height: 425px;
+    }
+
+    // .library-details__about {}
+
+    .library-details__addTOwached {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 17px;
+        width: 133px;
+        height: 42px;
+        position: relative;
+        color: rgb(65, 65, 65);
+        border-radius: 18px;
+        transition: all 200ms;
+    }
+
+    .library-details__addTOqueue {
+        position: relative;
+        display: inline-block;
+        width: 134px;
+        height: 42px;
+        font-size: 14px;
+        line-height: 17px;
+        color: rgb(65, 65, 65);
+        border-radius: 18px;
+        transition: all 200ms;
+    }
+
+    .library-details__span--mod-1 {
+        width: 100px;
+        display: inline-block;
+    }
+
+    .library-details__span--mod-2 {
+        width: 100px;
+        display: inline-block;
+    }
+
+    .library-details__btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .fa-video {
+        font-weight: 900;
+        color: #addad6;
+        font-size: 20px;
+        padding: 0px 15px 0px 0px;
+    }
+
+    .fa-calendar-plus {
+        font-weight: 900;
+        color: #addad6;
+        font-size: 20px;
+        padding: 0px 15px 0px 0px;
+    }
+
+    .library__footer-title {
+        padding: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 964px;
+        margin: 0 auto;
+    }
+
+    .search-bar {
+        margin: 0px 0px 30px;
+    }
+
+    .films-library__gallery-item-wrap {
+        padding: 75px 92px 100px;
+    }
+
+    .films-library__gallery-item {
+        margin: 0px 0px 20px 0px;
+        border-radius: 10px;
+        width: 467px;
+        height: 244px;
+        position: relative;
+    }
+
+    .films-library__gallery-list {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .films-library__gallery-images {
+        border-radius: 10px;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .film-controls {
+        margin: 0px 0px 30px 0px;
+    }
+
+    .films-library__gallery-rating {
+        font-size: 20px;
+        line-height: 19px;
+        width: 50px;
+        height: 30px;
+    }
+
+    .films-library__gallery-name {
+        font-size: 20px;
+        line-height: 24px;
+        text-shadow: 0px 2px 10px black;
+    }
+
+    /* №№№№№№№№№№№№№№ LEBRARY DETAILS */
+    .library-details {
+        padding: 30px 0px 0px;
+    }
+
+    .library-details__addTOqueue {
+        width: 134px;
+        height: 42px;
+    }
+
+    .library-details__images {
+        width: 100%;
+        height: 100%;
+    }
+
+    .library-details__about {
+        max-width: 450px;
+        padding: 40px 0px 20px 30px;
+    }
+
+    .library-details__span {
+        width: 40%;
+    }
+
+    //=============overlay===========
+    .library-details__overlay {
+        width: 430px;
+        height: 584px;
+    }
+}
+
+/* ##################################### */
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 748px;
+    }
+
+    .films-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .image-container {
+        width: 345px;
+        height: 471px;
+    }
+
+    .controls-btn,
+    .page-number {
+        font-size: 17px;
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .controls {
+        padding: 0px 0px 20px 0px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .films-list__item:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 1024px;
+    }
+
+    .films-list__item:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        width: 430px;
+        height: 630px;
+    }
+}
