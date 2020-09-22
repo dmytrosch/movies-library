@@ -3,30 +3,35 @@ import localStorage from '../components/localStorage';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
-const QUEUE_KEY_IN_LS = 'filmsQueue';
-const WATCHED_KEY_IN_LS = 'filmsWatched';
+const refs = {
+    btnQueue: null,
+    btnWatched: null,
+};
 
-export default function library() {
-    const data = getQueueFilmsFromLS();
-    sendToRenderAndAddListeners(data);
-    navigateToFilmPage.addFilmCardClickListeners();
-}
+export default function library(chapter) {
+    let filmList;
+    switch (chapter) {
+        case 'queue':
+            filmList = localStorage.getQueueFilmsFromLS();
+            break;
 
-function getWatchedFilmsFromLS() {
-    const data = localStorage.getFromLS(WATCHED_KEY_IN_LS);
-    return data;
-}
-
-function getQueueFilmsFromLS() {
-    const data = localStorage.getFromLS(QUEUE_KEY_IN_LS);
-    return data;
+        case 'watched':
+            filmList = localStorage.getWatchedFilmsFromLS();
+            break;
+    }
+    if (filmList.length === 0) {
+        renderMarkUp.noAddedYetPage(chapter);
+    } else {
+        renderMarkUp.libraryPage(filmList);
+        navigateToFilmPage.addFilmCardClickListeners();
+    }
+    libraryChaptersBtnsListeners();
+    turnChaptersButtons(chapter);
 }
 
 function libraryChaptersBtnsListeners() {
-    const refs = {
-        btnQueue: document.querySelector('#js-btn-queue'),
-        btnWatched: document.querySelector('#js-btn-watched'),
-    };
+    refs.btnQueue = document.querySelector('#js-btn-queue');
+    refs.btnWatched = document.querySelector('#js-btn-watched');
 
     refs.btnWatched.addEventListener('click', onWatchedBtnClickHandler);
     refs.btnQueue.addEventListener('click', onQueueBtnClickHandler);
@@ -34,17 +39,22 @@ function libraryChaptersBtnsListeners() {
 
 function onQueueBtnClickHandler(event) {
     event.preventDefault();
-    const data = getQueueFilmsFromLS();
-    sendToRenderAndAddListeners(data);
+    window['router'].navigate('library/queue');
 }
 
 function onWatchedBtnClickHandler(event) {
     event.preventDefault();
-    const data = getWatchedFilmsFromLS();
-    sendToRenderAndAddListeners(data);
+    window['router'].navigate('library/watched');
 }
-
-function sendToRenderAndAddListeners(data) {
-    renderMarkUp.libraryPage(data);
-    libraryChaptersBtnsListeners();
+function turnChaptersButtons(chapter) {
+    switch (chapter) {
+        case 'queue':
+            refs.btnQueue.dataset.status = 'selected';
+            refs.btnWatched.dataset.status = 'unselected';
+            break;
+        case 'watched':
+            refs.btnWatched.dataset.status = 'selected';
+            refs.btnQueue.dataset.status = 'unselected';
+            break;
+    }
 }

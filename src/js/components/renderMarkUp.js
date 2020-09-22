@@ -6,7 +6,7 @@ import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
 import pageNotFound from '../../templates/pageNotFound404.hbs';
-import noQueryListPage from '../../templates/noQueryListPage.hbs';
+import noAddedYetPageTemplate from '../../templates/noAddedYetPageTemplate.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
 import globalVars from '../components/globalVars';
@@ -111,9 +111,11 @@ export default {
         refs.rootMain.insertAdjacentHTML('beforeend', markup404);
         this.hideSpinnerOnLoad();
     },
-    noQueueListPage() {
+    noAddedYetPage(chapter) {
         spinner.show();
-        const markup = noQueryListPage();
+        const isQueueChapter = chapter === 'queue' ? true : false;
+        console.log(isQueueChapter);
+        const markup = noAddedYetPageTemplate(isQueueChapter);
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
         this.hideSpinnerOnLoad();
@@ -132,6 +134,5 @@ export default {
         setTimeout(() => {
             spinner.hide();
         }, 1000);
-    }
+    },
 };
-

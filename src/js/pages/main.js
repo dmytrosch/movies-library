@@ -1,13 +1,13 @@
 import renderMarkUp from '../components/renderMarkUp';
 import fetchMethods from '../Api/fetchMethods';
-import searchListener from './search';
+import { addSearchListener } from './search';
 import Siema from 'siema';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 
 export default async function mainPage() {
     renderMarkUp.mainPageCascade();
-    searchListener();
+    addSearchListener();
     let popularMoviesResult;
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
@@ -32,5 +32,5 @@ export default async function mainPage() {
         onInit: () => {},
         onChange: () => {},
     });
-    setInterval(() => siema.next(), 4000)
+    setInterval(() => siema.next(), 4000);
 }

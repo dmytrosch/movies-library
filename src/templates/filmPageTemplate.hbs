@@ -2,7 +2,8 @@
   <div class="container library-details">
     <a href="#" class="library-details__link">
       <div class="image-container">
-        <img class="library-details__images" src="https://image.tmdb.org/t/p/original{{poster_path}}"
+        <img class="library-details__images" {{#if poster_path}} src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+          {{/if}} 
           alt="">
         <div class="library-details__overlay">
           <div class="overlay-inner-conteiner">
@@ -49,8 +50,10 @@
 
       <h2 class="library-details__title library-details__title--last-child ">About:</h2>
       <p class="library-details__discription">{{overview}}</p>
-      <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS" data-action="">Add to watched</button>
-      <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS" data-action="">Add to queue</button>
+      <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS" data-action="">Add to
+        watched</button>
+      <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS" data-action="">Add to
+        queue</button>
     </div>
   </div>
 </section>

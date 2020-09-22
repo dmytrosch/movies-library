@@ -1,6 +1,7 @@
 export default {
     addFilmCardClickListeners(isMainPage = false) {
         let filmListRef;
+        //film list on main page has another container, because siema
         if (isMainPage) {
             filmListRef = document.querySelector('.films-library__gallery');
         } else {

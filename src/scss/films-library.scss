@@ -28,7 +28,8 @@
   padding: 20px 0px 0px;
 }
 .film-controls__btn:hover,
-.film-controls__btn:focus {
+.film-controls__btn:focus,
+.film-controls__btn[data-status="selected"] {
   border: none;
   color: #ffffff;
   background-color: #77c1bb;

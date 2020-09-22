@@ -4,8 +4,8 @@ import * as basicLightBox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import spinner from '../components/spinner';
 import fetchMethods from '../Api/fetchMethods';
-import {success} from '@pnotify/core/dist/PNotify.js';
-import {error} from '@pnotify/core/dist/PNotify.js';
+import { success } from '@pnotify/core/dist/PNotify.js';
+import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -19,12 +19,12 @@ const refs = {
 };
 
 export default async function filmPage(id) {
-    try{
+    try {
         selectedFilm = await renderMarkUp.filmPage(id);
-    }catch{
-        throw error;
+    } catch (err) {
+        throw err;
     }
-    
+
     const link = document.querySelector('.library-details__link');
     link.addEventListener('click', handleFilmPosterClick);
     if (selectedFilm) {
@@ -73,12 +73,12 @@ function toggleToQueue() {
 
     if (isInQueue) {
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
-        success({text:'Movie deleted from queue', delay:'2000'});
+        success({ text: 'Movie deleted from queue', delay: '2000' });
     } else {
         // Если фильма не было в очереди просмотра, то добавляем в очереди просмотра и удаляем из просмотренных
         addToList(queueFilms, QUEUE_KEY_IN_LS);
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
-        success({text:'Movie added to queue', delay:'2000'});
+        success({ text: 'Movie added to queue', delay: '2000' });
     }
 
     monitorButtonStatusText();
@@ -92,12 +92,12 @@ function toggleToWatched() {
     if (isWatched) {
         // Если фильм был в списке просмотренных удаляем его оттуда
         deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
-        success({text:'Movie deleted from watched', delay:'2000'});
+        success({ text: 'Movie deleted from watched', delay: '2000' });
     } else {
         // Если фильма не было в просмотренных, то добавляем в просмотренные и удаляем из очереди просмотра
         addToList(watchedFilms, WATCHED_KEY_IN_LS);
         deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
-        success({text:'Movie added to watched', delay:'2000'});
+        success({ text: 'Movie added to watched', delay: '2000' });
     }
 
     monitorButtonStatusText();
@@ -119,25 +119,25 @@ function addToList(list, key) {
 }
 
 async function handleFilmPosterClick() {
-    spinner.show()
-    let videoKey
+    spinner.show();
+    let videoKey;
     try {
         videoKey = await fetchMethods
             .youtubeTrailerKey(selectedFilm.id)
             .then(d => d[0].key);
-    } catch {
-        throw error;
+        basicLightBox
+            .create(
+                `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                {
+                    closable: true,
+                    onShow() {
+                        renderMarkUp.hideSpinnerOnLoad();
+                    },
+                },
+            )
+            .show();
+    } catch{
+        spinner.hide()
+        error({ text: 'Cannot find trailer of this movie.', delay: '2000' });
     }
-
-    basicLightBox
-        .create(
-            `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-            {
-                closable: true,
-                onShow(){
-                    renderMarkUp.hideSpinnerOnLoad()
-                }
-            },
-        )
-        .show();
 }

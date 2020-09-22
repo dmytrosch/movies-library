@@ -15,36 +15,13 @@ const refs = {
 };
 let fetchResult;
 
-export default function addSearchListener() {
-    const inputFormRef = document.querySelector('#search-form');
-    inputFormRef.addEventListener('submit', searchFormHandler);
-}
-function addPaginationBtnsListeners() {
-    refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
-    refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
-}
-
-function addPaginationBtns() {
-    refs.prevBtn = document.querySelector('button[data-action="decrement"]');
-    refs.nextBtn = document.querySelector('button[data-action="increment"]');
-    refs.span = document.querySelector('.page-number');
-}
-
-async function searchFormHandler(event) {
-    event.preventDefault();
-    globalVars.searchQuery = event.target.elements.query.value;
-    if (globalVars.searchQuery) {
-        pagination.resetPage();
-        try {
-            fetchResult = await fetch.movieSearch();
-        } catch {
-            throw error;
-        }
-    } else {
-        error({ text: 'Empty search query. Please, enter your require!', delay: '4000' });
-        return;
+export async function search() {
+    pagination.resetPage();
+    try {
+        fetchResult = await fetch.movieSearch();
+    } catch {
+        throw error;
     }
-
     const { results, page, total_pages, total_results } = fetchResult;
 
     if (total_results === 0 || results.length === 0) {
@@ -70,6 +47,35 @@ async function searchFormHandler(event) {
     refs.span.textContent = page;
     globalVars.pageNumber = page;
     addSearchListener();
+}
+
+export function addSearchListener() {
+    const inputFormRef = document.querySelector('#search-form');
+    inputFormRef.addEventListener('submit', searchFormHandler);
+}
+function addPaginationBtnsListeners() {
+    refs.prevBtn.addEventListener('click', paginationPrevBtnHandler);
+    refs.nextBtn.addEventListener('click', paginationNextBtnHandler);
+}
+
+function addPaginationBtns() {
+    refs.prevBtn = document.querySelector('button[data-action="decrement"]');
+    refs.nextBtn = document.querySelector('button[data-action="increment"]');
+    refs.span = document.querySelector('.page-number');
+}
+
+function searchFormHandler(event) {
+    event.preventDefault();
+    const query = event.target.elements.query.value;
+    if (query) {
+        window['router'].navigate(`search/${query}`);
+    } else {
+        error({
+            text: 'Empty search query. Please, enter your require!',
+            delay: '4000',
+        });
+        return;
+    }
 }
 
 async function paginationPrevBtnHandler() {

@@ -8,7 +8,10 @@
       </div>
     </a>
     <a class="films-library__link-box" href="" data-path="">
-      <img class="films-library__gallery-images" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+      <img class="films-library__gallery-images" 
+        {{#if poster_path}}
+        src="https://image.tmdb.org/t/p/w500{{poster_path}}" 
+        {{/if}} 
         alt="">
       <p class="films-library__gallery-rating">{{vote_average}}</p>
       <p class="films-library__gallery-name">{{original_title}}</p>

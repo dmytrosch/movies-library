@@ -20,7 +20,7 @@ export default {
             .then(response => response.json())
             .then(parcedData => {
                 return parcedData;
-            }).catch(error => console.log('error', error));
+            }).catch(error => console.log(error));
     },
 
     idSearch(id) {

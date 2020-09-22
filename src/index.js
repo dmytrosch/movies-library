@@ -6,9 +6,11 @@ import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import library from './js/pages/library';
+import { search } from './js/pages/search';
 import spinner from './js/components/spinner';
+import globalVars from './js/components/globalVars';
 
-spinner.show()
+spinner.show();
 
 window['router'] = new Router({
     root: '/',
@@ -20,17 +22,30 @@ window['router'] = new Router({
             },
         },
         {
-            path: 'library',
+            path: 'library/queue',
             callback: () => {
-                library();
+                library('queue');
             },
         },
         {
-          path: '',
-          callback: () => {
-              mainPage();
-          },
-      },
+            path: 'library/watched',
+            callback: ()=>{
+                library('watched')
+            }
+        },
+        {
+            path: /search\/(.*)/,
+            callback: query => {
+                globalVars.searchQuery = query;
+                search();
+            },
+        },
+        {
+            path: '',
+            callback: () => {
+                mainPage();
+            },
+        },
     ],
     error: {
         callback: () => {
@@ -53,14 +68,13 @@ refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 function onHomePageClickHandler(event) {
     // event.preventDefault(); //временно сделали перезагрузку до решения проблем со спинером
     window['router'].navigate('');
-    
 }
 
-function onLogoClickHandler(){
-  window['router'].navigate('');
+function onLogoClickHandler() {
+    window['router'].navigate('');
 }
 
 function onLibraryBtnHandler(event) {
     event.preventDefault();
-    window['router'].navigate('/library');
+    window['router'].navigate('/library/queue');
 }
