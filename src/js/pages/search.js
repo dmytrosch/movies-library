@@ -85,9 +85,6 @@ async function paginationPrevBtnHandler() {
 
 function paginationNextBtnHandler() {
     pagination.incrementPage();
-    if (globalVars.pageNumber > 1) {
-        refs.prevBtn.disabled = false;
-    }
     paginationResult()
 }
 
@@ -100,8 +97,6 @@ async function paginationResult(){
     const { results, page, total_pages } = fetchResult;
     renderMarkUp.searchSuccessResultPage(results);
     navigateToFilmPage.addFilmCardClickListeners();
-    refs.span.textContent = page;
-    globalVars.pageNumber = page;
     if (page === 1) {
         disableBtn(refs.prevBtn);
     }
@@ -111,6 +106,12 @@ async function paginationResult(){
     if (page < total_pages) {
         refs.nextBtn.disabled = false;
     }
+    if (page > 1) {
+        refs.prevBtn.disabled = false;
+    }
+    globalVars.pageNumber = page;
+    refs.span.textContent = page;
+
 }
 
 function disableBtn(elementBtn) {
