@@ -104,16 +104,18 @@ async function paginationResult(){
         disableBtn(refs.nextBtn);
     }
     if (page < total_pages) {
-        refs.nextBtn.disabled = false;
+        enableBtn(refs.nextBtn)
     }
     if (page > 1) {
-        refs.prevBtn.disabled = false;
+        enableBtn(refs.prevBtn)
     }
     globalVars.pageNumber = page;
     refs.span.textContent = page;
-
 }
 
 function disableBtn(elementBtn) {
     elementBtn.disabled = true;
+}
+function enableBtn(elementBtn){
+    elementBtn.disabled = false;
 }
