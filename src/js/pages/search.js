@@ -19,8 +19,8 @@ export async function search() {
     pagination.resetPage();
     try {
         fetchResult = await fetch.movieSearch();
-    } catch {
-        throw error;
+    } catch (err){
+        throw err;
     }
     const { results, page, total_pages, total_results } = fetchResult;
 
@@ -80,32 +80,18 @@ function searchFormHandler(event) {
 
 async function paginationPrevBtnHandler() {
     pagination.decrementPage();
-    if (globalVars.pageNumber > 0) {
-        try {
-            fetchResult = await fetch.movieSearch(globalVars.searchQuery);
-        } catch {
-            throw error;
-        }
-        const { results, page, total_pages } = fetchResult;
-        renderMarkUp.searchSuccessResultPage(results);
-        navigateToFilmPage.addFilmCardClickListeners();
-        if (page === 1) {
-            disableBtn(refs.prevBtn);
-        }
-        refs.span.textContent = page;
-        globalVars.pageNumber = page;
-        if (page < total_pages) {
-            refs.nextBtn.disabled = false;
-        }
-    }
-    refs.span.textContent = globalVars.pageNumber;
+    paginationResult();
 }
 
-async function paginationNextBtnHandler() {
+function paginationNextBtnHandler() {
     pagination.incrementPage();
     if (globalVars.pageNumber > 1) {
         refs.prevBtn.disabled = false;
     }
+    paginationResult()
+}
+
+async function paginationResult(){
     try {
         fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     } catch {
@@ -116,8 +102,14 @@ async function paginationNextBtnHandler() {
     navigateToFilmPage.addFilmCardClickListeners();
     refs.span.textContent = page;
     globalVars.pageNumber = page;
+    if (page === 1) {
+        disableBtn(refs.prevBtn);
+    }
     if (page === total_pages) {
         disableBtn(refs.nextBtn);
+    }
+    if (page < total_pages) {
+        refs.nextBtn.disabled = false;
     }
 }
 

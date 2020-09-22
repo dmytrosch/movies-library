@@ -2,6 +2,7 @@ import renderMarkUp from '../components/renderMarkUp.js';
 import localStorage from '../components/localStorage';
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import { addSearchListener } from './search';
 
 const refs = {
     btnQueue: null,
@@ -21,6 +22,7 @@ export default function library(chapter) {
     }
     if (filmList.length === 0) {
         renderMarkUp.noAddedYetPage(chapter);
+        addSearchListener()
     } else {
         renderMarkUp.libraryPage(filmList);
         navigateToFilmPage.addFilmCardClickListeners();

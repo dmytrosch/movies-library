@@ -24,17 +24,17 @@
   transition: all 200ms ease-in-out;
 }
 
-.controls-btn:hover,
-.controls-btn:focus {
+.controls-btn:hover{
   background-color: #b2dad6;
   color: #909090;
   border: 2px solid #909090;
   cursor: pointer;
 }
 
-.disable {
+.controls-btn:disabled {
   background: rgba(67, 67, 67, 0.25);
   color: rgba(120, 151, 151, 0.25);
   border: 3px solid;
   border-radius: 22px;
+  cursor: default;
 }
