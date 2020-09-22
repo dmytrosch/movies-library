@@ -119,12 +119,12 @@ function addToList(list, key) {
 }
 
 async function handleFilmPosterClick() {
+    spinner.show()
     let videoKey
     try {
         videoKey = await fetchMethods
             .youtubeTrailerKey(selectedFilm.id)
             .then(d => d[0].key);
-        console.log(videoKey);
     } catch {
         throw error;
     }
@@ -134,12 +134,9 @@ async function handleFilmPosterClick() {
             `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
             {
                 closable: true,
-                onShow() {
-                    spinner.show();
-                },
-                onClose() {
-                    spinner.hide();
-                },
+                onShow(){
+                    renderMarkUp.hideSpinnerOnLoad()
+                }
             },
         )
         .show();
