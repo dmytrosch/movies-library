@@ -1,136 +1,148 @@
 .film-controls {
-  width: 100%;
-  margin: 0px 0px 14px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 0px 14px 0px;
-  transition: all 300ms ease-in-out;
-
-  &__btn {
+    width: 100%;
+    margin: 0px 0px 14px 0px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 140px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 16px;
-    color: #000000;
-    padding: 0px;
-    border: none;
-    background-color: #fff;
-    border-bottom: 4px solid #9c99a5;
-    cursor: pointer;
+    justify-content: center;
+    padding: 14px 0px 14px 0px;
     transition: all 300ms ease-in-out;
-  }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 140px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+        padding: 0px;
+        border: none;
+        background-color: #fff;
+        border-bottom: 4px solid #9c99a5;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+    }
 }
-.films-library__gallery-list--serchResult{
-  padding: 20px 0px 0px;
+.films-library__gallery-list--serchResult {
+    padding: 20px 0px 0px;
 }
 .film-controls__btn:hover,
 .film-controls__btn:focus,
-.film-controls__btn[data-status="selected"] {
-  border: none;
-  color: #ffffff;
-  background-color: #77c1bb;
+.film-controls__btn[data-status='selected'] {
+    border: none;
+    color: #ffffff;
+    background-color: #77c1bb;
+}
+
+.films-library__gallery-item {
+    transition: 0.5s all ease-in-out;
+}
+
+.films-library__gallery-item--remove_left {
+    transform: translate(-1000px, 0);
+}
+
+.films-library__gallery-item--remove_right {
+    transform: translate(1000px, 0);
 }
 
 .films-library__link-box {
-  position: relative;
-  // display: none;
-}
-.films-library__gallery-item-wrap{
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 0.35s;
-  background-color: rgba(33, 33, 33, 0.94);
-  z-index: 1;
-  padding: 122px;
-}
-.films-library__gallery {
-  &-list {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: inherit;
-    justify-content: space-evenly;
-    padding: 20px 0px 10px;
-  }
-  &-item {
-    width: 467px;
-    height: 244px;
     position: relative;
-    overflow: hidden;
-  }
-  &-images {
-    background-image: url('../images/img/video.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 244px;
-    object-position: center;
-    object-fit: cover;
-    border-radius: 10px;
-    top: 0;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  &-rating {
-    font-size: 12px;
-    line-height: 11px;
-    font-weight: 500;
+    // display: none;
+}
+.films-library__gallery-item-wrap {
     position: absolute;
-    top: 15px;
-
-    right: 15px;
-    z-index: 1;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 16px;
-    text-align: center;
-    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
-    color: rgb(0, 0, 0);
-    margin: 0 auto;
-    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
-  }
-
-  &-name {
-    position: absolute;
-    font-size: 13px;
-    line-height: 15px;
-    bottom: 14px;
-    left: 15px;
+    opacity: 0;
+    transition: 0.35s;
+    background-color: rgba(33, 33, 33, 0.94);
     z-index: 1;
-    color: #fff;
-    margin: 0 auto;
-    text-shadow: 0px 2px 10px black;
-    background-color: black;
-    padding: 0px 5px;
-    border-radius: 2px;
-  }
+    padding: 122px;
+}
+.films-library__gallery {
+    &-list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: inherit;
+        justify-content: space-evenly;
+        padding: 20px 0px 10px;
+    }
+    &-item {
+        width: 467px;
+        height: 244px;
+        position: relative;
+        overflow: hidden;
+    }
+    &-images {
+        background-image: url('../images/img/video.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 244px;
+        object-position: center;
+        object-fit: cover;
+        border-radius: 10px;
+        top: 0;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &-rating {
+        font-size: 12px;
+        line-height: 11px;
+        font-weight: 500;
+        position: absolute;
+        top: 15px;
+
+        right: 15px;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 16px;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        margin: 0 auto;
+        box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    &-name {
+        position: absolute;
+        font-size: 13px;
+        line-height: 15px;
+        bottom: 14px;
+        left: 15px;
+        z-index: 1;
+        color: #fff;
+        margin: 0 auto;
+        text-shadow: 0px 2px 10px black;
+        background-color: black;
+        padding: 0px 5px;
+        border-radius: 2px;
+    }
 }
 
-.films-library__gallery-images::before{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  content: "We are sorry, but poster for this film is no exist";
-  padding: 30px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(241, 200, 200);
+.films-library__gallery-images::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: 'We are sorry, but poster for this film is no exist';
+    padding: 30px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 200, 200);
 }

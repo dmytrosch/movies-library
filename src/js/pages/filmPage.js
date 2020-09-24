@@ -1,17 +1,17 @@
 import renderMarkUp from '../components/renderMarkUp';
-import localStorage from '../components/localStorage';
+import localStorageObj from '../components/localStorage';
 import * as basicLightBox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import spinner from '../components/spinner';
 import fetchMethods from '../Api/fetchMethods';
+import globalVars from '../components/globalVars';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
-const { setToLS, getFromLS } = localStorage;
-const QUEUE_KEY_IN_LS = 'filmsQueue';
-const WATCHED_KEY_IN_LS = 'filmsWatched';
+const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
 let selectedFilm;
 const refs = {
     watchedBtn: null,
@@ -19,15 +19,18 @@ const refs = {
 };
 
 export default async function filmPage(id) {
-    try {
-        selectedFilm = await renderMarkUp.filmPage(id);
-    } catch (err) {
-        throw err;
+    selectedFilm = await fetchMethods.idSearch(id);
+    if (selectedFilm.status_code === 34) {
+        renderMarkUp.page404();
+        return;
     }
-
-    const link = document.querySelector('.library-details__link');
-    link.addEventListener('click', handleFilmPosterClick);
-    if (selectedFilm) {
+    if (selectedFilm.status_code === 7) {
+        renderMarkUp.pageError();
+        return;
+    } else {
+        renderMarkUp.filmPage(selectedFilm);
+        const link = document.querySelector('.library-details__link');
+        link.addEventListener('click', handleFilmPosterClick);
         refs.watchedBtn = document.getElementById('addTOwachedJS');
         refs.queueBtn = document.getElementById('addTOqueueJS');
         refs.watchedBtn.addEventListener('click', toggleToWatched);
@@ -35,7 +38,6 @@ export default async function filmPage(id) {
         monitorButtonStatusText();
     }
 }
-const checkIsInList = list => list.find(item => item.id === selectedFilm.id);
 
 // Обрабатываем состояние кнопок после рендера
 
@@ -43,8 +45,8 @@ const checkIsInList = list => list.find(item => item.id === selectedFilm.id);
 function monitorButtonStatusText() {
     const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
-    const isWatched = checkIsInList(watchedFilms);
-    const isInQueue = checkIsInList(queueFilms);
+    const isWatched = checkIsInList(watchedFilms, selectedFilm.id);
+    const isInQueue = checkIsInList(queueFilms, selectedFilm.id);
     if (isWatched) {
         refs.watchedBtn.innerHTML = 'Delete from watched';
         refs.watchedBtn.dataset.action = 'delete';
@@ -65,19 +67,32 @@ function monitorButtonStatusText() {
     }
 }
 
-// Добавляем или удаляем фильм из списка "Очереди"
 function toggleToQueue() {
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
     const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
-    const isInQueue = checkIsInList(queueFilms);
-
+    const isInQueue = checkIsInList(queueFilms, selectedFilm.id);
     if (isInQueue) {
-        deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        deleteFromList.call(
+            localStorageObj,
+            queueFilms,
+            selectedFilm.id,
+            QUEUE_KEY_IN_LS,
+        );
         success({ text: 'Movie deleted from queue', delay: '2000' });
     } else {
         // Если фильма не было в очереди просмотра, то добавляем в очереди просмотра и удаляем из просмотренных
-        addToList(queueFilms, QUEUE_KEY_IN_LS);
-        deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        addToList.call(
+            localStorageObj,
+            queueFilms,
+            QUEUE_KEY_IN_LS,
+            selectedFilm,
+        );
+        deleteFromList.call(
+            localStorageObj,
+            watchedFilms,
+            selectedFilm.id,
+            WATCHED_KEY_IN_LS,
+        );
         success({ text: 'Movie added to queue', delay: '2000' });
     }
 
@@ -88,34 +103,34 @@ function toggleToQueue() {
 function toggleToWatched() {
     const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
-    const isWatched = checkIsInList(watchedFilms);
+    const isWatched = checkIsInList(watchedFilms, selectedFilm.id);
     if (isWatched) {
         // Если фильм был в списке просмотренных удаляем его оттуда
-        deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        deleteFromList.call(
+            localStorageObj,
+            watchedFilms,
+            selectedFilm.id,
+            WATCHED_KEY_IN_LS,
+        );
         success({ text: 'Movie deleted from watched', delay: '2000' });
     } else {
         // Если фильма не было в просмотренных, то добавляем в просмотренные и удаляем из очереди просмотра
-        addToList(watchedFilms, WATCHED_KEY_IN_LS);
-        deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        addToList.call(
+            localStorageObj,
+            watchedFilms,
+            WATCHED_KEY_IN_LS,
+            selectedFilm,
+        );
+        deleteFromList.call(
+            localStorageObj,
+            queueFilms,
+            selectedFilm.id,
+            QUEUE_KEY_IN_LS,
+        );
         success({ text: 'Movie added to watched', delay: '2000' });
     }
 
     monitorButtonStatusText();
-}
-
-// Удаляет фильм из списка, если он там был
-function deleteFromList(list, key) {
-    if (checkIsInList(list)) {
-        setToLS(
-            key,
-            list.filter(item => item.id !== selectedFilm.id),
-        );
-    }
-}
-
-// Добавляем фильм в список
-function addToList(list, key) {
-    setToLS(key, list.concat([selectedFilm]));
 }
 
 async function handleFilmPosterClick() {
@@ -136,8 +151,8 @@ async function handleFilmPosterClick() {
                 },
             )
             .show();
-    } catch{
-        spinner.hide()
+    } catch {
+        spinner.hide();
         error({ text: 'Cannot find trailer of this movie.', delay: '2000' });
     }
 }

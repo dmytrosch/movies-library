@@ -22,10 +22,11 @@ export default function library(chapter) {
     }
     if (filmList.length === 0) {
         renderMarkUp.noAddedYetPage(chapter);
-        addSearchListener()
+        addSearchListener();
     } else {
         renderMarkUp.libraryPage(filmList);
         navigateToFilmPage.addFilmCardClickListeners();
+        addRemoveLibraryChapters(filmList);
     }
     libraryChaptersBtnsListeners();
     turnChaptersButtons(chapter);

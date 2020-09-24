@@ -13,22 +13,15 @@ const refs = {
     nextBtn: null,
     span: null,
 };
-let fetchResult;
 
 export async function search() {
     pagination.resetPage();
-    try {
-        fetchResult = await fetch.movieSearch();
-    } catch (err){
-        throw err;
-    }
+    const fetchResult = await fetch.movieSearch();
     const { results, page, total_pages, total_results } = fetchResult;
-
     if (total_results === 0 || results.length === 0) {
         renderMarkUp.pageEmptySearchResponseQuery();
         return;
     }
-
     if (total_results === 1 || results.length === 1) {
         navigateToFilmPage.navigateToFilmPage(`film/${fetchResult[0].id}`);
         return;
@@ -85,17 +78,14 @@ async function paginationPrevBtnHandler() {
 
 function paginationNextBtnHandler() {
     pagination.incrementPage();
-    paginationResult()
+    paginationResult();
 }
 
-async function paginationResult(){
-    try {
-        fetchResult = await fetch.movieSearch(globalVars.searchQuery);
-    } catch {
-        throw error;
-    }
+async function paginationResult() {
+    const fetchResult = await fetch.movieSearch(globalVars.searchQuery);
     const { results, page, total_pages } = fetchResult;
     renderMarkUp.searchSuccessResultPage(results);
+    addRemoveLibraryChapters(results);
     navigateToFilmPage.addFilmCardClickListeners();
     if (page === 1) {
         disableBtn(refs.prevBtn);
@@ -104,10 +94,10 @@ async function paginationResult(){
         disableBtn(refs.nextBtn);
     }
     if (page < total_pages) {
-        enableBtn(refs.nextBtn)
+        enableBtn(refs.nextBtn);
     }
     if (page > 1) {
-        enableBtn(refs.prevBtn)
+        enableBtn(refs.prevBtn);
     }
     globalVars.pageNumber = page;
     refs.span.textContent = page;
@@ -116,6 +106,6 @@ async function paginationResult(){
 function disableBtn(elementBtn) {
     elementBtn.disabled = true;
 }
-function enableBtn(elementBtn){
+function enableBtn(elementBtn) {
     elementBtn.disabled = false;
 }

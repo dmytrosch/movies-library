@@ -12,8 +12,8 @@ export default async function mainPage() {
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
         renderMarkUp.popularMovies(popularMoviesResult);
-        addRemoveLibraryChapters(popularMoviesResult, true);
-        navigateToFilmPage.addFilmCardClickListeners(true);
+        addRemoveLibraryChapters(popularMoviesResult);
+        navigateToFilmPage.addFilmCardClickListeners();
     } catch (error) {
         throw error;
     }

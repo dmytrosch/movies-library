@@ -41,27 +41,12 @@ export default {
         this.hideSpinnerOnLoad();
     },
 
-    async filmPage(id) {
+    filmPage(data) {
         spinner.show();
-        try {
-            const fetchRez = await fetchMethods.idSearch(id);
-            if (fetchRez.status_code === 34) {
-                this.page404();
-                return;
-            }
-            if (fetchRez.status_code === 7) {
-                this.pageError();
-                return;
-            } else {
-                const markup = filmPageTemplate(fetchRez);
-                this.clearMainMarkUp();
-                refs.rootMain.insertAdjacentHTML('afterbegin', markup);
-                this.hideSpinnerOnLoad();
-                return fetchRez;
-            }
-        } catch {
-            throw error;
-        }
+        const markup = filmPageTemplate(data);
+        this.clearMainMarkUp();
+        refs.rootMain.insertAdjacentHTML('afterbegin', markup);
+        this.hideSpinnerOnLoad();
     },
     searchSuccessResultPage(data) {
         spinner.show();

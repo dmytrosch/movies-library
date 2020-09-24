@@ -1,5 +1,6 @@
-const QUEUE_KEY_IN_LS = 'filmsQueue';
-const WATCHED_KEY_IN_LS = 'filmsWatched';
+import globalVars from './globalVars';
+
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
 
 export default {
     setToLS(key, data) {
@@ -15,5 +16,16 @@ export default {
     getQueueFilmsFromLS() {
         const data = this.getFromLS(QUEUE_KEY_IN_LS);
         return data;
+    },
+    addToList(list, key, film) {
+        const newList = [...list, film];
+        this.setToLS(key, newList);
+    },
+    deleteFromList(list, filmId, key) {
+        const newList = list.filter(item => item.id != filmId);
+        this.setToLS(key, newList);
+    },
+    checkIsInList(list, filmId) {
+        return list.some(item => item.id == filmId);
     },
 };

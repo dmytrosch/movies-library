@@ -1,29 +1,24 @@
-import localStorage from './localStorage';
+import localStorageObj from './localStorage';
+import globalVars from './globalVars';
 import { success } from '@pnotify/core/dist/PNotify.js';
-import { error } from '@pnotify/core/dist/PNotify.js';
+// import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
-
-const { setToLS, getFromLS } = localStorage;
-const QUEUE_KEY_IN_LS = 'filmsQueue';
-const WATCHED_KEY_IN_LS = 'filmsWatched';
 
 let allCardsLinks;
 let filmId;
 let filmArr;
 
-export default function addBtnsListeners(filmsOnPage, isMainPage = false) {
+const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
+
+export default function addBtnsListeners(filmsOnPage) {
     filmArr = filmsOnPage;
     allCardsLinks = document.querySelectorAll(
         '.films-library__gallery-item-wrap',
     );
     allCardsLinks = Array.from(allCardsLinks);
-    let containerRef;
-    if (isMainPage) {
-        containerRef = document.querySelector('.films-library__gallery');
-    } else {
-        containerRef = document.querySelector('.films-library__gallery-list');
-    }
+    const containerRef = document.querySelector('.films-library__gallery');
     containerRef.addEventListener('click', onButtonClickHandler);
     monitorButtonStatusText();
 }
@@ -38,12 +33,11 @@ function onButtonClickHandler(event) {
         if (element.id === 'addTOqueueJS') {
             toggleToQueue();
         }
+        if (event.currentTarget.dataset.page === 'library') {
+            removeElement(element);
+        }
     }
 }
-
-const checkIsInList = list => list.find(item => item.id == filmId);
-
-// Обрабатываем состояние кнопок после рендера
 
 //Следит за состоянием LocalStorage и меняет текст кнопок
 function monitorButtonStatusText() {
@@ -54,12 +48,10 @@ function monitorButtonStatusText() {
     filmArr.forEach(film => {
         filmId = film.id;
         if (watchedFilms.length > 0) {
-            // console.log('check watched', watchedFilms);
-            isWatched = checkIsInList(watchedFilms);
+            isWatched = checkIsInList(watchedFilms, filmId);
         }
         if (queueFilms.length > 0) {
-            // console.log('check queue', queueFilms);
-            isInQueue = checkIsInList(queueFilms);
+            isInQueue = checkIsInList(queueFilms, filmId);
         }
         const cardContainerRef = getCurrentParentElement(filmId);
         const watchedBtn = cardContainerRef.querySelector('#addTOwachedJS');
@@ -98,18 +90,30 @@ function getCurrentParentElement(id) {
 function toggleToQueue() {
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
     const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
-    let isInQueue;
-    if (queueFilms.length > 0) {
-        isInQueue = checkIsInList(queueFilms);
-    }
+    const isInQueue = checkIsInList(queueFilms, filmId);
 
     if (isInQueue) {
-        deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        deleteFromList.call(
+            localStorageObj,
+            queueFilms,
+            filmId,
+            QUEUE_KEY_IN_LS,
+        );
         success({ text: 'Movie deleted from queue', delay: '2000' });
     } else {
         // Если фильма не было в очереди просмотра, то добавляем в очереди просмотра и удаляем из просмотренных
-        addToList(queueFilms, QUEUE_KEY_IN_LS);
-        deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        addToList.call(
+            localStorageObj,
+            queueFilms,
+            QUEUE_KEY_IN_LS,
+            getFilmObject(),
+        );
+        deleteFromList.call(
+            localStorageObj,
+            watchedFilms,
+            filmId,
+            WATCHED_KEY_IN_LS,
+        );
         success({ text: 'Movie added to queue', delay: '2000' });
     }
 
@@ -122,31 +126,52 @@ function toggleToWatched() {
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
     let isWatched;
     if (watchedFilms.length > 0) {
-        isWatched = checkIsInList(watchedFilms);
+        isWatched = checkIsInList(watchedFilms, filmId);
     }
     if (isWatched) {
         // Если фильм был в списке просмотренных удаляем его оттуда
-        deleteFromList(watchedFilms, WATCHED_KEY_IN_LS);
+        deleteFromList.call(
+            localStorageObj,
+            watchedFilms,
+            filmId,
+            WATCHED_KEY_IN_LS,
+        );
         success({ text: 'Movie deleted from watched', delay: '2000' });
     } else {
         // Если фильма не было в просмотренных, то добавляем в просмотренные и удаляем из очереди просмотра
-        addToList(watchedFilms, WATCHED_KEY_IN_LS);
-        deleteFromList(queueFilms, QUEUE_KEY_IN_LS);
+        addToList.call(
+            localStorageObj,
+            watchedFilms,
+            WATCHED_KEY_IN_LS,
+            getFilmObject(),
+        );
+        deleteFromList.call(
+            localStorageObj,
+            queueFilms,
+            filmId,
+            QUEUE_KEY_IN_LS,
+        );
         success({ text: 'Movie added to watched', delay: '2000' });
     }
 
     monitorButtonStatusText();
 }
 
-// Удаляет фильм из списка, если он там был
-function deleteFromList(list, key) {
-    setToLS(
-        key,
-        list.filter(item => item.id != filmId),
-    );
+function getFilmObject() {
+    const film = filmArr.find(film => film.id == filmId);
+    return film;
 }
 
-// Добавляем фильм в список
-function addToList(list, key) {
-    setToLS(key, list.concat([filmArr.find(film => film.id == filmId)]));
+function removeElement(childElement) {
+    const cardToRemove = childElement.closest('li.films-library__gallery-item');
+    const containersChildrens = Array.from(cardToRemove.parentNode.children);
+    const index = containersChildrens.indexOf(cardToRemove);
+    if (index === 0 || index % 2 === 0) {
+        cardToRemove.classList.add('films-library__gallery-item--remove_left');
+    } else {
+        cardToRemove.classList.add('films-library__gallery-item--remove_right');
+    }
+    setTimeout(() => {
+        cardToRemove.remove();
+    }, 800);
 }
