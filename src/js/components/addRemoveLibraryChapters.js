@@ -1,13 +1,14 @@
 import localStorageObj from './localStorage';
 import globalVars from './globalVars';
+import renderMarkUp from './renderMarkUp';
 import { success } from '@pnotify/core/dist/PNotify.js';
-// import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 let allCardsLinks;
 let filmId;
 let filmArr;
+let chapter;
 
 const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
 const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
@@ -29,9 +30,11 @@ function onButtonClickHandler(event) {
         filmId = element.dataset.filmid;
         if (element.id === 'addTOwachedJS') {
             toggleToWatched();
+            chapter = 'watched';
         }
         if (element.id === 'addTOqueueJS') {
             toggleToQueue();
+            chapter = 'queue';
         }
         if (event.currentTarget.dataset.page === 'library') {
             removeElement(element);
@@ -164,7 +167,8 @@ function getFilmObject() {
 
 function removeElement(childElement) {
     const cardToRemove = childElement.closest('li.films-library__gallery-item');
-    const containersChildrens = Array.from(cardToRemove.parentNode.children);
+    const cardList = cardToRemove.parentNode;
+    const containersChildrens = Array.from(cardList.children);
     const index = containersChildrens.indexOf(cardToRemove);
     if (index === 0 || index % 2 === 0) {
         cardToRemove.classList.add('films-library__gallery-item--remove_left');
@@ -174,4 +178,7 @@ function removeElement(childElement) {
     setTimeout(() => {
         cardToRemove.remove();
     }, 800);
+    if (cardList.children.length === 1) {
+        renderMarkUp.noAddedYetPage(chapter);
+    }
 }

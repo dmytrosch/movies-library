@@ -1,22 +1,14 @@
-<section class="search-bar">
-  <div class="container-main">
-    <form id="search-form" class="">
-      <button action="submit"><i class="fa fa-search"></i></button>
-      <input class="input" name="query" autocomplete="off" placeholder="Write movie name and click Enter" />
-    </form>
-  </div>
-</section>
-
 <div class="film-controls libray-main__shadow" id="film-controls">
   <button class="film-controls__btn" id="js-btn-watched" data-status="">Watch</button>
   <button class="film-controls__btn" id="js-btn-queue" data-status="">Queue</button>
 </div>
-
-{{#if this}}
-<p>There is no films added to queue list yet. Try to find one.</p>
-{{/if}}
-{{#unless this}}
-<p>You haven't added any film to watched list</p>
-{{/unless}}
-<img class="empty-query" src="https://static.dribbble.com/users/1693462/screenshots/3504905/icon-404.gif"
-  alt="empty-box">
+<div class="error-page container">
+  {{#if this}}
+  <p class="error-page__text">There is no films added to queue list yet. Try to find one.</p>
+  {{/if}}
+  {{#unless this}}
+  <p class="error-page__text">You haven't added any film to watched list</p>
+  {{/unless}}
+  <img class="error-page__image" src="https://static.dribbble.com/users/1693462/screenshots/3504905/icon-404.gif"
+    alt="empty-box">
+</div>

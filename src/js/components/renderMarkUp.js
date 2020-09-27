@@ -104,8 +104,9 @@ export default {
         const isQueueChapter = chapter === 'queue' ? true : false;
         console.log(isQueueChapter);
         const markup = noAddedYetPageTemplate(isQueueChapter);
+        const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('beforeend', markupSearchBar + markup);
         this.hideSpinnerOnLoad();
     },
     clearMainMarkUp() {
