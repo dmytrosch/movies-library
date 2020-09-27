@@ -18,6 +18,7 @@ const refs = {
 
 export default {
     mainPageCascade() {
+        spinner.show()
         const markup = mainPageCascadeTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);

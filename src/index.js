@@ -10,8 +10,6 @@ import { search } from './js/pages/search';
 import spinner from './js/components/spinner';
 import globalVars from './js/components/globalVars';
 
-spinner.show();
-
 window['router'] = new Router({
     root: '/',
     routes: [
@@ -66,7 +64,7 @@ refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
 function onHomePageClickHandler(event) {
-    // event.preventDefault(); //временно сделали перезагрузку до решения проблем со спинером
+    event.preventDefault();
     window['router'].navigate('');
 }
 

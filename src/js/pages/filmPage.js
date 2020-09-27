@@ -6,7 +6,6 @@ import spinner from '../components/spinner';
 import fetchMethods from '../Api/fetchMethods';
 import globalVars from '../components/globalVars';
 import { success } from '@pnotify/core/dist/PNotify.js';
-import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
