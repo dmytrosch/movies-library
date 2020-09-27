@@ -6,7 +6,7 @@ import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import toTopFunction from './js/components/toTopBtn';
-import library from './js/pages/library';
+import { library } from './js/pages/library';
 import { search } from './js/pages/search';
 import globalVars from './js/components/globalVars';
 

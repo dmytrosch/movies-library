@@ -1,6 +1,8 @@
 import localStorageObj from './localStorage';
 import globalVars from './globalVars';
 import renderMarkUp from './renderMarkUp';
+import spinner from './spinner';
+import { removeElementFromMarkup } from '../pages/library';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
@@ -8,7 +10,6 @@ import '@pnotify/core/dist/BrightTheme.css';
 let allCardsLinks;
 let filmId;
 let filmArr;
-let chapter;
 
 const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
 const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
@@ -27,6 +28,8 @@ function onButtonClickHandler(event) {
     event.preventDefault();
     const element = event.target;
     if (element.nodeName === 'BUTTON') {
+let chapter;
+
         filmId = element.dataset.filmid;
         if (element.id === 'addTOwachedJS') {
             toggleToWatched();
@@ -37,7 +40,7 @@ function onButtonClickHandler(event) {
             chapter = 'queue';
         }
         if (event.currentTarget.dataset.page === 'library') {
-            removeElement(element);
+            removeElementFromMarkup(element, chapter);
         }
     }
 }
@@ -163,22 +166,4 @@ function toggleToWatched() {
 function getFilmObject() {
     const film = filmArr.find(film => film.id == filmId);
     return film;
-}
-
-function removeElement(childElement) {
-    const cardToRemove = childElement.closest('li.films-library__gallery-item');
-    const cardList = cardToRemove.parentNode;
-    const containersChildrens = Array.from(cardList.children);
-    const index = containersChildrens.indexOf(cardToRemove);
-    if (index === 0 || index % 2 === 0) {
-        cardToRemove.classList.add('films-library__gallery-item--remove_left');
-    } else {
-        cardToRemove.classList.add('films-library__gallery-item--remove_right');
-    }
-    setTimeout(() => {
-        cardToRemove.remove();
-    }, 800);
-    if (cardList.children.length === 1) {
-        renderMarkUp.noAddedYetPage(chapter);
-    }
 }

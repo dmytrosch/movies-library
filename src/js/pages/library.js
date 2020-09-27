@@ -1,6 +1,7 @@
 import renderMarkUp from '../components/renderMarkUp.js';
 import localStorage from '../components/localStorage';
 import navigateToFilmPage from '../components/navigateToFilmPage';
+import spinner from '../components/spinner';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 import { addSearchListener } from './search';
 
@@ -9,7 +10,7 @@ const refs = {
     btnWatched: null,
 };
 
-export default function library(chapter) {
+export function library(chapter) {
     let filmList;
     switch (chapter) {
         case 'queue':
@@ -60,4 +61,25 @@ function turnChaptersButtons(chapter) {
             refs.btnQueue.dataset.status = 'unselected';
             break;
     }
+}
+export function removeElementFromMarkup(childElement, chapter) {
+    const cardToRemove = childElement.closest('li.films-library__gallery-item');
+    const cardList = cardToRemove.parentNode;
+    const containersChildrens = Array.from(cardList.children);
+    const index = containersChildrens.indexOf(cardToRemove);
+    if (index === 0 || index % 2 === 0) {
+        cardToRemove.classList.add('films-library__gallery-item--remove_left');
+    } else {
+        cardToRemove.classList.add('films-library__gallery-item--remove_right');
+    }
+    setTimeout(() => {
+        spinner.show();
+        cardToRemove.remove();
+        renderMarkUp.hideSpinnerOnLoad();
+        if (cardList.children.length === 0) {
+            renderMarkUp.noAddedYetPage(chapter);
+            addSearchListener();
+            libraryChaptersBtnsListeners();
+        }
+    }, 350);
 }

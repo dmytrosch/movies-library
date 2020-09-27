@@ -102,7 +102,6 @@ export default {
     noAddedYetPage(chapter) {
         spinner.show();
         const isQueueChapter = chapter === 'queue' ? true : false;
-        console.log(isQueueChapter);
         const markup = noAddedYetPageTemplate(isQueueChapter);
         const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
