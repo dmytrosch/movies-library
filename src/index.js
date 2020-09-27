@@ -27,15 +27,22 @@ window['router'] = new Router({
         },
         {
             path: 'library/watched',
-            callback: ()=>{
-                library('watched')
-            }
+            callback: () => {
+                library('watched');
+            },
         },
         {
             path: /search\/(.*)/,
             callback: query => {
                 globalVars.searchQuery = query;
                 search();
+            },
+        },
+        {
+            path: '/404',
+            callback: () => {
+                console.log('nfound');
+                notFoundPage();
             },
         },
         {
@@ -47,7 +54,7 @@ window['router'] = new Router({
     ],
     error: {
         callback: () => {
-            // console.log('404');
+            console.log('404');
             // notFoundPage();
         },
     },
@@ -63,7 +70,7 @@ refs.headerLogo.addEventListener('click', onLogoClickHandler);
 refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
-toTopFunction()
+toTopFunction();
 
 function onHomePageClickHandler(event) {
     event.preventDefault();
@@ -78,4 +85,3 @@ function onLibraryBtnHandler(event) {
     event.preventDefault();
     window['router'].navigate('/library/queue');
 }
-

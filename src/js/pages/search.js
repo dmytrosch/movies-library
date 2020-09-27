@@ -18,12 +18,14 @@ export async function search() {
     pagination.resetPage();
     const fetchResult = await fetch.movieSearch();
     const { results, page, total_pages, total_results } = fetchResult;
+    console.log(fetchResult);
+    debugger
     if (total_results === 0 || results.length === 0) {
         renderMarkUp.pageEmptySearchResponseQuery();
         return;
     }
     if (total_results === 1 || results.length === 1) {
-        navigateToFilmPage.navigateToFilmPage(`film/${fetchResult[0].id}`);
+        navigateToFilmPage.navigateToFilmPage(`film/${results[0].id}`);
         return;
     }
     renderMarkUp.searchSuccessResultPage(results);

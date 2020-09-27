@@ -48,7 +48,6 @@ body {
 
 .root{
     min-height: calc(100vh - 151px);
-    padding-bottom: 30px;
 }
 a {
     display: block;
@@ -63,10 +62,11 @@ img {
 }
 
 .container {
-    width: 320px;
+    min-width: 320px;
     min-height: 100%;
     margin: 0 auto;
-    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .list {
@@ -95,8 +95,9 @@ img {
     margin: 0 auto;
     height: 395px;
 }
-.error-page{
-    position: absolute;
-    bottom: 86px;
-    width: 100%;
+div.error-page{
+
+    // position: absolute;
+    // bottom: 86px;
+    // width: 100%;
 }
