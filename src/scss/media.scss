@@ -36,9 +36,6 @@
         display: inline-block;
     }
 
-    .library__footer-toUP {
-        display: none;
-    }
 
     /* ### */
 
@@ -139,31 +136,6 @@
         height: 425px;
     }
 
-    // .library-details__about {}
-
-    .library-details__addTOwached {
-        display: inline-block;
-        font-size: 14px;
-        line-height: 17px;
-        width: 133px;
-        height: 42px;
-        position: relative;
-        color: rgb(65, 65, 65);
-        border-radius: 18px;
-        transition: all 200ms;
-    }
-
-    .library-details__addTOqueue {
-        position: relative;
-        display: inline-block;
-        width: 134px;
-        height: 42px;
-        font-size: 14px;
-        line-height: 17px;
-        color: rgb(65, 65, 65);
-        border-radius: 18px;
-        transition: all 200ms;
-    }
 
     .library-details__span--mod-1 {
         width: 100px;
@@ -254,11 +226,6 @@
     /* №№№№№№№№№№№№№№ LEBRARY DETAILS */
     .library-details {
         padding: 30px 0px 0px;
-    }
-
-    .library-details__addTOqueue {
-        width: 134px;
-        height: 42px;
     }
 
     .library-details__images {

@@ -1,22 +1,27 @@
-.library-details__btn[data-action='add']{
+.library-details__btn[data-action='add'] {
     background-color: transparent;
 }
 
-.library-details__btn[data-action='del']{
+.library-details__btn[data-action='del'] {
     background-color: #77c1bb;
 }
 
 .library-details__btn {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    padding: 10px;
+    color: rgb(65, 65, 65);
+    border-radius: 18px;
+    transition: all 200ms;
     color: #fff;
     border-radius: 30px;
-    line-height: 25px;
     background-color: transparent;
     transition: all 200ms;
     border: 2px solid #ffffff;
     &[data-action='delete'] {
         background-color: #77c1bb;
         border: 2px solid #77c1bb;
-        
     }
     &[data-action='add']:hover {
         color: #fff;

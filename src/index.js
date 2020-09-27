@@ -5,9 +5,9 @@ import Router from './js/components/router.js';
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
+import toTopFunction from './js/components/toTopBtn';
 import library from './js/pages/library';
 import { search } from './js/pages/search';
-import spinner from './js/components/spinner';
 import globalVars from './js/components/globalVars';
 
 window['router'] = new Router({
@@ -63,6 +63,8 @@ refs.headerLogo.addEventListener('click', onLogoClickHandler);
 refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
 refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
 
+toTopFunction()
+
 function onHomePageClickHandler(event) {
     event.preventDefault();
     window['router'].navigate('');
@@ -76,3 +78,4 @@ function onLibraryBtnHandler(event) {
     event.preventDefault();
     window['router'].navigate('/library/queue');
 }
+
