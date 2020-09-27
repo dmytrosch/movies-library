@@ -1,7 +1,6 @@
 .library-details {
     display: flex;
     justify-content: center;
-    // align-items: center;
     flex-wrap: wrap;
     padding: 30px 0px 0px;
 
@@ -13,9 +12,10 @@
     &__images {
         padding: 22px 0px 24px;
         background: center / cover no-repeat url('../images/img/video.jpg');
-        // background-color: #f7f7f7;
         background-size: 95%;
         background-position: center;
+        object-fit: cover;
+        object-position: center;
         width: 298px;
         height: 325px;
     }
@@ -44,11 +44,14 @@
         line-height: 18px;
         color: #7c7c7c;
     }
+}
 
-    &__addTOwached,
-    &__addTOqueue {
-        display: none;
-    }
+.library-details__about .library-details__btn[data-action='add'] {
+    color: #77c1bb;
+    border-color: #77c1bb;
+}
+.library-details__about .library-details__btn:not(:last-child){
+    margin-right: 10px;
 }
 
 .library-details__span-mod-2::after {
