@@ -18,10 +18,9 @@ export async function search() {
     pagination.resetPage();
     const fetchResult = await fetch.movieSearch();
     const { results, page, total_pages, total_results } = fetchResult;
-    console.log(fetchResult);
-    debugger
     if (total_results === 0 || results.length === 0) {
         renderMarkUp.pageEmptySearchResponseQuery();
+        addSearchListener();
         return;
     }
     if (total_results === 1 || results.length === 1) {

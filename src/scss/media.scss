@@ -5,16 +5,17 @@
     .image-container {
         margin-bottom: 15px;
     }
+    .error-page__text{
+        font-size: 15px;
+    }
 }
 
 @media (min-width: 767px) {
-    .empty-query_img {
-        height: 675px;
+    .error-page__image {
+        height: 350px;
     }
 
-    .search-bar {
-        margin: 0px 0px 60px;
-    }
+   
 
     .library__nav-title {
         display: inline-block;
@@ -151,9 +152,7 @@
 }
 
 @media (min-width: 1024px) {
-    .search-bar {
-        margin: 0px 0px 30px;
-    }
+    
 
     .films-library__gallery-item-wrap {
         padding: 75px 92px 100px;

@@ -46,7 +46,7 @@ body {
     background: #f7f9fb;
 }
 
-.root{
+.root {
     min-height: calc(100vh - 151px);
 }
 a {
@@ -74,30 +74,23 @@ img {
     padding: 0;
     margin: 0 auto;
 }
-.empty-query {
-    font-size: 20px;
+.error-page__text {
+    font-size: 17px;
     text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.empty-query_img {
+.error-page__image {
     display: block;
     margin: 0 auto;
+    height: 300px;
 }
-.page-not-found_img{
+.page-not-found_img {
     display: block;
     margin: 0 auto;
     width: 1000px;
-    
 }
 
-.empty-query_img {
-    display: block;
-    margin: 0 auto;
-    height: 395px;
-}
-div.error-page{
-
-    // position: absolute;
-    // bottom: 86px;
-    // width: 100%;
-}

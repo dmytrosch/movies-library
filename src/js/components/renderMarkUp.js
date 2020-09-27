@@ -18,7 +18,7 @@ const refs = {
 
 export default {
     mainPageCascade() {
-        spinner.show()
+        spinner.show();
         const markup = mainPageCascadeTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
@@ -53,13 +53,13 @@ export default {
         spinner.show();
         const markup = searchResultListTemplate(data);
         const rootSearchResults = document.querySelector('#search-results');
-        const searchBar = document.querySelector('#search-bar');
         const pagination = document.querySelector('#pagination');
         if (rootSearchResults) {
             this.clearSearchResults(rootSearchResults);
         } else {
             this.clearMainMarkUp();
         }
+        const searchBar = document.querySelector('#search-bar');
         if (searchBar) {
             searchBar.insertAdjacentHTML('afterend', markup);
         } else {
@@ -72,6 +72,7 @@ export default {
         if (!pagination) {
             this.paginationMarkup(globalVars.pageNumber);
         }
+        window.scrollBy(0, -window.pageYOffset + 65);
         this.hideSpinnerOnLoad();
     },
     libraryPage(data) {
@@ -84,8 +85,9 @@ export default {
     pageEmptySearchResponseQuery() {
         spinner.show();
         const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
+        const searchMarkup = searchInputTemplate();
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('afterbegin', searchMarkup + markup);
         this.hideSpinnerOnLoad();
     },
     page404() {
