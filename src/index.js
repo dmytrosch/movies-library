@@ -39,7 +39,7 @@ window['router'] = new Router({
             },
         },
         {
-            path: '/404',
+            path: '404',
             callback: () => {
                 console.log('nfound');
                 notFoundPage();
