@@ -17,7 +17,7 @@
                             queue</button>
                     </div>
                 </a>
-                <a class="films-library__link-box" href="">
+                <a class="films-library__link-box" href="" data-path="film/{{id}}">
                     <img class="films-library__gallery-images" {{#if poster_path}}
                         src="https://image.tmdb.org/t/p/w500{{poster_path}}" {{/if}} data-path="film/{{id}}" alt="">
                     <p class="films-library__gallery-rating">{{vote_average}}</p>

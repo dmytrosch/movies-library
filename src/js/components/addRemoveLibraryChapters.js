@@ -15,6 +15,9 @@ const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
 const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
 
 export default function addBtnsListeners(filmsOnPage) {
+    if (window.innerWidth < 1024) {
+        return;
+    }
     filmArr = filmsOnPage;
     allCardsLinks = document.querySelectorAll(
         '.films-library__gallery-item-wrap',
@@ -28,7 +31,7 @@ function onButtonClickHandler(event) {
     event.preventDefault();
     const element = event.target;
     if (element.nodeName === 'BUTTON') {
-let chapter;
+        let chapter;
 
         filmId = element.dataset.filmid;
         if (element.id === 'addTOwachedJS') {
