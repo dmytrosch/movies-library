@@ -145,7 +145,7 @@ async function handleFilmPosterClick() {
                 {
                     closable: true,
                     onShow() {
-                        renderMarkUp.hideSpinnerOnLoad();
+                        spinner.hide();
                     },
                 },
             )

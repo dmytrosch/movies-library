@@ -75,7 +75,7 @@ export function removeElementFromMarkup(childElement, chapter) {
     setTimeout(() => {
         spinner.show();
         cardToRemove.remove();
-        renderMarkUp.hideSpinnerOnLoad();
+        spinner.hide();
         if (cardList.children.length === 0) {
             renderMarkUp.noAddedYetPage(chapter);
             addSearchListener();

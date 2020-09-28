@@ -39,7 +39,7 @@ export default {
             '#js-film-page-content-container',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
 
     filmPage(data) {
@@ -47,7 +47,7 @@ export default {
         const markup = filmPageTemplate(data);
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', markup);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     searchSuccessResultPage(data) {
         spinner.show();
@@ -73,14 +73,14 @@ export default {
             this.paginationMarkup(globalVars.pageNumber);
         }
         window.scrollBy(0, -window.pageYOffset + 65);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     libraryPage(data) {
         spinner.show();
         const markup = libraryFilmListTemplate(data);
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     pageEmptySearchResponseQuery() {
         spinner.show();
@@ -88,7 +88,7 @@ export default {
         const searchMarkup = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', searchMarkup + markup);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     page404() {
         spinner.show();
@@ -97,7 +97,7 @@ export default {
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);
         refs.rootMain.insertAdjacentHTML('beforeend', markup404);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     noAddedYetPage(chapter) {
         spinner.show();
@@ -106,7 +106,7 @@ export default {
         const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('beforeend', markupSearchBar + markup);
-        this.hideSpinnerOnLoad();
+        spinner.hide();
     },
     clearMainMarkUp() {
         refs.rootMain.innerHTML = '';
@@ -117,10 +117,5 @@ export default {
     paginationMarkup(data) {
         const markup = paginationButtonsTemplate(data);
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
-    },
-    hideSpinnerOnLoad() {
-        setTimeout(() => {
-            spinner.hide();
-        }, 1000);
     },
 };
