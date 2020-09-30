@@ -20,36 +20,19 @@
     </head>
 
     <body>
-        <header class="header">
-            <nav class="library__nav container">
-                <a
-                    class="library__nav-title--link"
-                    href=""
-                    class="library__nav-link"
-                >
-                    <div class="library__nav-icon">
-                        <i
-                            class="animate__animated animate__headShake fas fa-film"
-                        ></i>
-                        <p class="library__nav-title">Filmoteka</p>
-                    </div>
+        <header class="wrapper">
+            <nav class="header-nav container">
+                <a href="" class="header-nav__logo header-nav__logo--hover" id="js-logo">
+                    <i class="header-nav__logo-icon fas fa-film"></i>
+                    <p class="header-nav__logo-text">Filmoteka</p>
                 </a>
 
-                <ul class="library__nav-list">
-                    <div class="library__nav-item">
-                        <a
-                            href=""
-                            class="library__nav-link animate__animated animate__headShake"
-                            id="headerNavHome"
-                            >HOME</a
-                        >
-                    </div>
-                    <li class="library__nav-item" id="headerNavMyLibrary">
-                        <a
-                            href=""
-                            class="library__nav-link animate__animated animate__headShake"
-                            >MY LIBRARY</a
-                        >
+                <ul class="header-nav__chapters-list">
+                    <li class="header-nav__chapter">
+                        <a href="" class="header-nav__chapter-link header-nav__chapter-link--hover" id="js-header-link-home">HOME</a>
+                    </li>
+                    <li class="header-nav__chapter">
+                        <a href="" class="header-nav__chapter-link header-nav__chapter-link--hover" id="js-header-link-library">LIBRARY</a>
                     </li>
                 </ul>
             </nav>

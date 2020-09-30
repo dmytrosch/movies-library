@@ -58,9 +58,9 @@ window['router'] = new Router({
 });
 
 const refs = {
-    headerLogo: document.querySelector('.library__nav-icon'),
-    headerLinkHome: document.querySelector('#headerNavHome'),
-    headerLinkMyLibrary: document.querySelector('#headerNavMyLibrary'),
+    headerLogo: document.querySelector('#js-logo'),
+    headerLinkHome: document.querySelector('#js-header-link-home'),
+    headerLinkMyLibrary: document.querySelector('#js-header-link-library'),
 };
 
 refs.headerLogo.addEventListener('click', onLogoClickHandler);

@@ -11,6 +11,15 @@
 html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 /* Sections
@@ -112,3 +121,20 @@ samp {
 /**
    * Add the correct font size in all browsers.
    */
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+ul{
+   list-style: none;
+}
+button{
+    border: none;
+  }

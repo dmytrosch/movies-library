@@ -1,0 +1,21 @@
+.wrapper {
+    min-width: 100%;
+    background-color: $main-color;
+}
+
+.container {
+    max-width: 320px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 auto;
+    @media #{$min768} {
+        max-width: 768px;
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+    @media #{$min1024} {
+        max-width: 1024px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
