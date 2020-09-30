@@ -22,9 +22,14 @@
     }
     &__search-bar {
         background-color: $search-bar-color;
-        box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.23);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23);
+        margin-bottom: 14px;
+        @media #{$min768}{
+            margin-bottom: 32px;
+        }
     }
     &__main-content {
         background-color: $main-content-color;
+        
     }
 }

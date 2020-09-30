@@ -20,10 +20,10 @@ export default function addBtnsListeners(filmsOnPage) {
     }
     filmArr = filmsOnPage;
     allCardsLinks = document.querySelectorAll(
-        '.films-library__gallery-item-wrap',
+        '.films-list__item-overlay',
     );
     allCardsLinks = Array.from(allCardsLinks);
-    const containerRef = document.querySelector('.films-library__gallery');
+    const containerRef = document.querySelector('#js-film-list');
     containerRef.addEventListener('click', onButtonClickHandler);
     monitorButtonStatusText();
 }

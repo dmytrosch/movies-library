@@ -11,10 +11,10 @@ function trackScroll() {
     const coords = document.documentElement.clientHeight;
 
     if (scrolled > coords) {
-        btnToUpRef.classList.add('library__footer-toUP--show');
+        btnToUpRef.classList.add('footer__btn-up--show');
     }
     if (scrolled < coords) {
-        btnToUpRef.classList.remove('library__footer-toUP--show');
+        btnToUpRef.classList.remove('footer__btn-up--show');
     }
 }
 function backToTop() {
