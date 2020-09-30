@@ -1,0 +1,29 @@
+.search-bar {
+    height: 66px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__form {
+        border-bottom: 2px solid #9895a2;
+        width: 256px;
+        padding-bottom: 4px;
+        @media #{$min768} {
+            width: 286px;
+        }
+    }
+
+    &__input {
+        min-width: 90%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+
+    &__button {
+        border: none;
+        background: none;
+        outline: 0;
+    }
+}

@@ -20,8 +20,9 @@ export default {
     mainPageCascade() {
         spinner.show();
         const markup = mainPageCascadeTemplate();
+        const searchBar = searchInputTemplate();
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('beforeend', searchBar + markup);
     },
     popularMovies(data) {
         const firstPartOfList = data.slice(0, 4);
