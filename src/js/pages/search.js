@@ -53,9 +53,9 @@ function addPaginationBtnsListeners() {
 }
 
 function addPaginationBtns() {
-    refs.prevBtn = document.querySelector('button[data-action="decrement"]');
-    refs.nextBtn = document.querySelector('button[data-action="increment"]');
-    refs.span = document.querySelector('.page-number');
+    refs.prevBtn = document.querySelector('.film-list__pagination-element--btn[data-action="decrement"]');
+    refs.nextBtn = document.querySelector('.film-list__pagination-element--btn[data-action="increment"]');
+    refs.span = document.querySelector('#js-pagination-count');
 }
 
 function searchFormHandler(event) {

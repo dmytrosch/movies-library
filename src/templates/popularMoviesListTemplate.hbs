@@ -1,9 +1,9 @@
-<ul class="film-list" id="js-film-list">
+<ul class="film-list film-list--main-page container" id="js-film-list">
   {{#each this}}
   <li class="film-list__item film-list__item--hover">
     <a class="film-list__item-overlay" href="" data-path="film/{{id}}">
-        <button class="film-list__item-btn" id="addTOwachedJS" data-action="" data-filmid="{{id}}">Add to watched</button>
-        <button class="film-list__item-btn" id="addTOqueueJS" data-action="" data-filmid="{{id}}">Add to queue</button>
+        <button class="film-list__item-btn film-list__item-btn--hover" id="addTOwachedJS" data-action="" data-filmid="{{id}}">Add to watched</button>
+        <button class="film-list__item-btn film-list__item-btn--hover" id="addTOqueueJS" data-action="" data-filmid="{{id}}">Add to queue</button>
     </a>
     <a class="film-list__item-box" href="" data-path="film/{{id}}">
       <img class="film-list__item-img" 

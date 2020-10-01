@@ -53,7 +53,7 @@ export default {
     searchSuccessResultPage(data) {
         spinner.show();
         const markup = searchResultListTemplate(data);
-        const rootSearchResults = document.querySelector('#search-results');
+        const rootSearchResults = document.querySelector('#js-search-result');
         const pagination = document.querySelector('#pagination');
         if (rootSearchResults) {
             this.clearSearchResults(rootSearchResults);

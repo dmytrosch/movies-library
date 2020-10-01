@@ -1,6 +1,9 @@
 .film-list {
     display: flex;
     flex-direction: column;
+    &--main-page {
+        padding-bottom: 14px;
+    }
 }
 .film-list__item {
     width: 298px;
@@ -85,16 +88,83 @@
     }
 }
 
+.film-list__item-btn {
+    font-size: 14px;
+    border-radius: 18px;
+    transition: $trans;
+    border: 2px solid $main-content-color;
+    color: $main-content-color;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    &[data-action='delete'] {
+        background-color: $main-color;
+        border: 2px solid $main-color;
+    }
+    &--hover {
+        transition: $trans;
+        &:hover {
+            background-color: $main-color;
+            border: 2px solid $main-color;
+        }
+    }
+    &:first-child {
+        margin-right: 7px;
+    }
+}
+.film-list__pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    &-element {
+        border: 2px solid #909090;
+        border-radius: 10px;
+        text-shadow: 0px 1px 1px #282a2c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 38px;
+        line-height: 1;
+        color: #556270;
+        font-weight: 500;
+        font-size: 17px;
+        background-color: $search-bar-color;
+    }
+    &-element--btn {
+        transition: $trans;
+        width: 74px;
+        outline: none;
+        cursor: pointer;
+        &:disabled {
+            background: rgba(67, 67, 67, 0.25);
+            color: rgba(120, 151, 151, 0.25);
+            cursor: default;
+        }
+        &:enabled:hover {
+            color: $text-hover-color;
+            border: 2px solid $text-hover-color;
+        }
+    }
+    &-element--text {
+        width: 40px;
+    }
+}
+
 @media #{$min768} {
     .film-list {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+        &--main-page {
+            padding-bottom: 24px;
+        }
         &__item {
             width: 346px;
             height: 180px;
             margin-bottom: 17px;
-            &:not(:nth-child(-n + 2)) {
+            &:nth-last-child(-n + 2) {
                 margin-bottom: 0;
             }
             &-name {
@@ -109,11 +179,19 @@
                 line-height: 19px;
             }
         }
+        &__pagination {
+            padding-bottom: 24px;
+            padding-top: 24px;
+            width: 260px;
+        }
     }
 }
 
 @media #{$min1024} {
     .film-list {
+        &--main-page {
+            padding-bottom: 30px;
+        }
         &__item {
             width: 467px;
             height: 244px;
@@ -129,6 +207,11 @@
                 font-size: 20px;
                 line-height: 26px;
             }
+        }
+        &__pagination {
+            padding-bottom: 30px;
+            padding-top: 30px;
+            width: 275px;
         }
     }
     .film-list__item {
