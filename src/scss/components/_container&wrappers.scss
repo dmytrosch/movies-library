@@ -17,19 +17,25 @@
 
 .wrapper {
     min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     &__header-footer {
         background-color: $main-color;
+        flex: 0 0 auto;
+    }
+    &__root {
+        flex: 1 0 auto;
     }
     &__search-bar {
         background-color: $search-bar-color;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23);
         margin-bottom: 14px;
-        @media #{$min768}{
+        @media #{$min768} {
             margin-bottom: 32px;
         }
     }
     &__main-content {
         background-color: $main-content-color;
-        
     }
 }
