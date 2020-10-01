@@ -1,4 +1,3 @@
-import fetchMethods from '../Api/fetchMethods';
 import libraryFilmListTemplate from '../../templates/libraryFilmListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
 import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs';

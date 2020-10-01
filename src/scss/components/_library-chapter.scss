@@ -1,0 +1,29 @@
+.library-chapter {
+    &__film-card {
+        transition: 0.5s all ease-in-out;
+        &--remove_left {
+            transform: translate(-1000px, 0);
+        }
+        &--remove_right {
+            transform: translate(1000px, 0);
+        }
+    }
+    &__control-btn {
+        width: 140px;
+        height: 40px;
+        color: $text-hover-color;
+        font-size: 16px;
+        border-bottom: 2px solid $text-main-color;
+        cursor: pointer;
+        background-color: transparent;
+        transition-duration: 0.3s;
+        transition-property: color, background-color;
+        transition-timing-function: ease-in;
+    }
+    &__control-btn:hover,
+    &__control-btn[data-status='selected'] {
+        color: $main-content-color;
+        background-color: $main-color;
+        border-bottom: 2px solid transparent;
+    }
+}
