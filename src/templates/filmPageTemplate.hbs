@@ -1,58 +1,59 @@
-<section class="container">
-  <div class="library-details">
-    <a href="#" class="library-details__link">
-      <div class="image-container">
-        <img class="library-details__images" {{#if poster_path}} src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-          {{/if}} alt="">
-        <div class="library-details__overlay">
-          <div class="overlay-inner-conteiner">
+<article class="wrapper__main-content">
+  <section class="film-page container">
+    <div href="#" class="film-page__poster" id="js-poster-link">
+      <a class="film-page__poster-overlay">
+        <p class="film-page__poster-overlay-text">
+          <span class="material-icons play-icon film-page__poster-overlay-text-icon">
+            play_circle_outline
+          </span>
+          <span>Watch the trailer</span></p>
+      </a>
+      <img class="film-page__poster-img" {{#if poster_path}} src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+        {{/if}} alt="">
+    </div>
 
-            <span class="material-icons play-icon">
-              play_circle_outline
-            </span>
+    <section class="film-page__description">
+      <h2 class="film-page__description-title">{{original_title}}</h2>
 
-            <span>Watch the trailer</span>
-          </div>
+
+      <P class="film-page__description-row">
+        <span class="film-page__description-row-key">vote / votes:</span>
+        <span>{{vote_average}} / {{vote_count}}</span>
+      </P>
+
+
+      <P class="film-page__description-row">
+        <span class="film-page__description-row-key">popularity: </span>
+        <span>{{popularity}}</span>
+      </P>
+
+
+      <P class="film-page__description-row">
+        <span class="film-page__description-row-key">original title:</span>
+        <span>{{title}}</span>
+      </P>
+
+
+      <div class="film-page__description-row film-page__description-row--flex">
+        <span class="film-page__description-row-key film-page__description-row-key--genres">genre:</span>
+        <div class="film-page__description-row-value film-page__description-row-value--genres">
+          {{#each genres}}
+          <span>{{this.name}}</span>
+          {{/each}}
         </div>
       </div>
-    </a>
-    <div class="library-details__about">
-      <h2 class="library-details__title">{{original_title}}</h2>
 
+      <h3 class="film-page__description-title">About:</h3>
+      <p class="film-page__description-overview">{{overview}}</p>
+      <div class="film-page__controls">
+        <button class="film-list__item-btn film-list__item-btn--hover film-page__btn" id="addTOwachedJS"
+          data-action="">Add to
+          watched</button>
+        <button class="film-list__item-btn film-list__item-btn--hover film-page__btn" id="addTOqueueJS"
+          data-action="">Add to
+          queue</button>
+      </div>
+    </section>
 
-      <P class="library-details__subtitle">
-        <span class="library-details__span--mod-1">vote / votes:</span>
-        <span class="library-details__span-mod-2">{{vote_average}} {{vote_count}}</span>
-      </P>
-
-
-      <P class="library-details__subtitle">
-        <span class="library-details__span--mod-1">popularity: </span>
-        <span class="library-details__span-mod-2">{{popularity}}</span>
-      </P>
-
-
-      <P class="library-details__subtitle">
-        <span class="library-details__span--mod-1">original title:</span>
-        <span class="library-details__span-mod-2">{{title}}</span>
-      </P>
-
-
-      <P class="library-details__subtitle library-details__subtitle--last-child">
-        <span class="library-details__span--mod-1">genre:</span>
-        {{#each genres}}
-        <span class="library-details__span-mod-2">{{this.name}}</span>
-        {{/each}}
-      </P>
-
-
-
-      <h2 class="library-details__title library-details__title--last-child ">About:</h2>
-      <p class="library-details__discription">{{overview}}</p>
-      <button class="library-details__addTOwached library-details__btn" id="addTOwachedJS" data-action="">Add to
-        watched</button>
-      <button class="library-details__addTOqueue library-details__btn" id="addTOqueueJS" data-action="">Add to
-        queue</button>
-    </div>
-  </div>
-</section>
+  </section>
+</article>

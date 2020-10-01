@@ -28,7 +28,7 @@ export default async function filmPage(id) {
         return;
     } else {
         renderMarkUp.filmPage(selectedFilm);
-        const link = document.querySelector('.library-details__link');
+        const link = document.querySelector('#js-poster-link');
         link.addEventListener('click', handleFilmPosterClick);
         refs.watchedBtn = document.getElementById('addTOwachedJS');
         refs.queueBtn = document.getElementById('addTOqueueJS');
