@@ -16,8 +16,8 @@
                         data-filmid="{{id}}">Add to queue</button>
                 </a>
                 <a class="film-list__item-box" href="" data-path="film/{{id}}">
-                    <img class="film-list__item-img" {{#if poster_path}}
-                        src="https://image.tmdb.org/t/p/w500{{poster_path}}" {{/if}} alt="">
+                    <img class="film-list__item-img" {{#if backdrop_path}}
+                        src="https://image.tmdb.org/t/p/w500{{backdrop_path}}" {{/if}} alt="">
                     <p class="film-list__item-rating">{{vote_average}}</p>
                     <p class="film-list__item-name">{{original_title}}</p>
                 </a>
