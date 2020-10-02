@@ -1,14 +1,20 @@
-<div class="film-controls libray-main__shadow" id="film-controls">
-  <button class="film-controls__btn" id="js-btn-watched" data-status="">Watch</button>
-  <button class="film-controls__btn" id="js-btn-queue" data-status="">Queue</button>
-</div>
-<div class="error-page container">
-  {{#if this}}
-  <p class="error-page__text">There is no films added to queue list yet. Try to find one.</p>
-  {{/if}}
-  {{#unless this}}
-  <p class="error-page__text">You haven't added any film to watched list</p>
-  {{/unless}}
-  <img class="error-page__image" src="https://static.dribbble.com/users/1693462/screenshots/3504905/icon-404.gif"
-    alt="empty-box">
-</div>
+<section class="library-chapter">
+  <div class="wrapper__search-bar" id="film-controls">
+    <div class="search-bar library-chapter__control container">
+      <button class="library-chapter__control-btn" id="js-btn-watched" data-status="">Watch</button>
+      <button class="library-chapter__control-btn" id="js-btn-queue" data-status="">Queue</button>
+    </div>
+  </div>
+  <div class="wrapper__main-content" data-page="library">
+    <div class="error-page container">
+      {{#if this}}
+      <p class="error-page__text">There is no films added to queue list yet. Try to find one.</p>
+      {{/if}}
+      {{#unless this}}
+      <p class="error-page__text">You haven't added any film to watched list</p>
+      {{/unless}}
+      <img class="error-page__image" src="https://static.dribbble.com/users/1693462/screenshots/3504905/icon-404.gif"
+        alt="empty-box">
+    </div>
+  </div>
+</section>
