@@ -72,7 +72,6 @@ export function removeElementFromMarkup(childElement, chapter) {
     } else {
         cardToRemove.classList.add('library-chapter__film-card--remove_right');
     }
-    console.log(cardToRemove);
 
     setTimeout(() => {
         spinner.show();

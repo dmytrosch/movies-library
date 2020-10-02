@@ -1,7 +1,5 @@
 import localStorageObj from './localStorage';
 import globalVars from './globalVars';
-import renderMarkUp from './renderMarkUp';
-import spinner from './spinner';
 import { removeElementFromMarkup } from '../pages/library';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';

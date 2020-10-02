@@ -37,6 +37,10 @@
     border-bottom: 2px solid transparent;
     padding-top: 4px;
     padding-bottom: 13px;
+    &[data-status='selected'] {
+        border-bottom: 2px solid $text-hover-color;
+        color: $text-hover-color;
+    }
 }
 
 @media #{$min768} {

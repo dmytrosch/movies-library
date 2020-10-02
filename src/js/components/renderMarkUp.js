@@ -36,7 +36,7 @@ export default {
             popularMoviesListTemplate(fourPartOfList) +
             popularMoviesListTemplate(fivePartOfList);
         const filmPageContainer = document.querySelector(
-            '#js-film-page-content-container',
+            '#js-film-list',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
         spinner.hide();
