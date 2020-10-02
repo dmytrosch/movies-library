@@ -1,7 +1,5 @@
 import localStorageObj from './localStorage';
 import globalVars from './globalVars';
-import renderMarkUp from './renderMarkUp';
-import spinner from './spinner';
 import { removeElementFromMarkup } from '../pages/library';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
@@ -20,10 +18,10 @@ export default function addBtnsListeners(filmsOnPage) {
     }
     filmArr = filmsOnPage;
     allCardsLinks = document.querySelectorAll(
-        '.films-library__gallery-item-wrap',
+        '.film-list__item-overlay'
     );
     allCardsLinks = Array.from(allCardsLinks);
-    const containerRef = document.querySelector('.films-library__gallery');
+    const containerRef = document.querySelector('.wrapper__main-content');
     containerRef.addEventListener('click', onButtonClickHandler);
     monitorButtonStatusText();
 }

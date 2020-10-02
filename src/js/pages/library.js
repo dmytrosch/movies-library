@@ -63,15 +63,16 @@ function turnChaptersButtons(chapter) {
     }
 }
 export function removeElementFromMarkup(childElement, chapter) {
-    const cardToRemove = childElement.closest('li.films-library__gallery-item');
+    const cardToRemove = childElement.closest('.library-chapter__film-card');
     const cardList = cardToRemove.parentNode;
     const containersChildrens = Array.from(cardList.children);
     const index = containersChildrens.indexOf(cardToRemove);
     if (index === 0 || index % 2 === 0) {
-        cardToRemove.classList.add('films-library__gallery-item--remove_left');
+        cardToRemove.classList.add('library-chapter__film-card--remove_left');
     } else {
-        cardToRemove.classList.add('films-library__gallery-item--remove_right');
+        cardToRemove.classList.add('library-chapter__film-card--remove_right');
     }
+
     setTimeout(() => {
         spinner.show();
         cardToRemove.remove();

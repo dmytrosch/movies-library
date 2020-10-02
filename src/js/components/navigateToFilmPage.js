@@ -1,6 +1,6 @@
 export default {
     addFilmCardClickListeners() {
-        const filmListRef = document.querySelector('.films-library__gallery');
+        const filmListRef = document.querySelector('#js-film-list');
         filmListRef.addEventListener('click', this.onPageClickHandler);
     },
     onPageClickHandler(event) {

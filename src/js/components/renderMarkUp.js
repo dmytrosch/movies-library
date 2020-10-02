@@ -1,4 +1,3 @@
-import fetchMethods from '../Api/fetchMethods';
 import libraryFilmListTemplate from '../../templates/libraryFilmListTemplate.hbs';
 import filmPageTemplate from '../../templates/filmPageTemplate.hbs';
 import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs';
@@ -20,8 +19,9 @@ export default {
     mainPageCascade() {
         spinner.show();
         const markup = mainPageCascadeTemplate();
+        const searchBar = searchInputTemplate();
         this.clearMainMarkUp();
-        refs.rootMain.insertAdjacentHTML('beforeend', markup);
+        refs.rootMain.insertAdjacentHTML('beforeend', searchBar + markup);
     },
     popularMovies(data) {
         const firstPartOfList = data.slice(0, 4);
@@ -36,7 +36,7 @@ export default {
             popularMoviesListTemplate(fourPartOfList) +
             popularMoviesListTemplate(fivePartOfList);
         const filmPageContainer = document.querySelector(
-            '#js-film-page-content-container',
+            '#js-film-list',
         );
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
         spinner.hide();
@@ -52,7 +52,7 @@ export default {
     searchSuccessResultPage(data) {
         spinner.show();
         const markup = searchResultListTemplate(data);
-        const rootSearchResults = document.querySelector('#search-results');
+        const rootSearchResults = document.querySelector('#js-search-result');
         const pagination = document.querySelector('#pagination');
         if (rootSearchResults) {
             this.clearSearchResults(rootSearchResults);

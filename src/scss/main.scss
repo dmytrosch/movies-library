@@ -1,11 +1,11 @@
-@import 'normalize';
-@import 'base';
-@import 'header';
-@import 'footer';
-@import 'library-details';
-@import 'films-library';
-@import 'pagination-controlers';
-@import 'search-bar';
-@import 'media';
-@import 'spinner';
-@import './addRemoveBtns.scss';
+@import './base/variables';
+@import './base/normalize';
+@import './base/typography';
+
+@import './components/container&wrappers';
+
+@import './components/spinner';
+
+@import './layout/header';
+@import './layout/main';
+@import './layout/footer';
