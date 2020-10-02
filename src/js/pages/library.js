@@ -24,6 +24,8 @@ export function library(chapter) {
     if (filmList.length === 0) {
         renderMarkUp.noAddedYetPage(chapter);
         addSearchListener();
+        const searchBar = document.querySelector('#search-bar');
+        searchBar.classList.add('wrapper__search-bar--margin0');
     } else {
         renderMarkUp.libraryPage(filmList);
         navigateToFilmPage.addFilmCardClickListeners();
@@ -80,6 +82,8 @@ export function removeElementFromMarkup(childElement, chapter) {
         if (cardList.children.length === 0) {
             renderMarkUp.noAddedYetPage(chapter);
             addSearchListener();
+            const searchBar = document.querySelector('#search-bar');
+            searchBar.classList.add('wrapper__search-bar--margin0');
             libraryChaptersBtnsListeners();
         }
     }, 350);

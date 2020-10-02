@@ -35,6 +35,9 @@
             margin-bottom: 32px;
         }
     }
+    &__search-bar--margin0 {
+        margin: 0 !important;
+    }
     &__main-content {
         background-color: $main-content-color;
     }
