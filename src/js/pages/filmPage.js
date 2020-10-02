@@ -6,12 +6,14 @@ import spinner from '../components/spinner';
 import fetchMethods from '../Api/fetchMethods';
 import globalVars from '../components/globalVars';
 import { success } from '@pnotify/core/dist/PNotify.js';
+import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
 const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
 let selectedFilm;
+let instance;
 const refs = {
     watchedBtn: null,
     queueBtn: null,
@@ -139,19 +141,32 @@ async function handleFilmPosterClick() {
         videoKey = await fetchMethods
             .youtubeTrailerKey(selectedFilm.id)
             .then(d => d[0].key);
-        basicLightBox
-            .create(
-                `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-                {
-                    closable: true,
-                    onShow() {
-                        spinner.hide();
-                    },
-                },
-            )
-            .show();
+        createTrailerLightBox(videoKey);
+        instance.show();
     } catch {
         spinner.hide();
         error({ text: 'Cannot find trailer of this movie.', delay: '2000' });
+    }
+}
+
+function createTrailerLightBox(videoKey) {
+    instance = basicLightBox.create(
+        `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+        {
+            closable: true,
+            onShow() {
+                spinner.hide();
+                window.addEventListener('keydown', onEscPressHandler);
+            },
+            onClose() {
+                window.removeEventListener('keydown', onEscPressHandler);
+            },
+        },
+    );
+}
+
+function onEscPressHandler(event) {
+    if (event.code === 'Escape') {
+        instance.close();
     }
 }
