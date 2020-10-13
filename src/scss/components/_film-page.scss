@@ -55,6 +55,9 @@
         line-height: 20px;
         margin-bottom: 18px;
     }
+    &-statements{
+        margin-bottom: 30px;
+    }
 }
 
 .film-page__description-row {
@@ -83,7 +86,7 @@
     }
     &--flex {
         display: flex;
-        margin-bottom: 30px;
+        
     }
 }
 
@@ -107,17 +110,16 @@
     .film-page__poster {
         min-width: 358px;
         height: 526px;
-
         margin-bottom: 0;
         margin-right: 20px;
     }
     .film-page__description {
         margin-top: 12px;
-        &-row--flex{
-            margin-bottom: 42px;
-        }
         &-overview{
             margin-bottom: 30px;
+        }
+        &-statements{
+            margin-bottom: 42px;
         }
     }
     .film-page__poster-overlay-text {        

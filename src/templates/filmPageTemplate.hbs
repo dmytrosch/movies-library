@@ -13,33 +13,37 @@
     </div>
 
     <section class="film-page__description">
-      <h2 class="film-page__description-title">{{original_title}}</h2>
+      <div class="film-page__description-statements">
+        <h2 class="film-page__description-title">{{original_title}}</h2>
 
 
-      <P class="film-page__description-row">
-        <span class="film-page__description-row-key">vote / votes:</span>
-        <span>{{vote_average}} / {{vote_count}}</span>
-      </P>
+        <P class="film-page__description-row">
+          <span class="film-page__description-row-key">vote / votes:</span>
+          <span>{{vote_average}} / {{vote_count}}</span>
+        </P>
 
 
-      <P class="film-page__description-row">
-        <span class="film-page__description-row-key">popularity: </span>
-        <span>{{popularity}}</span>
-      </P>
+        <P class="film-page__description-row">
+          <span class="film-page__description-row-key">popularity: </span>
+          <span>{{popularity}}</span>
+        </P>
 
 
-      <P class="film-page__description-row">
-        <span class="film-page__description-row-key">original title:</span>
-        <span>{{title}}</span>
-      </P>
+        <div class="film-page__description-row film-page__description-row--flex">
+          <span class="film-page__description-row-key film-page__description-row-key--genres">original title:</span>
+          <div class="film-page__description-row-value film-page__description-row-value--genres">
+            <span>{{title}}</span>
+          </div>
+        </div>
 
 
-      <div class="film-page__description-row film-page__description-row--flex">
-        <span class="film-page__description-row-key film-page__description-row-key--genres">genre:</span>
-        <div class="film-page__description-row-value film-page__description-row-value--genres">
-          {{#each genres}}
-          <span>{{this.name}}</span>
-          {{/each}}
+        <div class="film-page__description-row film-page__description-row--flex">
+          <span class="film-page__description-row-key film-page__description-row-key--genres">genre:</span>
+          <div class="film-page__description-row-value film-page__description-row-value--genres">
+            {{#each genres}}
+            <span>{{this.name}}</span>
+            {{/each}}
+          </div>
         </div>
       </div>
 
