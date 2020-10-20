@@ -8,6 +8,12 @@ import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
 export default async function mainPage() {
     renderMarkUp.mainPageCascade();
     addSearchListener();
+
+    /*
+      Очень не понятная структура, и логика этого блока кода
+      Не вижу смысла в блоке try ... catch
+      Можно просто получить popularMoviesResult, а потом сделать проверку на то, есль ли там данные или нет
+     */
     let popularMoviesResult;
     try {
         popularMoviesResult = await fetchMethods.popularSearch();
@@ -18,6 +24,9 @@ export default async function mainPage() {
         throw error;
     }
 
+    /*
+      Этот кусок кода нужно вынести в отдельную функцию, а потом ее вызвать здесь же
+     */
     const siema = new Siema({
         selector: '.siema',
         duration: 1000,

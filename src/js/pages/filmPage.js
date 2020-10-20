@@ -27,6 +27,7 @@ export default async function filmPage(id) {
     }
     if (selectedFilm.status_code === 7) {
         renderMarkUp.pageError();
+        // В этом return нет никакого смысла
         return;
     } else {
         renderMarkUp.filmPage(selectedFilm);
@@ -134,6 +135,13 @@ function toggleToWatched() {
     monitorButtonStatusText();
 }
 
+/*
+  Функции toggleToQueue и toggleToWatched почти одинаковы.
+  Может стоит создать одну функцию, которая будет получать разные параметры
+  Чтобы не дублировать код
+ */
+
+
 async function handleFilmPosterClick() {
     spinner.show();
     let videoKey;
@@ -150,6 +158,7 @@ async function handleFilmPosterClick() {
 }
 
 function createTrailerLightBox(videoKey) {
+  // Разметку я бы вынес в отдельную переменную, чтобы функция была более простой в чтении
     instance = basicLightBox.create(
         `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
         {

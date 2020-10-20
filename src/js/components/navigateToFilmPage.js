@@ -9,8 +9,13 @@ export default {
         if (url) {
             navigateToFilmPage(url);
         } else {
+            // Зачем этот return? В нем нет никакого смысла.
+            // Кострукцию else можно вообще удалить
             return;
         }
+
+        // Как вариант предлагаю сделать так
+        // url && navigateToFilmPage(url)
     },
 };
 

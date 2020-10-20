@@ -63,6 +63,9 @@ function monitorButtonStatusText() {
         const cardContainerRef = getCurrentParentElement(filmId);
         const watchedBtn = cardContainerRef.querySelector('#addTOwachedJS');
         const queueBtn = cardContainerRef.querySelector('#addTOqueueJS');
+
+        // Вот такой же код я видел в ./src/pages/filmPage.js
+        // Может стоит вынести это в отдельую функцию, и передавать ей нужные елементы как параметры при вызове
         if (isWatched) {
             watchedBtn.innerHTML = 'Delete from watched';
             watchedBtn.dataset.action = 'delete';
@@ -88,6 +91,9 @@ function getCurrentParentElement(id) {
     const element = allCardsLinks.find(
         card => card.dataset.path === `film/${id}`,
     );
+    // В этом if Нет никакого смысла вообще
+    // Если element есть - мы его возвращаем, если нет - возвращаем undefined
+    // Поэтому просто return element; делает то же самое
     if (element) {
         return element;
     }
@@ -164,7 +170,11 @@ function toggleToWatched() {
     monitorButtonStatusText();
 }
 
+/*
+  Функции toggleToQueue и toggleToWatched почти одинаковы, а так же они есть в файле ./src/pages/filmPage.js
+  Чтобы не дублировать код в 4х местах выносим это в одну функцию, и параметризаруем ее во время вызова
+ */
+
 function getFilmObject() {
-    const film = filmArr.find(film => film.id == filmId);
-    return film;
+    return filmArr.find(film => film.id == filmId);
 }

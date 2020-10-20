@@ -12,6 +12,10 @@ const refs = {
 
 export function library(chapter) {
     let filmList;
+    /*
+      Может это вынести у функцию типа getLibraryFilms, которая будет возвращать фильмы
+      в зависимости от chapter
+     */
     switch (chapter) {
         case 'queue':
             filmList = localStorage.getQueueFilmsFromLS();
@@ -67,15 +71,19 @@ function turnChaptersButtons(chapter) {
 export function removeElementFromMarkup(childElement, chapter) {
     const cardToRemove = childElement.closest('.library-chapter__film-card');
     const cardList = cardToRemove.parentNode;
-    const containersChildrens = Array.from(cardList.children);
-    const index = containersChildrens.indexOf(cardToRemove);
+    const containersChildren = Array.from(cardList.children);
+    const index = containersChildren.indexOf(cardToRemove);
     if (index === 0 || index % 2 === 0) {
         cardToRemove.classList.add('library-chapter__film-card--remove_left');
     } else {
         cardToRemove.classList.add('library-chapter__film-card--remove_right');
     }
 
-    setTimeout(() => {
+  /**
+   * Что это за setTimeout?
+   * Выглядит как костыль
+   */
+  setTimeout(() => {
         spinner.show();
         cardToRemove.remove();
         spinner.hide();

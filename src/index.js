@@ -64,6 +64,12 @@ window['router'] = new Router({
     },
 });
 
+/*
+ Я бы весь код ниже вынес в одельный файл
+ К примеру Header, и вызывал бы из него метод initHeader();
+ Я создал файл ./src/js/components/header.js, и з которого експортирую фунцкию.
+ Посмотрите и заюзайте
+ */
 const refs = {
     headerLogo: document.querySelector('#js-logo'),
     headerLinkHome: document.querySelector('#js-header-link-home'),

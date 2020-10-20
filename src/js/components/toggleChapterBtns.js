@@ -12,7 +12,6 @@ export default function toggleChapterBtns(chapter) {
     if (chapter === 'library') {
         btnRefs.library.dataset.status = 'selected';
         btnRefs.home.dataset.status = 'unselected';
-        return;
     } else {
         btnRefs.home.dataset.status = 'unselected';
         btnRefs.library.dataset.status = 'unselected';
