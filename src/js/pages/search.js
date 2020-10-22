@@ -1,9 +1,10 @@
-import {getMoviesBySearch} from '../Api/fetchMethods';
+import { getMoviesBySearch } from '../Api/fetchMethods';
 import { globalState } from '../constants';
 import pagination from '../components/pagination';
-import renderMarkUp from '../components/renderMarkUp';
-import navigateToFilmPage from '../components/navigateToFilmPage';
-import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import renderMarkUp from '../utils/renderMarkUp';
+import navigateToFilmPage from '../utils/navigateToFilmPage';
+import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
+
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';

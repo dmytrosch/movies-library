@@ -1,13 +1,13 @@
 import './scss/main.scss';
 
-import Router from './js/components/router.js';
+import Router from './js/utils/router.js';
 
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
 import initHeader from './js/components/header'
 import toTopFunction from './js/components/toTopBtn';
-import toggleChapterBtns from './js/components/toggleChapterBtns';
+import toggleChapterBtns from './js/utils/toggleChapterBtns';
 import { library } from './js/pages/library';
 import { search } from './js/pages/search';
 import { globalState } from './js/constants';
@@ -47,7 +47,6 @@ window['router'] = new Router({
         {
             path: '404',
             callback: () => {
-                console.log('nfound');
                 notFoundPage();
                 toggleChapterBtns('404');
             },

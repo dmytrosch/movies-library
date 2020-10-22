@@ -1,4 +1,4 @@
-import renderMarkUp from '../components/renderMarkUp';
+import renderMarkUp from '../utils/renderMarkUp';
 import { addSearchListener } from './search';
 
 /*

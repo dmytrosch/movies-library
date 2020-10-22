@@ -4,12 +4,14 @@ import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
-import pageNotFound from '../../templates/pageNotFound404.hbs';
 import noAddedYetPageTemplate from '../../templates/noAddedYetPageTemplate.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
+import pageNotFoundTemplate from '../../templates/pageNotFound404.hbs';
+
 import { globalState } from '../constants';
-import spinner from './spinner';
+
+import spinner from '../components/spinner';
 
 const refs = {
     rootMain: document.querySelector('#root'),
@@ -90,7 +92,7 @@ export default {
     },
     page404() {
         spinner.show();
-        const markup404 = pageNotFound();
+        const markup404 = pageNotFoundTemplate();
         const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);

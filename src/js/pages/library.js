@@ -1,9 +1,9 @@
-import renderMarkUp from '../components/renderMarkUp.js';
+import renderMarkUp from '../utils/renderMarkUp.js';
 import { globalState } from '../constants';
-import {getFromLS} from '../utils/chaptersInLS'
-import navigateToFilmPage from '../components/navigateToFilmPage';
+import { getFromLS } from '../utils/chaptersInLS';
+import navigateToFilmPage from '../utils/navigateToFilmPage';
 import spinner from '../components/spinner';
-import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
 import { addSearchListener } from './search';
 
 const refs = {
@@ -14,20 +14,7 @@ const refs = {
 const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 
 export function library(chapter) {
-    let filmList;
-    /*
-      Может это вынести у функцию типа getLibraryFilms, которая будет возвращать фильмы
-      в зависимости от chapter
-     */
-    switch (chapter) {
-        case 'queue':
-            filmList = getFromLS(QUEUE_KEY_IN_LS);
-            break;
-
-        case 'watched':
-            filmList = getFromLS(WATCHED_KEY_IN_LS);
-            break;
-    }
+    const filmList = getLibraryFilms(chapter);
     if (filmList.length === 0) {
         renderMarkUp.noAddedYetPage(chapter);
         addSearchListener();
@@ -40,6 +27,15 @@ export function library(chapter) {
     }
     libraryChaptersBtnsListeners();
     turnChaptersButtons(chapter);
+}
+
+function getLibraryFilms(chapter) {
+    switch (chapter) {
+        case 'queue':
+            return getFromLS(QUEUE_KEY_IN_LS);
+        case 'watched':
+            return getFromLS(WATCHED_KEY_IN_LS);
+    }
 }
 
 function libraryChaptersBtnsListeners() {
@@ -81,12 +77,8 @@ export function removeElementFromMarkup(childElement, chapter) {
     } else {
         cardToRemove.classList.add('library-chapter__film-card--remove_right');
     }
-
-  /**
-   * Что это за setTimeout?
-   * Выглядит как костыль
-   */
-  setTimeout(() => {
+    //smooth animation
+    setTimeout(() => {
         spinner.show();
         cardToRemove.remove();
         spinner.hide();

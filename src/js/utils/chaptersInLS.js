@@ -1,5 +1,3 @@
-import { globalState } from '../constants';
-
 export function setToLS(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }

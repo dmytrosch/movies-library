@@ -1,14 +1,8 @@
-// import localStorageObj from './localStorage';
 import { globalState } from '../constants';
 import { removeElementFromMarkup } from '../pages/library';
-import toggleButtons from '../utils/toggleButtons';
-import toggleFilmsChapter from '../utils/toggleFilmsChapters';
-import {
-    getFromLS,
-    checkIsInList,
-    deleteFromList,
-    addToList,
-} from '../utils/chaptersInLS';
+import toggleButtons from './toggleButtons';
+import toggleFilmsChapter from './toggleFilmsChapters';
+import { getFromLS, checkIsInList } from './chaptersInLS';
 
 let allCardsLinks;
 let filmArr;

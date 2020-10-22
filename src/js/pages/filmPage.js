@@ -1,15 +1,10 @@
-import renderMarkUp from '../components/renderMarkUp';
+import renderMarkUp from '../utils/renderMarkUp';
 
 import { getMovieById, getMovieTrailer } from '../Api/fetchMethods';
 import { globalState } from '../constants';
 import toggleButtons from '../utils/toggleButtons';
 import toggleFilmsChapter from '../utils/toggleFilmsChapters';
-import {
-    getFromLS,
-    checkIsInList,
-    deleteFromList,
-    addToList,
-} from '../utils/chaptersInLS';
+import { getFromLS, checkIsInList } from '../utils/chaptersInLS';
 
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
