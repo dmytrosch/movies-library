@@ -5,11 +5,12 @@ import Router from './js/components/router.js';
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
+import initHeader from './js/components/header'
 import toTopFunction from './js/components/toTopBtn';
 import toggleChapterBtns from './js/components/toggleChapterBtns';
 import { library } from './js/pages/library';
 import { search } from './js/pages/search';
-import {globalState} from './js/constants';
+import { globalState } from './js/constants';
 
 window['router'] = new Router({
     root: '/',
@@ -64,34 +65,5 @@ window['router'] = new Router({
     },
 });
 
-/*
- Я бы весь код ниже вынес в одельный файл
- К примеру Header, и вызывал бы из него метод initHeader();
- Я создал файл ./src/js/components/header.js, и з которого експортирую фунцкию.
- Посмотрите и заюзайте
- */
-const refs = {
-    headerLogo: document.querySelector('#js-logo'),
-    headerLinkHome: document.querySelector('#js-header-link-home'),
-    headerLinkMyLibrary: document.querySelector('#js-header-link-library'),
-};
-
-refs.headerLogo.addEventListener('click', onLogoClickHandler);
-refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
-refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
-
+initHeader()
 toTopFunction();
-
-function onHomePageClickHandler(event) {
-    event.preventDefault();
-    window['router'].navigate('');
-}
-
-function onLogoClickHandler() {
-    window['router'].navigate('');
-}
-
-function onLibraryBtnHandler(event) {
-    event.preventDefault();
-    window['router'].navigate('/library/queue');
-}
