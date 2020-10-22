@@ -9,7 +9,7 @@ import toTopFunction from './js/components/toTopBtn';
 import toggleChapterBtns from './js/components/toggleChapterBtns';
 import { library } from './js/pages/library';
 import { search } from './js/pages/search';
-import globalVars from './js/components/globalVars';
+import {globalState} from './js/constants';
 
 window['router'] = new Router({
     root: '/',
@@ -38,7 +38,7 @@ window['router'] = new Router({
         {
             path: /search\/(.*)/,
             callback: query => {
-                globalVars.searchQuery = query;
+                globalState.searchQuery = query;
                 search();
                 toggleChapterBtns('search');
             },

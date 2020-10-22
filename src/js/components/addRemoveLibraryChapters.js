@@ -1,5 +1,5 @@
 import localStorageObj from './localStorage';
-import globalVars from './globalVars';
+import {globalState} from '../constants';
 import { removeElementFromMarkup } from '../pages/library';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
@@ -10,7 +10,7 @@ let filmId;
 let filmArr;
 
 const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
-const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 
 export default function addBtnsListeners(filmsOnPage) {
     if (window.innerWidth < 1024) {

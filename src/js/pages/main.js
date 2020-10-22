@@ -1,5 +1,5 @@
 import renderMarkUp from '../components/renderMarkUp';
-import fetchMethods from '../Api/fetchMethods';
+import {getPopularMovies} from '../Api/fetchMethods';
 import { addSearchListener } from './search';
 import Siema from 'siema';
 import navigateToFilmPage from '../components/navigateToFilmPage';
@@ -16,7 +16,7 @@ export default async function mainPage() {
      */
     let popularMoviesResult;
     try {
-        popularMoviesResult = await fetchMethods.popularSearch();
+        popularMoviesResult = await getPopularMovies();
         renderMarkUp.popularMovies(popularMoviesResult);
         addRemoveLibraryChapters(popularMoviesResult);
         navigateToFilmPage.addFilmCardClickListeners();

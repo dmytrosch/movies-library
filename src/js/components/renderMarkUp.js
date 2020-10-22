@@ -8,7 +8,7 @@ import pageNotFound from '../../templates/pageNotFound404.hbs';
 import noAddedYetPageTemplate from '../../templates/noAddedYetPageTemplate.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
-import globalVars from '../components/globalVars';
+import { globalState } from '../constants';
 import spinner from './spinner';
 
 const refs = {
@@ -35,9 +35,7 @@ export default {
             popularMoviesListTemplate(thirdPartOfList) +
             popularMoviesListTemplate(fourPartOfList) +
             popularMoviesListTemplate(fivePartOfList);
-        const filmPageContainer = document.querySelector(
-            '#js-film-list',
-        );
+        const filmPageContainer = document.querySelector('#js-film-list');
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
         spinner.hide();
     },
@@ -70,7 +68,7 @@ export default {
             );
         }
         if (!pagination) {
-            this.paginationMarkup(globalVars.pageNumber);
+            this.paginationMarkup(globalState.pageNumber);
         }
         window.scrollBy(0, -window.pageYOffset + 65);
         spinner.hide();
@@ -84,7 +82,7 @@ export default {
     },
     pageEmptySearchResponseQuery() {
         spinner.show();
-        const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
+        const markup = emptySearchResponsePageTemplate(globalState.searchQuery);
         const searchMarkup = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', searchMarkup + markup);

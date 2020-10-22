@@ -3,15 +3,15 @@ import localStorageObj from '../components/localStorage';
 import * as basicLightBox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import spinner from '../components/spinner';
-import fetchMethods from '../Api/fetchMethods';
-import globalVars from '../components/globalVars';
+import { getMovieById, getMovieTrailer } from '../Api/fetchMethods';
+import { globalState } from '../constants';
 import { success } from '@pnotify/core/dist/PNotify.js';
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 const { getFromLS, addToList, deleteFromList, checkIsInList } = localStorageObj;
-const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 let selectedFilm;
 let instance;
 const refs = {
@@ -20,7 +20,7 @@ const refs = {
 };
 
 export default async function filmPage(id) {
-    selectedFilm = await fetchMethods.idSearch(id);
+    selectedFilm = await getMovieById(id);
     if (selectedFilm.status_code === 34) {
         renderMarkUp.page404();
         return;
@@ -141,14 +141,11 @@ function toggleToWatched() {
   Чтобы не дублировать код
  */
 
-
 async function handleFilmPosterClick() {
     spinner.show();
     let videoKey;
     try {
-        videoKey = await fetchMethods
-            .youtubeTrailerKey(selectedFilm.id)
-            .then(d => d[0].key);
+        videoKey = await getMovieTrailer(selectedFilm.id).then(d => d[0].key);
         createTrailerLightBox(videoKey);
         instance.show();
     } catch {
@@ -158,7 +155,7 @@ async function handleFilmPosterClick() {
 }
 
 function createTrailerLightBox(videoKey) {
-  // Разметку я бы вынес в отдельную переменную, чтобы функция была более простой в чтении
+    // Разметку я бы вынес в отдельную переменную, чтобы функция была более простой в чтении
     instance = basicLightBox.create(
         `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
         {

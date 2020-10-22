@@ -1,5 +1,5 @@
-import renderMarkUp from '../components/renderMarkUp'
-import {addSearchListener} from './search';
+import renderMarkUp from '../components/renderMarkUp';
+import { addSearchListener } from './search';
 
 /*
   Если експортируем что-то как default название давать не обязательно
@@ -10,7 +10,7 @@ import {addSearchListener} from './search';
     addSearchListener()
   }
  */
-export default function notFoundPage(){
-    renderMarkUp.page404()
-    addSearchListener()
+export default function notFoundPage() {
+    renderMarkUp.page404();
+    addSearchListener();
 }

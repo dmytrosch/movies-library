@@ -1,11 +1,11 @@
-import globalVars from './globalVars';
+import {globalState} from '../constants';
 
 /*
   Это все не является компонетном, а значит и не должно находиться в дериктории components
   Предлагаю вынести его в ./src/utilites/index.js или ./src/services/index.js
  */
 
-const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalVars;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 
 /*
   Предлагаю екпортировать не обьект, а каждый отдельный метод.
