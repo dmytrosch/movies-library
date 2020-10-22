@@ -1,5 +1,6 @@
 import renderMarkUp from '../components/renderMarkUp.js';
-import localStorage from '../components/localStorage';
+import { globalState } from '../constants';
+import {getFromLS} from '../utils/chaptersInLS'
 import navigateToFilmPage from '../components/navigateToFilmPage';
 import spinner from '../components/spinner';
 import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
@@ -10,6 +11,8 @@ const refs = {
     btnWatched: null,
 };
 
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
+
 export function library(chapter) {
     let filmList;
     /*
@@ -18,11 +21,11 @@ export function library(chapter) {
      */
     switch (chapter) {
         case 'queue':
-            filmList = localStorage.getQueueFilmsFromLS();
+            filmList = getFromLS(QUEUE_KEY_IN_LS);
             break;
 
         case 'watched':
-            filmList = localStorage.getWatchedFilmsFromLS();
+            filmList = getFromLS(WATCHED_KEY_IN_LS);
             break;
     }
     if (filmList.length === 0) {
