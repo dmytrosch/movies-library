@@ -37,6 +37,8 @@ export async function search() {
     }
     if (page === total_pages) {
         disableBtn(refs.nextBtn);
+    } else {
+        enableBtn(refs.nextBtn);
     }
     addPaginationBtnsListeners();
     refs.span.textContent = page;
