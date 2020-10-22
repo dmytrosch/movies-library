@@ -8,8 +8,6 @@ export default {
         const url = event.target.dataset.path;
         if (url) {
             navigateToFilmPage(url);
-        } else {
-            return;
         }
     },
 };

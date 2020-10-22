@@ -1,15 +1,16 @@
 import './scss/main.scss';
 
-import Router from './js/components/router.js';
+import Router from './js/utils/router.js';
 
 import mainPage from './js/pages/main';
 import filmPage from './js/pages/filmPage';
 import notFoundPage from './js/pages/404';
+import initHeader from './js/components/header'
 import toTopFunction from './js/components/toTopBtn';
-import toggleChapterBtns from './js/components/toggleChapterBtns';
+import toggleChapterBtns from './js/utils/toggleChapterBtns';
 import { library } from './js/pages/library';
 import { search } from './js/pages/search';
-import globalVars from './js/components/globalVars';
+import { globalState } from './js/constants';
 
 window['router'] = new Router({
     root: '/',
@@ -38,7 +39,7 @@ window['router'] = new Router({
         {
             path: /search\/(.*)/,
             callback: query => {
-                globalVars.searchQuery = query;
+                globalState.searchQuery = query;
                 search();
                 toggleChapterBtns('search');
             },
@@ -46,7 +47,6 @@ window['router'] = new Router({
         {
             path: '404',
             callback: () => {
-                console.log('nfound');
                 notFoundPage();
                 toggleChapterBtns('404');
             },
@@ -64,28 +64,5 @@ window['router'] = new Router({
     },
 });
 
-const refs = {
-    headerLogo: document.querySelector('#js-logo'),
-    headerLinkHome: document.querySelector('#js-header-link-home'),
-    headerLinkMyLibrary: document.querySelector('#js-header-link-library'),
-};
-
-refs.headerLogo.addEventListener('click', onLogoClickHandler);
-refs.headerLinkHome.addEventListener('click', onHomePageClickHandler);
-refs.headerLinkMyLibrary.addEventListener('click', onLibraryBtnHandler);
-
+initHeader()
 toTopFunction();
-
-function onHomePageClickHandler(event) {
-    event.preventDefault();
-    window['router'].navigate('');
-}
-
-function onLogoClickHandler() {
-    window['router'].navigate('');
-}
-
-function onLibraryBtnHandler(event) {
-    event.preventDefault();
-    window['router'].navigate('/library/queue');
-}

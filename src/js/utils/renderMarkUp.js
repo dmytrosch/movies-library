@@ -4,12 +4,14 @@ import mainPageCascadeTemplate from '../../templates/mainPageCascadeTemplate.hbs
 import popularMoviesListTemplate from '../../templates/popularMoviesListTemplate.hbs';
 import emptySearchResponsePageTemplate from '../../templates/emptySearchResponsePageTemplate.hbs';
 import searchResultListTemplate from '../../templates/searchResultListTemplate.hbs';
-import pageNotFound from '../../templates/pageNotFound404.hbs';
 import noAddedYetPageTemplate from '../../templates/noAddedYetPageTemplate.hbs';
 import paginationButtonsTemplate from '../../templates/paginationButtonsTemplate.hbs';
 import searchInputTemplate from '../../templates/searchInputTemplate.hbs';
-import globalVars from '../components/globalVars';
-import spinner from './spinner';
+import pageNotFoundTemplate from '../../templates/pageNotFound404.hbs';
+
+import { globalState } from '../constants';
+
+import spinner from '../components/spinner';
 
 const refs = {
     rootMain: document.querySelector('#root'),
@@ -35,9 +37,7 @@ export default {
             popularMoviesListTemplate(thirdPartOfList) +
             popularMoviesListTemplate(fourPartOfList) +
             popularMoviesListTemplate(fivePartOfList);
-        const filmPageContainer = document.querySelector(
-            '#js-film-list',
-        );
+        const filmPageContainer = document.querySelector('#js-film-list');
         filmPageContainer.insertAdjacentHTML('beforeend', markup);
         spinner.hide();
     },
@@ -70,7 +70,7 @@ export default {
             );
         }
         if (!pagination) {
-            this.paginationMarkup(globalVars.pageNumber);
+            this.paginationMarkup(globalState.pageNumber);
         }
         window.scrollBy(0, -window.pageYOffset + 65);
         spinner.hide();
@@ -84,7 +84,7 @@ export default {
     },
     pageEmptySearchResponseQuery() {
         spinner.show();
-        const markup = emptySearchResponsePageTemplate(globalVars.searchQuery);
+        const markup = emptySearchResponsePageTemplate(globalState.searchQuery);
         const searchMarkup = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', searchMarkup + markup);
@@ -92,7 +92,7 @@ export default {
     },
     page404() {
         spinner.show();
-        const markup404 = pageNotFound();
+        const markup404 = pageNotFoundTemplate();
         const markupSearchBar = searchInputTemplate();
         this.clearMainMarkUp();
         refs.rootMain.insertAdjacentHTML('afterbegin', markupSearchBar);
@@ -118,4 +118,7 @@ export default {
         const markup = paginationButtonsTemplate(data);
         refs.rootMain.insertAdjacentHTML('beforeend', markup);
     },
+    filmTrailerOverlay(videoKey){
+        return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    }
 };

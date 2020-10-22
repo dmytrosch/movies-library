@@ -1,13 +1,13 @@
-import globalVars from './globalVars';
+import { globalState } from '../constants';
 
 export default {
     incrementPage() {
-        globalVars.pageNumber++;
+        globalState.pageNumber++;
     },
     decrementPage() {
-        globalVars.pageNumber--;
+        globalState.pageNumber--;
     },
     resetPage() {
-        globalVars.pageNumber = 1;
+        globalState.pageNumber = 1;
     },
 };

@@ -1,8 +1,9 @@
-import renderMarkUp from '../components/renderMarkUp.js';
-import localStorage from '../components/localStorage';
-import navigateToFilmPage from '../components/navigateToFilmPage';
+import renderMarkUp from '../utils/renderMarkUp.js';
+import { globalState } from '../constants';
+import { getFromLS } from '../utils/chaptersInLS';
+import navigateToFilmPage from '../utils/navigateToFilmPage';
 import spinner from '../components/spinner';
-import addRemoveLibraryChapters from '../components/addRemoveLibraryChapters';
+import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
 import { addSearchListener } from './search';
 
 const refs = {
@@ -10,17 +11,10 @@ const refs = {
     btnWatched: null,
 };
 
-export function library(chapter) {
-    let filmList;
-    switch (chapter) {
-        case 'queue':
-            filmList = localStorage.getQueueFilmsFromLS();
-            break;
+const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 
-        case 'watched':
-            filmList = localStorage.getWatchedFilmsFromLS();
-            break;
-    }
+export function library(chapter) {
+    const filmList = getLibraryFilms(chapter);
     if (filmList.length === 0) {
         renderMarkUp.noAddedYetPage(chapter);
         addSearchListener();
@@ -33,6 +27,15 @@ export function library(chapter) {
     }
     libraryChaptersBtnsListeners();
     turnChaptersButtons(chapter);
+}
+
+function getLibraryFilms(chapter) {
+    switch (chapter) {
+        case 'queue':
+            return getFromLS(QUEUE_KEY_IN_LS);
+        case 'watched':
+            return getFromLS(WATCHED_KEY_IN_LS);
+    }
 }
 
 function libraryChaptersBtnsListeners() {
@@ -67,14 +70,14 @@ function turnChaptersButtons(chapter) {
 export function removeElementFromMarkup(childElement, chapter) {
     const cardToRemove = childElement.closest('.library-chapter__film-card');
     const cardList = cardToRemove.parentNode;
-    const containersChildrens = Array.from(cardList.children);
-    const index = containersChildrens.indexOf(cardToRemove);
+    const containersChildren = Array.from(cardList.children);
+    const index = containersChildren.indexOf(cardToRemove);
     if (index === 0 || index % 2 === 0) {
         cardToRemove.classList.add('library-chapter__film-card--remove_left');
     } else {
         cardToRemove.classList.add('library-chapter__film-card--remove_right');
     }
-
+    //smooth animation
     setTimeout(() => {
         spinner.show();
         cardToRemove.remove();
