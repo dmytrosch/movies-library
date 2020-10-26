@@ -15,6 +15,7 @@ const { QUEUE_KEY_IN_LS, WATCHED_KEY_IN_LS } = globalState;
 export default function toggleFilmsChapter(chapter, selectedFilm) {
     const queueFilms = getFromLS(QUEUE_KEY_IN_LS);
     const watchedFilms = getFromLS(WATCHED_KEY_IN_LS);
+    console.log(chapter);
     if (chapter === QUEUE_KEY_IN_LS) {
         const isInQueue = checkIsInList(queueFilms, selectedFilm.id);
         if (isInQueue) {
@@ -28,13 +29,14 @@ export default function toggleFilmsChapter(chapter, selectedFilm) {
     }
     if (chapter === WATCHED_KEY_IN_LS) {
         const isWatched = checkIsInList(watchedFilms, selectedFilm.id);
+        console.log(isWatched);
         if (isWatched) {
-            deleteFromList(watchedFilms, selectedFilm.id, QUEUE_KEY_IN_LS);
-            success({ text: 'Movie deleted from queue', delay: '2000' });
+            deleteFromList(watchedFilms, selectedFilm.id, WATCHED_KEY_IN_LS);
+            success({ text: 'Movie deleted from watched', delay: '2000' });
         } else {
-            addToList(watchedFilms, QUEUE_KEY_IN_LS, selectedFilm);
-            deleteFromList(queueFilms, selectedFilm.id, WATCHED_KEY_IN_LS);
-            success({ text: 'Movie added to queue', delay: '2000' });
+            addToList(watchedFilms, WATCHED_KEY_IN_LS, selectedFilm);
+            deleteFromList(queueFilms, selectedFilm.id, QUEUE_KEY_IN_LS);
+            success({ text: 'Movie added to watched', delay: '2000' });
         }
     }
 }

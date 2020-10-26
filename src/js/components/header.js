@@ -5,12 +5,11 @@ const refs = {
 };
 
 function onHomePageClickHandler(event) {
-  event.preventDefault();
-  window['router'].navigate('');
+  window['router'].navigate('home');
 }
 
 function onLogoClickHandler() {
-  window['router'].navigate('');
+  window['router'].navigate('home');
 }
 
 function onLibraryBtnHandler(event) {
