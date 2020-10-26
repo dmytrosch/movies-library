@@ -8,6 +8,7 @@ import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
+import {router} from '../utils/router'
 
 const refs = {
     prevBtn: null,
@@ -69,7 +70,7 @@ function searchFormHandler(event) {
     event.preventDefault();
     const query = event.target.elements.query.value;
     if (query) {
-        window['router'].navigate(`search/${query}`);
+        router.navigate(`search/${query}`);
     } else {
         error({
             text: 'Empty search query. Please, enter your require!',

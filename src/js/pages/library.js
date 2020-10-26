@@ -5,6 +5,7 @@ import navigateToFilmPage from '../utils/navigateToFilmPage';
 import spinner from '../components/spinner';
 import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
 import { addSearchListener } from './search';
+import { router } from '../utils/router';
 
 const refs = {
     btnQueue: null,
@@ -48,12 +49,12 @@ function libraryChaptersBtnsListeners() {
 
 function onQueueBtnClickHandler(event) {
     event.preventDefault();
-    window['router'].navigate('library/queue');
+    router.navigate('library/queue');
 }
 
 function onWatchedBtnClickHandler(event) {
     event.preventDefault();
-    window['router'].navigate('library/watched');
+    router.navigate('library/watched');
 }
 function turnChaptersButtons(chapter) {
     switch (chapter) {

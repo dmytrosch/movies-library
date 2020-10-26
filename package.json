@@ -53,6 +53,7 @@
     "core-js": "^3.6.4",
     "handlebars": "^4.7.3",
     "lodash.throttle": "^4.1.1",
+    "navigo": "^7.1.2",
     "siema": "^1.5.1"
   }
 }

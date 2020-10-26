@@ -1,3 +1,5 @@
+import {router} from '../utils/router'
+
 const refs = {
   headerLogo: document.querySelector('#js-logo'),
   headerLinkHome: document.querySelector('#js-header-link-home'),
@@ -6,16 +8,17 @@ const refs = {
 
 function onHomePageClickHandler(event) {
   event.preventDefault();
-  window['router'].navigate('');
+  router.navigate('home');
 }
 
-function onLogoClickHandler() {
-  window['router'].navigate('');
+function onLogoClickHandler(event) {
+  event.preventDefault();
+  router.navigate('home');
 }
 
 function onLibraryBtnHandler(event) {
   event.preventDefault();
-  window['router'].navigate('/library/queue');
+  router.navigate('library/queue');
 }
 
 export default function() {
