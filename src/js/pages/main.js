@@ -3,6 +3,7 @@ import { getPopularMovies } from '../Api/fetchMethods';
 import { addSearchListener } from './search';
 import navigateToFilmPage from '../utils/navigateToFilmPage';
 import addRemoveLibraryChapters from '../utils/addRemoveLibraryChapters';
+import { router } from '../utils/router';
 
 import { error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
@@ -24,7 +25,7 @@ export default async function mainPage() {
                 'OOPS! Something went wrong with connecting. Redirecting to saved films',
             delay: '2000',
         });
-        window['router'].navigate('library/queue');
+        router.navigate('library/queue');
     }
 }
 

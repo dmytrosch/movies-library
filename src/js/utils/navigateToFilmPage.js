@@ -1,3 +1,5 @@
+import { router } from './router';
+
 export default {
     addFilmCardClickListeners() {
         const filmListRef = document.querySelector('#js-film-list');
@@ -13,5 +15,5 @@ export default {
 };
 
 function navigateToFilmPage(url) {
-    window['router'].navigate(url);
+    router.navigate(url);
 }
