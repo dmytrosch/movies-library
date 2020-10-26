@@ -41,9 +41,9 @@ router
     })
     .resolve();
 
-// if (window.location.pathname === '/') {
-//     router.navigate('home');
-// }
+if (window.location.pathname === '/') {
+    router.navigate('home');
+}
 
 initHeader();
 toTopFunction();
